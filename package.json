@@ -1,0 +1,25 @@
+{
+  "name": "toggl-client",
+  "version": "1.0.0",
+  "description": "API Client for the Toggl API",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "release": "standard-version"
+  },
+  "author": "Christoph Walcher <christoph.walcher@gmail.com>",
+  "repository": "saintedlama/toggl-client",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "got": "^9.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.5.1",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "prettier": "^1.18.2",
+    "standard-version": "^7.0.0"
+  }
+}
