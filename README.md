@@ -28,6 +28,7 @@ const client = togglClient({ apiToken: YOUR_API_TOKEN });
 -   [Tags](#tags)
 -   [TimeEntries](#timeentries)
 -   [Workspaces](#workspaces)
+-   [Workspace](#workspace)
 
 ### TogglClient
 
@@ -303,7 +304,7 @@ Access workspaces. See <https://github.com/toggl/toggl_api_docs/blob/master/chap
 
 Lists all workspaces
 
-Returns **any** List of workspaces
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Workspace](#workspace)>** List of workspaces
 
 #### get
 
@@ -385,3 +386,22 @@ Gets a list of tags associated with the workspace
 -   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
 
 Returns **any** List of tags associated with the workspace
+
+### Workspace
+
+Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object)
+
+#### Properties
+
+-   `id` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Id of the workspace
+-   `name` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Name of the workspace
+-   `premium` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True if premium features are enabled
+-   `admin` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True if requesting user has admin access to the workspace
+-   `default_hourly_rate` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Default hourly rate only shown for requesting admin users
+-   `default_currency` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Default currency
+-   `only_admins_may_create_projects` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `only_admins_see_billable_rates` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `only_admins_see_team_dashboard` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+-   `rounding` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** type of rounding
+-   `rounding_minutes` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** round up to nearest minute
+-   `at` **[date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date)** Indicates when the workspace was created or updated
