@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "release": "standard-version"
+    "release": "standard-version",
+    "doc": "documentation readme lib/** --section API  --markdown-toc-max-depth 2"
   },
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
   "repository": "saintedlama/toggl-client",
@@ -16,6 +17,7 @@
     "got": "^9.6.0"
   },
   "devDependencies": {
+    "documentation": "^12.1.2",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-prettier": "^3.1.1",
