@@ -14,7 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "debug": "^4.3.1",
-    "got": "^9.6.0"
+    "got": "^11.8.1"
   },
   "devDependencies": {
     "documentation": "^13.1.1",
