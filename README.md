@@ -20,15 +20,16 @@ const client = togglClient({ apiToken: YOUR_API_TOKEN });
 
 #### Table of Contents
 
--   [TogglClient](#togglclient)
--   [Clients](#clients)
--   [Groups](#groups)
--   [ProjectUsers](#projectusers)
--   [Projects](#projects)
--   [Tags](#tags)
--   [TimeEntries](#timeentries)
--   [Workspaces](#workspaces)
--   [Workspace](#workspace)
+*   [TogglClient](#togglclient)
+*   [Clients](#clients)
+*   [Groups](#groups)
+*   [ProjectUsers](#projectusers)
+*   [Projects](#projects-1)
+*   [Reports](#reports)
+*   [Tags](#tags)
+*   [TimeEntries](#timeentries)
+*   [Workspaces](#workspaces)
+*   [Workspace](#workspace)
 
 ### TogglClient
 
@@ -37,13 +38,13 @@ Calling `togglClient({ apiToken: YOUR_API_TOKEN });` returns an instance of this
 
 #### Properties
 
--   `workspaces` **[Workspaces](#workspaces)** 
--   `projects` **[Projects](#projects)** 
--   `timeEntries` **[TimeEntries](#timeentries)** 
--   `clients` **[Clients](#clients)** 
--   `groups` **[Groups](#groups)** 
--   `tags` **[Tags](#tags)** 
--   `projectUsers` **[ProjectUsers](#projectusers)** 
+*   `workspaces` **[Workspaces](#workspaces)** 
+*   `projects` **[Projects](#projects)** 
+*   `timeEntries` **[TimeEntries](#timeentries)** 
+*   `clients` **[Clients](#clients)** 
+*   `groups` **[Groups](#groups)** 
+*   `tags` **[Tags](#tags)** 
+*   `projectUsers` **[ProjectUsers](#projectusers)** 
 
 ### Clients
 
@@ -61,7 +62,7 @@ Creates a new client
 
 ##### Parameters
 
--   `client` **any** 
+*   `client` **any** 
 
 Returns **any** Created client
 
@@ -71,7 +72,7 @@ Gets a client by id
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
 
 Returns **any** client or undefined if no client with specified id was found
 
@@ -81,8 +82,8 @@ Updates a client
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
--   `client`  
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
+*   `client`  
 
 Returns **any** updated client
 
@@ -92,7 +93,7 @@ Deletes a client by id
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
 
 #### projects
 
@@ -100,9 +101,9 @@ Lists projects associated with the given client
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
--   `active`  
--   `String`  active filter active clients by specifying true/false/both
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
+*   `active`  
+*   `String`  active filter active clients by specifying true/false/both
 
 ### Groups
 
@@ -114,7 +115,7 @@ Creates a group
 
 ##### Parameters
 
--   `group` **any** 
+*   `group` **any** 
 
 Returns **any** group created
 
@@ -124,8 +125,8 @@ Updates a group
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** group id that should be updated
--   `group` **any** 
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** group id that should be updated
+*   `group` **any** 
 
 Returns **any** result of update operation
 
@@ -135,7 +136,7 @@ Deletes a group
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** group id that should be deleted
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** group id that should be deleted
 
 ### ProjectUsers
 
@@ -147,7 +148,7 @@ Gets a project user by id
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
 
 #### update
 
@@ -155,8 +156,8 @@ Updates an existing project user
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project user to update
--   `project_user` **any** 
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project user to update
+*   `project_user` **any** 
 
 #### delete
 
@@ -164,7 +165,7 @@ Deletes an existing project user
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** 
 
 #### create
 
@@ -172,7 +173,7 @@ Creates a new project user
 
 ##### Parameters
 
--   `project_user` **any** 
+*   `project_user` **any** 
 
 Returns **any** project user created
 
@@ -186,7 +187,7 @@ Creates a new project
 
 ##### Parameters
 
--   `project` **any** 
+*   `project` **any** 
 
 Returns **any** Project created
 
@@ -196,7 +197,7 @@ Gets an existing project by id
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to get
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to get
 
 Returns **any** Project if a project with the specified id exists, othererwise undefined
 
@@ -206,8 +207,8 @@ Updates an existing project
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to be updated
--   `project` **any** 
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to be updated
+*   `project` **any** 
 
 Returns **any** The updated project
 
@@ -217,7 +218,7 @@ Deletes an existing project
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to be deleted
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to be deleted
 
 #### users
 
@@ -225,7 +226,7 @@ Gets users associated with the given project
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project
 
 Returns **any** Array of users associated with the project
 
@@ -235,9 +236,37 @@ Gets tasks associated with the given project
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project
 
 Returns **any** Array of tasks associated with the project
+
+### Reports
+
+Access reports. See <https://github.com/toggl/toggl_api_docs/blob/master/reports.md>
+
+#### weekly
+
+Weekly report URL GET <https://api.track.toggl.com/reports/api/v2/weekly>
+
+##### Parameters
+
+*   `workspaceId`  
+
+#### details
+
+Detailed report URL: GET <https://api.track.toggl.com/reports/api/v2/details>
+
+##### Parameters
+
+*   `workspaceId`  
+
+#### summary
+
+Summary report URL: GET <https://api.track.toggl.com/reports/api/v2/summary>
+
+##### Parameters
+
+*   `workspaceId`  
 
 ### Tags
 
@@ -249,7 +278,7 @@ Creates a new tag
 
 ##### Parameters
 
--   `tag` **any** 
+*   `tag` **any** 
 
 Returns **any** Tag created
 
@@ -259,8 +288,8 @@ Updates an existing tag
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the tag to be updated
--   `tag` **any** 
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the tag to be updated
+*   `tag` **any** 
 
 Returns **any** Updated tag
 
@@ -270,7 +299,7 @@ Deletes an existing tag
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** If of the tag to be deleted
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** If of the tag to be deleted
 
 ### TimeEntries
 
@@ -282,7 +311,7 @@ Lists time entries
 
 ##### Parameters
 
--   `query` **any** 
+*   `query` **any** 
 
 Returns **any** List of time entries
 
@@ -292,7 +321,7 @@ Creates a new time entry
 
 ##### Parameters
 
--   `time_entry` **any** 
+*   `time_entry` **any** 
 
 Returns **any** 
 
@@ -304,7 +333,7 @@ Access workspaces. See <https://github.com/toggl/toggl_api_docs/blob/master/chap
 
 Lists all workspaces
 
-Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)&lt;[Workspace](#workspace)>** List of workspaces
+Returns **[Array](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Array)<[Workspace](#workspace)>** List of workspaces
 
 #### get
 
@@ -312,9 +341,9 @@ Gets a workspace by id
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** if of the workspace
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** if of the workspace
 
-Returns **any** Workspace or undefined if the given workspace does not exist
+Returns **([Workspace](#workspace) | [undefined](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined))** Workspace or undefined if the given workspace does not exist
 
 #### update
 
@@ -322,10 +351,10 @@ Updates an existing workspace
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace to be updated
--   `workspace` **any** 
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace to be updated
+*   `workspace` **[Workspace](#workspace)** 
 
-Returns **any** The updated workspace
+Returns **[Workspace](#workspace)** The updated workspace
 
 #### users
 
@@ -333,7 +362,7 @@ Gets a list of users associated with the workspace
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
 
 Returns **any** List of users associated with the workspace
 
@@ -343,7 +372,7 @@ Gets a list of clients associated with the workspace
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
 
 Returns **any** List of clients associated with the workspace
 
@@ -353,7 +382,7 @@ Gets a list of groups associated with the workspace
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
 
 Returns **any** List of groups associated with the workspace
 
@@ -363,7 +392,7 @@ Gets a list of projects associated with the workspace
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
 
 Returns **any** List of projects associated with the workspace
 
@@ -373,7 +402,7 @@ Gets a list of tasks associated with the workspace
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
 
 Returns **any** List of tasks associated with the workspace
 
@@ -383,7 +412,7 @@ Gets a list of tags associated with the workspace
 
 ##### Parameters
 
--   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) \| [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
+*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the workspace
 
 Returns **any** List of tags associated with the workspace
 
@@ -393,15 +422,15 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 
 #### Properties
 
--   `id` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Id of the workspace
--   `name` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Name of the workspace
--   `premium` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True if premium features are enabled
--   `admin` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True if requesting user has admin access to the workspace
--   `default_hourly_rate` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Default hourly rate only shown for requesting admin users
--   `default_currency` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Default currency
--   `only_admins_may_create_projects` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
--   `only_admins_see_billable_rates` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
--   `only_admins_see_team_dashboard` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
--   `rounding` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** type of rounding
--   `rounding_minutes` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** round up to nearest minute
--   `at` **[date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date)** Indicates when the workspace was created or updated
+*   `id` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Id of the workspace
+*   `name` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Name of the workspace
+*   `premium` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True if premium features are enabled
+*   `admin` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** True if requesting user has admin access to the workspace
+*   `default_hourly_rate` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** Default hourly rate only shown for requesting admin users
+*   `default_currency` **[string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String)** Default currency
+*   `only_admins_may_create_projects` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+*   `only_admins_see_billable_rates` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+*   `only_admins_see_team_dashboard` **[boolean](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean)** 
+*   `rounding` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** type of rounding
+*   `rounding_minutes` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** round up to nearest minute
+*   `at` **[date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date)** Indicates when the workspace was created or updated
