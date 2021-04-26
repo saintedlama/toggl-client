@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/saintedlama/toggl-client/compare/v1.0.3...v1.1.0) (2021-04-26)
+
+
+### Features
+
+* add reports api ([ce71606](https://github.com/saintedlama/toggl-client/commit/ce71606ed7fbb92f7d4a7f3bf583aaf988336201))
+
 ### [1.0.3](https://github.com/saintedlama/toggl-client/compare/v1.0.2...v1.0.3) (2021-02-11)
 
 
