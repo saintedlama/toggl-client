@@ -7,21 +7,24 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "release": "standard-version",
-    "doc": "documentation readme lib/** --section API  --markdown-toc-max-depth 2"
+    "doc": "documentation readme lib/** --section API  --markdown-toc-max-depth 2",
+    "test": "mocha"
   },
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
   "repository": "saintedlama/toggl-client",
   "license": "ISC",
   "dependencies": {
     "debug": "^4.3.1",
-    "got": "^11.8.1"
+    "got": "^11.8.2"
   },
   "devDependencies": {
-    "documentation": "^13.1.1",
-    "eslint": "^7.19.0",
-    "eslint-config-prettier": "^7.2.0",
-    "eslint-plugin-prettier": "^3.3.1",
+    "chai": "^4.3.4",
+    "documentation": "^13.2.5",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "mocha": "^8.3.2",
     "prettier": "^2.2.1",
-    "standard-version": "^9.1.0"
+    "standard-version": "^9.2.0"
   }
 }
