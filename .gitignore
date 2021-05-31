@@ -6,3 +6,4 @@ coverage/
 *.tgz
 .vscode/
 try/
+_quicktest.js
