@@ -21,6 +21,7 @@ const client = togglClient({ apiToken: YOUR_API_TOKEN });
 #### Table of Contents
 
 *   [TogglClient](#togglclient)
+*   [User](#user)
 *   [Clients](#clients)
 *   [Groups](#groups)
 *   [ProjectUsers](#projectusers)
@@ -44,7 +45,31 @@ Calling `togglClient({ apiToken: YOUR_API_TOKEN });` returns an instance of this
 *   `clients` **[Clients](#clients)** 
 *   `groups` **[Groups](#groups)** 
 *   `tags` **[Tags](#tags)** 
-*   `projectUsers` **[ProjectUsers](#projectusers)** 
+*   `projectUsers` **[ProjectUsers](#projectusers)**
+*   `user` **[User](#user)** 
+
+### User
+
+Access and update user information. See <https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md>
+
+#### current
+
+Gets the current user.
+
+Returns **any** the Toggl `user` object.
+
+##### Parameters
+
+* `with_related_data=true` - get all the workspaces, clients, projects, tasks, time entries and tags which the user can see.
+* `since` -  to retrieve objects which have changed after certain time. The value should be a unix timestamp (e.g. `since=1362579886`)
+
+#### update
+
+For future enhancement.
+
+#### resetToken
+
+For future enhancement.
 
 ### Clients
 
