@@ -42,6 +42,14 @@ describe('smoke test', () => {
     expect(detailsReport).to.exist.to.be.an('object');
   });
 
+  it('should get a user', async() => {
+    const client = togglClient();
+    const user = await client.user.current();
+    debug(user);
+    expect(user).to.exist.to.be.an('object');
+
+  })
+
   it('should generate time entries', async () => {
     const client = togglClient();
     const workspaces = await client.workspaces.list();
