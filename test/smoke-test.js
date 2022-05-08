@@ -81,6 +81,7 @@ describe('smoke test', () => {
     expect(() => client.user.update(user).to.throw(Error('date_format must be one of "YYYY-MM-DD", "DD.MM.YYYY", "DD-MM-YYYY", "MM/DD/YYYY", "DD/MM/YYYY", "MM-DD-YYYY"')));
   })
 
+  it.skip('should generate time entries', async () => {
     const client = togglClient();
     const workspaces = await client.workspaces.list();
 
