@@ -50,6 +50,13 @@ describe('smoke test', () => {
 
   })
 
+  it.skip('should get a new API token',async() =>{
+    const client = togglClient();
+    const newToken = await client.user.resetToken();
+    debug(newToken);
+    expect(newToken).to.exist.to.be.an('string');
+  })
+
   it('should generate time entries', async () => {
     const client = togglClient();
     const workspaces = await client.workspaces.list();
