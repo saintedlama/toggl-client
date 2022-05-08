@@ -42,44 +42,47 @@ describe('smoke test', () => {
     expect(detailsReport).to.exist.to.be.an('object');
   });
 
-  it('should get a user', async() => {
+  it('should get a user', async () => {
     const client = togglClient();
     const user = await client.user.current();
     debug(user);
     expect(user).to.exist.to.be.an('object');
+  });
 
-  })
-
-  it.skip('should get a new API token',async() =>{
+  it.skip('should get a new API token', async () => {
     const client = togglClient();
     const newToken = await client.user.resetToken();
     debug(newToken);
     expect(newToken).to.exist.to.be.an('string');
-  })
+  });
 
-  it('should throw an error if current password not supplied',async() =>{
+  it('should throw an error if current password not supplied', async () => {
     const client = togglClient();
     const user = {
       password: 'foo',
     };
     expect(() => client.user.update(user).to.throw('To change the password you must include the current password'));
-  })
+  });
 
-  it('should throw an error if time of day format is invalid',async() =>{
+  it('should throw an error if time of day format is invalid', async () => {
     const client = togglClient();
     const user = {
       timeofday_format: 'foo',
     };
     expect(() => client.user.update(user).to.throw(Error('timeofday_format must be one of H:mm or h:mm')));
-  })
+  });
 
-  it('should throw an error if date format is invalid',async() =>{
+  it('should throw an error if date format is invalid', async () => {
     const client = togglClient();
     const user = {
       dateFormat: 'foo',
     };
-    expect(() => client.user.update(user).to.throw(Error('date_format must be one of "YYYY-MM-DD", "DD.MM.YYYY", "DD-MM-YYYY", "MM/DD/YYYY", "DD/MM/YYYY", "MM-DD-YYYY"')));
-  })
+    expect(() =>
+      client.user
+        .update(user)
+        .to.throw(Error('date_format must be one of "YYYY-MM-DD", "DD.MM.YYYY", "DD-MM-YYYY", "MM/DD/YYYY", "DD/MM/YYYY", "MM-DD-YYYY"')),
+    );
+  });
 
   it.skip('should generate time entries', async () => {
     const client = togglClient();
