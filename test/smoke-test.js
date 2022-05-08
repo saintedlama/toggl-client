@@ -57,7 +57,30 @@ describe('smoke test', () => {
     expect(newToken).to.exist.to.be.an('string');
   })
 
-  it('should generate time entries', async () => {
+  it('should throw an error if current password not supplied',async() =>{
+    const client = togglClient();
+    const user = {
+      password: 'foo',
+    };
+    expect(() => client.user.update(user).to.throw('To change the password you must include the current password'));
+  })
+
+  it('should throw an error if time of day format is invalid',async() =>{
+    const client = togglClient();
+    const user = {
+      timeofday_format: 'foo',
+    };
+    expect(() => client.user.update(user).to.throw(Error('timeofday_format must be one of H:mm or h:mm')));
+  })
+
+  it('should throw an error if date format is invalid',async() =>{
+    const client = togglClient();
+    const user = {
+      dateFormat: 'foo',
+    };
+    expect(() => client.user.update(user).to.throw(Error('date_format must be one of "YYYY-MM-DD", "DD.MM.YYYY", "DD-MM-YYYY", "MM/DD/YYYY", "DD/MM/YYYY", "MM-DD-YYYY"')));
+  })
+
     const client = togglClient();
     const workspaces = await client.workspaces.list();
 
