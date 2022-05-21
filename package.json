@@ -7,7 +7,6 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "release": "standard-version",
-    "doc": "documentation readme lib/** --section API  --markdown-toc-max-depth 2",
     "test": "mocha"
   },
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
@@ -19,7 +18,6 @@
   },
   "devDependencies": {
     "chai": "^4.3.6",
-    "documentation": "^13.2.5",
     "eslint": "^8.16.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
