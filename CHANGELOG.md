@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/saintedlama/toggl-client/compare/v1.1.0...v2.0.0) (2022-05-21)
+
+
+### ⚠ BREAKING CHANGES
+
+* imports may conflict with existing commonjs modules
+
+### Features
+
+* add paged report fetching with timeouts ([4a40a9d](https://github.com/saintedlama/toggl-client/commit/4a40a9d7694bde6344646dfcbab25a95aa342557))
+* update dependencies ([#21](https://github.com/saintedlama/toggl-client/issues/21)) ([1d0164d](https://github.com/saintedlama/toggl-client/commit/1d0164d9dba5900c2b4b08f80c076b7f536d888c))
+
 ## [1.1.0](https://github.com/saintedlama/toggl-client/compare/v1.0.3...v1.1.0) (2021-04-26)
 
 
