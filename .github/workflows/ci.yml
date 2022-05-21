@@ -19,3 +19,6 @@ jobs:
         node-version: 16.x
     - run: npm ci
     - run: npm run lint
+    - run: npm test
+      env:
+        TOGGL_API_TOKEN: ${{ secrets.TOGGL_API_TOKEN }}
