@@ -1,6 +1,8 @@
-const { expect } = require('chai');
-const debug = require('debug')('toggl-client-tests');
-const togglClient = require('../');
+import { expect } from 'chai';
+import debugClient from 'debug';
+import togglClient from '../index.js';
+
+const debug = debugClient('toggl-client-tests');
 
 describe('smoke test', () => {
   before(() => {

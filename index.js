@@ -1,5 +1,5 @@
-const Client = require('./lib/client');
+import Client from './lib/client.js';
 
-module.exports = function (options) {
+export default function connect(options) {
   return new Client(options);
-};
+}

@@ -21,7 +21,6 @@ const client = togglClient({ apiToken: YOUR_API_TOKEN });
 #### Table of Contents
 
 *   [TogglClient](#togglclient)
-*   [User](#user)
 *   [Clients](#clients)
 *   [Groups](#groups)
 *   [ProjectUsers](#projectusers)
@@ -29,6 +28,7 @@ const client = togglClient({ apiToken: YOUR_API_TOKEN });
 *   [Reports](#reports)
 *   [Tags](#tags)
 *   [TimeEntries](#timeentries)
+*   [User](#user)
 *   [Workspaces](#workspaces)
 *   [Workspace](#workspace)
 
@@ -45,31 +45,8 @@ Calling `togglClient({ apiToken: YOUR_API_TOKEN });` returns an instance of this
 *   `clients` **[Clients](#clients)** 
 *   `groups` **[Groups](#groups)** 
 *   `tags` **[Tags](#tags)** 
-*   `projectUsers` **[ProjectUsers](#projectusers)**
+*   `projectUsers` **[ProjectUsers](#projectusers)** 
 *   `user` **[User](#user)** 
-
-### User
-
-Access and update user information. See <https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md>
-
-#### current
-
-Gets the current user.
-
-Returns **any** the Toggl `user` object.
-
-##### Parameters
-
-* `with_related_data=true` - get all the workspaces, clients, projects, tasks, time entries and tags which the user can see.
-* `since` -  to retrieve objects which have changed after certain time. The value should be a unix timestamp (e.g. `since=1362579886`)
-
-#### update
-
-For future enhancement.
-
-#### resetToken
-
-For future enhancement.
 
 ### Clients
 
@@ -276,6 +253,16 @@ Weekly report URL GET <https://api.track.toggl.com/reports/api/v2/weekly>
 ##### Parameters
 
 *   `workspaceId`  
+*   `params`  
+
+#### weeklyAll
+
+Weekly report containing all pages fetched with wait time between requests of 1010ms URL GET <https://api.track.toggl.com/reports/api/v2/weekly>
+
+##### Parameters
+
+*   `workspaceId`  
+*   `params`  
 
 #### details
 
@@ -284,6 +271,16 @@ Detailed report URL: GET <https://api.track.toggl.com/reports/api/v2/details>
 ##### Parameters
 
 *   `workspaceId`  
+*   `params`  
+
+#### detailsAll
+
+Detailed report containing all pages fetched with wait time between requests of 1010ms URL: GET <https://api.track.toggl.com/reports/api/v2/details>
+
+##### Parameters
+
+*   `workspaceId`  
+*   `params`  
 
 #### summary
 
@@ -292,6 +289,16 @@ Summary report URL: GET <https://api.track.toggl.com/reports/api/v2/summary>
 ##### Parameters
 
 *   `workspaceId`  
+*   `params`  
+
+#### summaryAll
+
+Summary report containing all pages fetched with wait time between requests of 1010ms URL: GET <https://api.track.toggl.com/reports/api/v2/summary>
+
+##### Parameters
+
+*   `workspaceId`  
+*   `params`  
 
 ### Tags
 
@@ -349,6 +356,28 @@ Creates a new time entry
 *   `time_entry` **any** 
 
 Returns **any** 
+
+### User
+
+Access users. See <https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md>
+
+#### current
+
+Gets the current user
+
+##### Parameters
+
+*   `query` **any** 
+
+Returns **any** The current user. By default the request responds with user properties. From the API documentation, to get all the workspaces, clients, projects, tasks,
+time entries and tags which the user can see, add the parameter with_related_data=true If you want to retrieve objects which have changed after
+certain time, add since parameter to the query. The value should be a unix timestamp (e.g. since=1362579886)
+
+#### resetToken
+
+Resets API token <https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md#reset-api-token>
+
+Returns **any** New API token {String}
 
 ### Workspaces
 
