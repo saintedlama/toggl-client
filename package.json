@@ -20,11 +20,11 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "documentation": "^13.2.5",
-    "eslint": "^7.25.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-prettier": "^3.4.0",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
     "mocha": "^8.3.2",
-    "prettier": "^2.2.1",
-    "standard-version": "^9.2.0"
+    "prettier": "^2.6.2",
+    "standard-version": "^9.5.0"
   }
 }
