@@ -47,8 +47,11 @@ describe('smoke test', () => {
   it('should get a user', async () => {
     const client = togglClient();
     const user = await client.user.current();
+
     debug(user);
+
     expect(user).to.exist.to.be.an('object');
+    expect(user.email).to.exist;
   });
 
   it.skip('should get a new API token', async () => {
