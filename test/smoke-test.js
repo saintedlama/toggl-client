@@ -101,6 +101,15 @@ describe('smoke test', () => {
       await timeout();
     }
   });
+
+  it('should list a users tags', async () => {
+    const client = togglClient();
+    const workspaces = await client.workspaces.list();
+    const tags = await client.workspaces.tags(workspaces[0].id);
+    debug(tags);
+    expect(tags).to.exist.to.be.an('array');
+    expect(tags[0].name).to.exist;
+  });
 });
 
 async function timeout() {
