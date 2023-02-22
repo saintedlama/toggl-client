@@ -82,7 +82,7 @@ describe('smoke test', () => {
     debug(summaryReport);
     expect(summaryReport).to.exist.to.be.an('object');
     expect(summaryReport).to.have.property('groups');
-    expect(summaryReport.groups).to.be.an('array')
+    expect(summaryReport.groups).to.be.an('array');
   });
 
   it.skip('should throw an error if a start date is not provided with a summary report', async () => {
