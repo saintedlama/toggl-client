@@ -1,6 +1,7 @@
 const { expect } = require('chai');
 const debug = require('debug')('toggl-client-tests');
 const togglClient = require('../');
+const dayjs = require('dayjs');
 
 describe('smoke test', () => {
   before(() => {
@@ -34,12 +35,29 @@ describe('smoke test', () => {
     const client = togglClient();
 
     const workspaces = await client.workspaces.list();
+    const detailsReport = await client.reports.details(workspaces[0].id, {
+      start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
+    });
 
-    const detailsReport = await client.reports.details(workspaces[0].id);
+    debug(detailsReport[0]);
+    expect(detailsReport).to.exist.to.be.an('array');
+    expect(detailsReport[0]).to.have.property('user_id');
+    expect(detailsReport[0]).to.have.property('username');
+    expect(detailsReport[0]).to.have.property('project_id');
+    expect(detailsReport[0]).to.have.property('task_id');
+    expect(detailsReport[0]).to.have.property('description');
+    expect(detailsReport[0]).to.have.property('time_entries');
+    expect(detailsReport[0]).to.have.property('row_number');
+  });
 
-    debug(detailsReport);
+  it.skip('should throw an error if a start date is not provided with a details report', async () => {
+    const client = togglClient();
 
-    expect(detailsReport).to.exist.to.be.an('object');
+    const workspaces = await client.workspaces.list();
+    // FIXME
+    expect(async function () {
+      await client.reports.details(workspaces[0].id);
+    }).to.throw('Error: The parameters must include start_date');
   });
 
   it('should get a user', async () => {
