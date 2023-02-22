@@ -60,13 +60,16 @@ describe('smoke test', () => {
     }).to.throw('Error: The parameters must include start_date');
   });
 
-  it('should get a weekly report from 7 days ago', async () => {
+  it('should get a weekly report', async () => {
     const client = togglClient();
 
     const workspaces = await client.workspaces.list();
-    const detailsReport = await client.reports.weekly(workspaces[0].id,{order_by:"date",order_dir:"ASC"});
+    const detailsReport = await client.reports.weekly(workspaces[0].id);
     debug(detailsReport[0]);
-    expect(dayjs(detailsReport[0].time_entries[0].start).toDate()).to.be.greaterThan(dayjs().subtract(8, 'days').toDate())
+    expect(detailsReport).to.exist.to.be.an('array');
+    expect(detailsReport[0]).to.have.property('user_id');
+    expect(detailsReport[0]).to.have.property('project_id');
+    expect(detailsReport[0]).to.have.property('seconds');
   });
 
   it('should get a user', async () => {
