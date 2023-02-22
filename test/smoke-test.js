@@ -54,10 +54,19 @@ describe('smoke test', () => {
     const client = togglClient();
 
     const workspaces = await client.workspaces.list();
-    // FIXME
+    // FIXME - this assertion is not working
     expect(async function () {
       await client.reports.details(workspaces[0].id);
     }).to.throw('Error: The parameters must include start_date');
+  });
+
+  it('should get a weekly report from 7 days ago', async () => {
+    const client = togglClient();
+
+    const workspaces = await client.workspaces.list();
+    const detailsReport = await client.reports.weekly(workspaces[0].id,{order_by:"date",order_dir:"ASC"});
+    debug(detailsReport[0]);
+    expect(dayjs(detailsReport[0].time_entries[0].start).toDate()).to.be.greaterThan(dayjs().subtract(8, 'days').toDate())
   });
 
   it('should get a user', async () => {
