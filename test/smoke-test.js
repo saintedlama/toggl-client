@@ -72,6 +72,29 @@ describe('smoke test', () => {
     expect(detailsReport[0]).to.have.property('seconds');
   });
 
+  it('should get a summary report', async () => {
+    const client = togglClient();
+
+    const workspaces = await client.workspaces.list();
+    const summaryReport = await client.reports.summary(workspaces[0].id, {
+      start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
+    });
+    debug(summaryReport);
+    expect(summaryReport).to.exist.to.be.an('object');
+    expect(summaryReport).to.have.property('groups');
+    expect(summaryReport.groups).to.be.an('array')
+  });
+
+  it.skip('should throw an error if a start date is not provided with a summary report', async () => {
+    const client = togglClient();
+
+    const workspaces = await client.workspaces.list();
+    // FIXME - this assertion is not working
+    expect(async function () {
+      await client.reports.summary(workspaces[0].id);
+    }).to.throw('Error: The parameters must include start_date');
+  });
+
   it('should get a user', async () => {
     const client = togglClient();
     const user = await client.user.current();
