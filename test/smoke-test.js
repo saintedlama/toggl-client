@@ -5,7 +5,6 @@ import togglClient from '../index.js';
 
 const debug = debugClient('toggl-client-tests');
 
-
 describe('smoke test', () => {
   before(() => {
     if (!process.env.TOGGL_API_TOKEN) {
