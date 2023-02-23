@@ -1,7 +1,10 @@
-const { expect } = require('chai');
-const debug = require('debug')('toggl-client-tests');
-const togglClient = require('../');
-const dayjs = require('dayjs');
+import { expect } from 'chai';
+import dayjs 'dayjs';
+import debugClient from 'debug';
+import togglClient from '../index.js';
+
+const debug = debugClient('toggl-client-tests');
+
 
 describe('smoke test', () => {
   before(() => {
@@ -98,8 +101,11 @@ describe('smoke test', () => {
   it('should get a user', async () => {
     const client = togglClient();
     const user = await client.user.current();
+
     debug(user);
+
     expect(user).to.exist.to.be.an('object');
+    expect(user.email).to.exist;
     expect(user).to.have.property('email');
     expect(user).to.have.property('fullname');
     expect(user).to.have.property('api_token');
