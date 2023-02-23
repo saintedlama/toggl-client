@@ -100,6 +100,11 @@ describe('smoke test', () => {
     const user = await client.user.current();
     debug(user);
     expect(user).to.exist.to.be.an('object');
+    expect(user).to.have.property('email');
+    expect(user).to.have.property('fullname');
+    expect(user).to.have.property('api_token');
+    expect(user).to.have.property('default_workspace');
+
   });
 
   it.skip('should get a new API token', async () => {
