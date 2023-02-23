@@ -104,7 +104,6 @@ describe('smoke test', () => {
     expect(user).to.have.property('fullname');
     expect(user).to.have.property('api_token');
     expect(user).to.have.property('default_workspace');
-
   });
 
   it.skip('should get a new API token', async () => {
