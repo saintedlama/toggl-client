@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import dayjs 'dayjs';
+import dayjs from 'dayjs';
 import debugClient from 'debug';
 import togglClient from '../index.js';
 
@@ -109,7 +109,7 @@ describe('smoke test', () => {
     expect(user).to.have.property('email');
     expect(user).to.have.property('fullname');
     expect(user).to.have.property('api_token');
-    expect(user).to.have.property('default_workspace');
+    expect(user).to.have.property('default_workspace_id');
   });
 
   it.skip('should get a new API token', async () => {
