@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/saintedlama/toggl-client/compare/v2.0.0...v3.0.0) (2023-02-24)
+
+
+### ⚠ BREAKING CHANGES
+
+* the user profile in the me endpoint is returned without being wrapped in a data field
+
+### Features
+
+* switch to v9 and assert the user email ([#27](https://github.com/saintedlama/toggl-client/issues/27)) ([96d16f1](https://github.com/saintedlama/toggl-client/commit/96d16f1b34257ef54a475530d461367eba099381))
+
 ## [2.0.0](https://github.com/saintedlama/toggl-client/compare/v1.1.0...v2.0.0) (2022-05-21)
 
 
