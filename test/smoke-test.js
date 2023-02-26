@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import dayjs from 'dayjs';
 import debugClient from 'debug';
 import togglClient from '../index.js';
 
@@ -35,13 +36,72 @@ describe('smoke test', () => {
   it('should get a details report', async () => {
     const client = togglClient();
 
+    // FIXME: Add a time entry before to build a fixture
+    const workspaces = await client.workspaces.list();
+    const detailsReport = await client.reports.details(workspaces[0].id, {
+      start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
+    });
+
+    debug(detailsReport[0]);
+    expect(detailsReport).to.be.an('array');
+    expect(detailsReport[0]).to.have.property('user_id');
+    expect(detailsReport[0]).to.have.property('username');
+    expect(detailsReport[0]).to.have.property('project_id');
+    expect(detailsReport[0]).to.have.property('task_id');
+    expect(detailsReport[0]).to.have.property('description');
+    expect(detailsReport[0]).to.have.property('time_entries');
+    expect(detailsReport[0]).to.have.property('row_number');
+  });
+
+  it('should throw an error if a start date is not provided with a details report', async () => {
+    const client = togglClient();
+
     const workspaces = await client.workspaces.list();
 
-    const detailsReport = await client.reports.details(workspaces[0].id);
+    try {
+      await client.reports.details(workspaces[0].id);
+      expect.fail('Expected an error to be thrown');
+    } catch (e) {
+      expect(e.message).to.equal('The parameters must include start_date');
+    }
+  });
 
-    debug(detailsReport);
+  it('should get a weekly report', async () => {
+    const client = togglClient();
 
-    expect(detailsReport).to.exist.to.be.an('object');
+    const workspaces = await client.workspaces.list();
+    const detailsReport = await client.reports.weekly(workspaces[0].id);
+    debug(detailsReport[0]);
+    expect(detailsReport).to.exist.to.be.an('array');
+    expect(detailsReport[0]).to.have.property('user_id');
+    expect(detailsReport[0]).to.have.property('project_id');
+    expect(detailsReport[0]).to.have.property('seconds');
+  });
+
+  it('should get a summary report', async () => {
+    const client = togglClient();
+
+    const workspaces = await client.workspaces.list();
+    const summaryReport = await client.reports.summary(workspaces[0].id, {
+      start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
+    });
+    debug(summaryReport);
+    expect(summaryReport).to.exist.to.be.an('object');
+    expect(summaryReport).to.have.property('groups');
+    expect(summaryReport.groups).to.be.an('array');
+  });
+
+  it('should throw an error if a start date is not provided with a summary report', async () => {
+    const client = togglClient();
+
+    const workspaces = await client.workspaces.list();
+
+    try {
+      await client.reports.summary(workspaces[0].id);
+      expect.fail('Expected an error to be thrown');
+    } catch (e) {
+      expect(e.message).to.equal('The parameters must include start_date');
+    }
   });
 
   it('should get a user', async () => {
@@ -52,6 +112,10 @@ describe('smoke test', () => {
 
     expect(user).to.exist.to.be.an('object');
     expect(user.email).to.exist;
+    expect(user).to.have.property('email');
+    expect(user).to.have.property('fullname');
+    expect(user).to.have.property('api_token');
+    expect(user).to.have.property('default_workspace_id');
   });
 
   it.skip('should get a new API token', async () => {
@@ -105,6 +169,15 @@ describe('smoke test', () => {
 
       await timeout();
     }
+  });
+
+  it('should list a users tags', async () => {
+    const client = togglClient();
+    const workspaces = await client.workspaces.list();
+    const tags = await client.workspaces.tags(workspaces[0].id);
+    debug(tags);
+    expect(tags).to.exist.to.be.an('array');
+    expect(tags[0].name).to.exist;
   });
 });
 
