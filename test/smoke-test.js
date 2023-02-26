@@ -36,13 +36,14 @@ describe('smoke test', () => {
   it('should get a details report', async () => {
     const client = togglClient();
 
+    // FIXME: Add a time entry before to build a fixture
     const workspaces = await client.workspaces.list();
     const detailsReport = await client.reports.details(workspaces[0].id, {
       start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
     });
 
     debug(detailsReport[0]);
-    expect(detailsReport).to.exist.to.be.an('array');
+    expect(detailsReport).to.be.an('array');
     expect(detailsReport[0]).to.have.property('user_id');
     expect(detailsReport[0]).to.have.property('username');
     expect(detailsReport[0]).to.have.property('project_id');
@@ -52,14 +53,17 @@ describe('smoke test', () => {
     expect(detailsReport[0]).to.have.property('row_number');
   });
 
-  it.skip('should throw an error if a start date is not provided with a details report', async () => {
+  it('should throw an error if a start date is not provided with a details report', async () => {
     const client = togglClient();
 
     const workspaces = await client.workspaces.list();
-    // FIXME - this assertion is not working
-    expect(async function () {
+
+    try {
       await client.reports.details(workspaces[0].id);
-    }).to.throw('Error: The parameters must include start_date');
+      expect.fail('Expected an error to be thrown');
+    } catch (e) {
+      expect(e.message).to.equal('The parameters must include start_date');
+    }
   });
 
   it('should get a weekly report', async () => {
@@ -87,14 +91,17 @@ describe('smoke test', () => {
     expect(summaryReport.groups).to.be.an('array');
   });
 
-  it.skip('should throw an error if a start date is not provided with a summary report', async () => {
+  it('should throw an error if a start date is not provided with a summary report', async () => {
     const client = togglClient();
 
     const workspaces = await client.workspaces.list();
-    // FIXME - this assertion is not working
-    expect(async function () {
+
+    try {
       await client.reports.summary(workspaces[0].id);
-    }).to.throw('Error: The parameters must include start_date');
+      expect.fail('Expected an error to be thrown');
+    } catch (e) {
+      expect(e.message).to.equal('The parameters must include start_date');
+    }
   });
 
   it('should get a user', async () => {
