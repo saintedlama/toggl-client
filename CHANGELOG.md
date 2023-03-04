@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.1](https://github.com/saintedlama/toggl-client/compare/v3.1.0...v3.1.1) (2023-03-04)
+
+
+### Bug Fixes
+
+* issues with update time entry method ([#46](https://github.com/saintedlama/toggl-client/issues/46)) ([c6c53ef](https://github.com/saintedlama/toggl-client/commit/c6c53ef334aeecc877e6099588d8bc7b9fa5cfbe))
+* Weekly report end points are using the wrong start date ([#48](https://github.com/saintedlama/toggl-client/issues/48)) ([f831542](https://github.com/saintedlama/toggl-client/commit/f831542d0d47d7995f55cbabf53e9c5c8ee44ad1))
+
 ## [3.1.0](https://github.com/saintedlama/toggl-client/compare/v3.0.0...v3.1.0) (2023-02-26)
 
 
