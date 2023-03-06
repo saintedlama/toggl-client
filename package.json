@@ -12,6 +12,9 @@
     "test": "mocha"
   },
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
+  "contributors": [
+    "Beau Raines <beau.raines@gmail.com>"
+  ],
   "repository": "saintedlama/toggl-client",
   "license": "ISC",
   "dependencies": {
