@@ -39,7 +39,7 @@ describe('smoke test', () => {
     // FIXME: Add a time entry before to build a fixture
     const workspaces = await client.workspaces.list();
     const detailsReport = await client.reports.details(workspaces[0].id, {
-      start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
+      start_date: '2022-06-01',
     });
 
     debug(detailsReport[0]);
@@ -70,8 +70,8 @@ describe('smoke test', () => {
     const client = togglClient();
 
     const workspaces = await client.workspaces.list();
-    const detailsReport = await client.reports.weekly(workspaces[0].id);
-    debug(detailsReport[0]);
+    const detailsReport = await client.reports.weekly(workspaces[0].id, { start_date: '2022-06-01' });
+    debug(detailsReport);
     expect(detailsReport).to.exist.to.be.an('array');
     expect(detailsReport[0]).to.have.property('user_id');
     expect(detailsReport[0]).to.have.property('project_id');
