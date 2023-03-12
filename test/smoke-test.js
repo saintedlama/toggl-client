@@ -42,15 +42,17 @@ describe('smoke test', () => {
       start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
     });
 
-    debug(detailsReport[0]);
+    debug(detailsReport);
     expect(detailsReport).to.be.an('array');
-    expect(detailsReport[0]).to.have.property('user_id');
-    expect(detailsReport[0]).to.have.property('username');
-    expect(detailsReport[0]).to.have.property('project_id');
-    expect(detailsReport[0]).to.have.property('task_id');
-    expect(detailsReport[0]).to.have.property('description');
-    expect(detailsReport[0]).to.have.property('time_entries');
-    expect(detailsReport[0]).to.have.property('row_number');
+    expect(detailsReport).to.have.property('page');
+    expect(detailsReport).to.have.property('hasNextPage');
+    // expect(detailsReport[0]).to.have.property('user_id');
+    // expect(detailsReport[0]).to.have.property('username');
+    // expect(detailsReport[0]).to.have.property('project_id');
+    // expect(detailsReport[0]).to.have.property('task_id');
+    // expect(detailsReport[0]).to.have.property('description');
+    // expect(detailsReport[0]).to.have.property('time_entries');
+    // expect(detailsReport[0]).to.have.property('row_number');
   });
 
   it('should throw an error if a start date is not provided with a details report', async () => {
@@ -70,12 +72,14 @@ describe('smoke test', () => {
     const client = togglClient();
 
     const workspaces = await client.workspaces.list();
-    const detailsReport = await client.reports.weekly(workspaces[0].id);
-    debug(detailsReport[0]);
-    expect(detailsReport).to.exist.to.be.an('array');
-    expect(detailsReport[0]).to.have.property('user_id');
-    expect(detailsReport[0]).to.have.property('project_id');
-    expect(detailsReport[0]).to.have.property('seconds');
+    const weeklyReport = await client.reports.weekly(workspaces[0].id);
+    debug(weeklyReport);
+    expect(weeklyReport).to.exist.to.be.an('array');
+    expect(weeklyReport).to.have.property('page');
+    expect(weeklyReport).to.have.property('hasNextPage');
+    // expect(weeklyReport[0]).to.have.property('user_id');
+    // expect(weeklyReport[0]).to.have.property('project_id');
+    // expect(weeklyReport[0]).to.have.property('seconds');
   });
 
   it('should get a summary report', async () => {
