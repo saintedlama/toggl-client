@@ -5,7 +5,9 @@ import togglClient from '../index.js';
 
 const debug = debugClient('toggl-client-tests-tags');
 
-describe.only('tags', async () => {
+// TODO look at beforeAll or beforeEach
+
+describe.skip('tags', async () => {
   it('should create a tag', async () => {
     const tag = { name: `testing-${Date.now()}` };
     debug(tag);
@@ -22,29 +24,34 @@ describe.only('tags', async () => {
     expect(createdTag).to.have.property('id');
   });
 
-  it('should update a tag',()=>{
+  it('should update a tag', async () => {
+    // FIXME How to make this idempotent and clean up after itself
     const tag = {
-      "id": 13932456,
-      "workspace_id": 403916,
-      "name": "testing2",
-      "at": "2023-03-12T22:40:33.237553Z"
+      id: 13932627,
+      workspace_id: 403916,
     };
-    debug(tag);
     const client = togglClient();
     // const workspaces = await client.workspaces.list();
     // const workspace_id = workspaces[0].id;
     const workspace_id = tag.workspace_id;
     debug(workspace_id);
 
-    const newName = 'testing-newname'
-    const updatedTag = await client.tags.update(workspace_id, {name:newName});
+    const newName = 'testing-newname2';
+    const updatedTag = await client.tags.update(workspace_id, tag.id, { name: newName });
     debug(updatedTag);
     expect(updatedTag).to.be.an('object');
-    expect(updatedTag).to.have.property('name').equal(tag.newName);
+    expect(updatedTag).to.have.property('name').equal(newName);
     expect(updatedTag).to.have.property('at');
     expect(updatedTag).to.have.property('workspace_id');
     expect(updatedTag).to.have.property('id');
   });
 
-  it('should delete a tag');
+  it.skip('should delete a tag', async () => {
+    // FIXME How to make this idempotent and clean up after itself
+    const id = 13932627;
+    const workspace_id = 403916;
+    const client = togglClient();
+    // TODO - delete doesn't return any thing. What is there to test?
+    await client.tags.delete(workspace_id, id);
+  });
 });
