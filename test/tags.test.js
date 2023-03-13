@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import dayjs from 'dayjs';
 import debugClient from 'debug';
 import togglClient from '../index.js';
 
@@ -27,7 +26,7 @@ describe.skip('tags', async () => {
     const updatedTagName = `${tag.name}-updated`;
 
     const updatedTag = await client.tags.update(workspace_id, createdTag.id, { name: updatedTagName });
-    debug('updatedTag')
+    debug('updatedTag');
     debug(updatedTag);
     expect(updatedTag).to.be.an('object');
     expect(updatedTag).to.have.property('name').equal(updatedTagName);
