@@ -491,3 +491,4 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 *   `rounding` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** type of rounding
 *   `rounding_minutes` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** round up to nearest minute
 *   `at` **[date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date)** Indicates when the workspace was created or updated
+
