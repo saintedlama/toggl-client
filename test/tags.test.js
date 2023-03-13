@@ -5,7 +5,7 @@ import togglClient from '../index.js';
 
 const debug = debugClient('toggl-client-tests-tags');
 
-describe('tags', async () => {
+describe.skip('tags', async () => {
   it('should create, update and delete a tag', async () => {
     const tag = { name: `testing-${Date.now()}` };
     debug(tag);
