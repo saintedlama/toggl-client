@@ -27,6 +27,7 @@ describe.skip('tags', async () => {
   it('should update a tag', async () => {
     // FIXME How to make this idempotent and clean up after itself
     // Check out https://stackoverflow.com/a/21704397
+    const tag = {
       id: 13932627,
       workspace_id: 403916,
     };
