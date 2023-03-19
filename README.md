@@ -302,7 +302,7 @@ Summary report containing all pages fetched with wait time between requests of 1
 
 ### Tags
 
-Access Tasgs. See <https://github.com/toggl/toggl_api_docs/blob/master/chapters/tags.md>
+ * Access Tags. See https://developers.track.toggl.com/docs/api/tags
 
 #### create
 
@@ -310,7 +310,8 @@ Creates a new tag
 
 ##### Parameters
 
-*   `tag` **any** 
+*   `workspace_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Workspace Id for the tag
+*   `tag` **object** `{name: "tag_name", workspace_id?: number}`
 
 Returns **any** Tag created
 
@@ -320,8 +321,9 @@ Updates an existing tag
 
 ##### Parameters
 
+*   `workspace_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Workspace Id for the tag
 *   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the tag to be updated
-*   `tag` **any** 
+*   `tag` **object** `{name: "tag_name", workspace_id?: number}`
 
 Returns **any** Updated tag
 
@@ -331,6 +333,7 @@ Deletes an existing tag
 
 ##### Parameters
 
+*   `workspace_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Workspace Id for the tag
 *   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** If of the tag to be deleted
 
 ### TimeEntries
@@ -488,3 +491,4 @@ Type: [Object](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Globa
 *   `rounding` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** type of rounding
 *   `rounding_minutes` **[number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** round up to nearest minute
 *   `at` **[date](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date)** Indicates when the workspace was created or updated
+
