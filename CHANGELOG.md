@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.2.0](https://github.com/saintedlama/toggl-client/compare/v3.1.1...v3.2.0) (2023-03-19)
+
+
+### Features
+
+* **tags:** adds v9 API tag support ([#59](https://github.com/saintedlama/toggl-client/issues/59)) ([2832f07](https://github.com/saintedlama/toggl-client/commit/2832f0747fb7bf7674191ea62aafeea3553c48f0))
+
 ### [3.1.1](https://github.com/saintedlama/toggl-client/compare/v3.1.0...v3.1.1) (2023-03-04)
 
 
