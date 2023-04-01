@@ -1,10 +1,11 @@
 import { expect } from 'chai';
+import dayjs from 'dayjs';
 import debugClient from 'debug';
 import togglClient from '../index.js';
 
 const debug = debugClient('toggl-client-tests-time-entries');
 
-describe.only('time-entries', async () => {
+describe('time-entries', async () => {
   it.skip('should get a time entry by id', async () => {
     const client = togglClient();
     const timeEntry = await client.timeEntries.get(42);
@@ -25,12 +26,12 @@ describe.only('time-entries', async () => {
     const query = {
       start_date: '2023-02-04',
       end_date: '2023-02-08',
-    }
+    };
     const timeEntries = await client.timeEntries.list(query);
     debug(timeEntries);
-    expect(timeEntries).to.be.an('array')
+    expect(timeEntries).to.be.an('array');
     const index = Math.floor(timeEntries.length / 2); // get the middle entry
-    debug(index)
+    debug(index);
     const timeEntry = timeEntries[index];
     debug(timeEntry);
 
@@ -56,37 +57,62 @@ describe.only('time-entries', async () => {
     }
   });
 
-  it.skip('should create, update and delete a time-entry', async () => {
-    const tag = { name: `testing-${Date.now()}` };
-    debug(tag);
+  it('should require a workspace id when creating time entry', async () => {
+    const timeEntry = {
+      description: `testing-${Date.now()}`,
+    };
 
     const client = togglClient();
+    try {
+      await client.timeEntries.start(timeEntry);
+      expect.fail('Expected an error to be thrown');
+    } catch (e) {
+      expect(e.message).to.equal('The parameters must include workspace_id');
+    }
+  });
+
+  it('should create, update and delete a time entry', async () => {
+    const client = togglClient();
     const workspaces = await client.workspaces.list();
-    const workspace_id = workspaces[0].id;
-    debug(workspace_id);
 
-    const createdTag = await client.tags.create(workspace_id, tag);
-    debug('createdTag');
-    debug(createdTag);
-    expect(createdTag).to.be.an('object');
-    expect(createdTag).to.have.property('name').equal(tag.name);
-    expect(createdTag).to.have.property('at');
-    expect(createdTag).to.have.property('workspace_id');
-    expect(createdTag).to.have.property('id');
+    const timeEntry = {
+      description: `testing-${Date.now()}`,
+      workspace_id: workspaces[0].id,
+      start: new Date().toISOString(),
+    };
+    debug(timeEntry);
 
-    const updatedTagName = `${tag.name}-updated`;
+    const createdTimeEntry = await client.timeEntries.start(timeEntry);
+    debug('createdTimeEntry');
+    debug(createdTimeEntry);
+    expect(createdTimeEntry).to.be.an('object');
+    expect(createdTimeEntry).to.have.property('description').equal(timeEntry.description);
+    expect(createdTimeEntry).to.have.property('at');
+    expect(createdTimeEntry).to.have.property('workspace_id');
+    expect(createdTimeEntry).to.have.property('id');
 
-    const updatedTag = await client.tags.update(workspace_id, createdTag.id, { name: updatedTagName });
-    debug('updatedTag');
-    debug(updatedTag);
-    expect(updatedTag).to.be.an('object');
-    expect(updatedTag).to.have.property('name').equal(updatedTagName);
-    expect(updatedTag).to.have.property('at');
-    expect(updatedTag).to.have.property('workspace_id');
-    expect(updatedTag).to.have.property('id');
+    const updatedTimeEntryDescription = createdTimeEntry.description + '-updated';
+    const updatedTimeEntry = await client.timeEntries.update(createdTimeEntry.id, {
+      description: updatedTimeEntryDescription,
+      workspace_id: workspaces[0].id,
+    });
+    debug('updatedTimeEntry');
+    debug(updatedTimeEntry);
+    expect(updatedTimeEntry).to.be.an('object');
+    expect(updatedTimeEntry).to.have.property('description').equal(updatedTimeEntryDescription);
+    expect(updatedTimeEntry).to.have.property('at');
+    expect(updatedTimeEntry).to.have.property('workspace_id');
+    expect(updatedTimeEntry).to.have.property('id');
 
-    await client.tags.delete(workspace_id, updatedTag.id);
-    const tags = await client.workspaces.tags(workspace_id);
-    expect(tags).to.not.include.members([updatedTag]);
+    await client.timeEntries.delete(createdTimeEntry.id);
+
+    const timeEntriesList = await client.timeEntries.list({
+      start_date: dayjs().startOf('day').format('YYYY-MM-DD'),
+      end_date: dayjs().endOf('day').format('YYYY-MM-DD'),
+    });
+    debug('timeEntriesList');
+    debug(timeEntriesList);
+    expect(timeEntriesList).to.be.an('array');
+    expect(timeEntriesList).to.be.empty;
   });
 });
