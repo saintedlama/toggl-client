@@ -37,7 +37,6 @@ describe('smoke test', () => {
   });
 
   it('should get a details report', async () => {
-
     // FIXME: Add a time entry before to build a fixture
     const detailsReport = await client.reports.details(workspace_id, {
       start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
@@ -57,7 +56,6 @@ describe('smoke test', () => {
   });
 
   it('should throw an error if a start date is not provided with a details report', async () => {
-
     try {
       await client.reports.details(workspace_id);
       expect.fail('Expected an error to be thrown');
@@ -67,7 +65,6 @@ describe('smoke test', () => {
   });
 
   it('should get a weekly report', async () => {
-
     const weeklyReport = await client.reports.weekly(workspace_id);
     debug(weeklyReport);
     expect(weeklyReport).to.exist.to.be.an('array');
@@ -79,7 +76,6 @@ describe('smoke test', () => {
   });
 
   it('should get a summary report', async () => {
-
     const summaryReport = await client.reports.summary(workspace_id, {
       start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
     });
@@ -90,7 +86,6 @@ describe('smoke test', () => {
   });
 
   it('should throw an error if a start date is not provided with a summary report', async () => {
-
     try {
       await client.reports.summary(workspace_id);
       expect.fail('Expected an error to be thrown');
@@ -144,7 +139,6 @@ describe('smoke test', () => {
   });
 
   it.skip('should generate time entries', async () => {
-
     for (let i = 0; i < 52; i++) {
       const timeEntryCreated = await client.timeEntries.create({
         wid: workspace_id,
