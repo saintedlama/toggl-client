@@ -18,11 +18,11 @@ describe('time-entries', async () => {
     expect(timeEntry).to.have.property('id').equal(timeEntryId);
   });
 
-  it.only('should get the current running time entry', async () => {
+  it('should get the current running time entry', async () => {
     const client = togglClient();
     const timeEntry = await client.timeEntries.current();
     debug(timeEntry);
-    expect(timeEntry).to.be.oneOf([null, Object]); // FIXME this fails if there is a running time entry
+    expect(typeof timeEntry).to.be.oneOf([null, 'object']);
     if (timeEntry) {
       expect(timeEntry).to.have.property('workspace_id');
       expect(timeEntry).to.have.property('project_id');
@@ -51,6 +51,7 @@ describe('time-entries', async () => {
   it('should error if parameters are not included with list', async () => {
     const client = togglClient();
     try {
+      // FIXME try out the ChatGPT solution
       await client.timeEntries.list();
       expect.fail('Expected an error to be thrown');
     } catch (e) {
