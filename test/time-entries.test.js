@@ -8,8 +8,16 @@ const debug = debugClient('toggl-client-tests-time-entries');
 describe('time-entries', async () => {
   it('should get a time entry by id', async () => {
     const client = togglClient();
-    // FIXME make this portable
-    const timeEntryId = 2901042224;
+    const query = {
+      start_date: dayjs().subtract(3, 'month').format('YYYY-MM-DD'),
+      end_date: dayjs().add(1, 'day').format('YYYY-MM-DD'),
+    };
+    const timeEntries = await client.timeEntries.list(query);
+    debug(timeEntries);
+    expect(timeEntries).to.be.an('array');
+    const index = Math.floor(timeEntries.length / 2); // get the middle entry
+    debug(index);
+    const timeEntryId = timeEntries[index].id;
     const timeEntry = await client.timeEntries.get(timeEntryId);
     debug(timeEntry);
     expect(timeEntry).to.be.an('object');
@@ -32,8 +40,8 @@ describe('time-entries', async () => {
   it('should list time entries', async () => {
     const client = togglClient();
     const query = {
-      start_date: '2023-02-04',
-      end_date: '2023-02-08',
+      start_date: dayjs().subtract(3, 'month').format('YYYY-MM-DD'),
+      end_date: dayjs().add(1, 'day').format('YYYY-MM-DD'),
     };
     const timeEntries = await client.timeEntries.list(query);
     debug(timeEntries);
@@ -51,7 +59,6 @@ describe('time-entries', async () => {
   it('should error if parameters are not included with list', async () => {
     const client = togglClient();
     try {
-      // FIXME try out the ChatGPT solution
       await client.timeEntries.list();
       expect.fail('Expected an error to be thrown');
     } catch (e) {
