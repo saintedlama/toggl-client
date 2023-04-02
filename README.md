@@ -362,7 +362,7 @@ Returns **any**
 
 ### User
 
-Access users. See <https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md>
+Access users. See https://developers.track.toggl.com/docs/api/me
 
 #### current
 
@@ -370,15 +370,26 @@ Gets the current user
 
 ##### Parameters
 
-*   `query` **any** 
+None
 
-Returns **any** The current user. By default the request responds with user properties. From the API documentation, to get all the workspaces, clients, projects, tasks,
-time entries and tags which the user can see, add the parameter with_related_data=true If you want to retrieve objects which have changed after
-certain time, add since parameter to the query. The value should be a unix timestamp (e.g. since=1362579886)
+
+Returns **any** The current user. 
+
+#### update
+
+Updates the user. You can only update `country_id`, `current_password`, `default_workspace_id`, `email`, `fullname`,`name`, `password`, `timezone`. See https://developers.track.toggl.com/docs/api/me#put-me
+
+##### Parameters
+
+*   `user` **any** The updated user object.
+
+
+
+Returns **any** The updated user. 
 
 #### resetToken
 
-Resets API token <https://github.com/toggl/toggl_api_docs/blob/master/chapters/users.md#reset-api-token>
+Resets API token https://developers.track.toggl.com/docs/api/authentication#post-resettoken
 
 Returns **any** New API token {String}
 
