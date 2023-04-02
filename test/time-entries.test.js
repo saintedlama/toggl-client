@@ -6,7 +6,7 @@ import togglClient from '../index.js';
 const debug = debugClient('toggl-client-tests-time-entries');
 
 describe('time-entries', async () => {
-  it.only('should get a time entry by id', async () => {
+  it('should get a time entry by id', async () => {
     const client = togglClient();
     // FIXME make this portable
     const timeEntryId = 2901042224;
@@ -18,7 +18,7 @@ describe('time-entries', async () => {
     expect(timeEntry).to.have.property('id').equal(timeEntryId);
   });
 
-  it('should get the current running time entry', async () => {
+  it.only('should get the current running time entry', async () => {
     const client = togglClient();
     const timeEntry = await client.timeEntries.current();
     debug(timeEntry);
