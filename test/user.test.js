@@ -31,6 +31,27 @@ describe.only('user', () => {
     expect(user).to.have.property('default_workspace_id');
   });
 
+  it('should update a user', async() => {
+    // get current user
+    const user = await client.user.current();
+    debug(user);
+    const updatedFullname = user.fullname + ' updated'
+
+    // update the fullname name
+    let updatedUser = await client.user.update({fullname: updatedFullname})
+    debug(updatedUser)
+    expect(updatedUser).to.exist.to.be.an('object');
+    expect(updatedUser).to.have.property('fullname').equal(updatedFullname);
+
+
+    // put the fullname back
+    updatedUser = await client.user.update({fullname: user.fullname})
+    debug(updatedUser)
+    expect(updatedUser).to.exist.to.be.an('object');
+    expect(updatedUser).to.have.property('fullname');
+    expect(updatedUser).to.have.property('fullname').equal(user.fullname);
+  })
+
   it.skip('should get a new API token', async () => {
     const newToken = await client.user.resetToken();
     debug(newToken);
