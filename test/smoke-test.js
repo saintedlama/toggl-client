@@ -6,15 +6,19 @@ import togglClient from '../index.js';
 const debug = debugClient('toggl-client-tests');
 
 describe('smoke test', () => {
-  before(() => {
+  let client, workspace_id;
+  before(async () => {
     if (!process.env.TOGGL_API_TOKEN) {
       console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
       process.exit(1);
     }
+
+    client = togglClient();
+    const workspaces = await client.workspaces.list();
+    workspace_id = workspaces[0].id;
   });
 
   it('should list workspaces', async () => {
-    const client = togglClient();
     const workspaces = await client.workspaces.list();
 
     debug(workspaces);
@@ -22,7 +26,6 @@ describe('smoke test', () => {
   });
 
   it('should list projects in a workspace', async () => {
-    const client = togglClient();
     const workspaces = await client.workspaces.list();
 
     for (const workspace of workspaces) {
@@ -34,11 +37,9 @@ describe('smoke test', () => {
   });
 
   it('should get a details report', async () => {
-    const client = togglClient();
 
     // FIXME: Add a time entry before to build a fixture
-    const workspaces = await client.workspaces.list();
-    const detailsReport = await client.reports.details(workspaces[0].id, {
+    const detailsReport = await client.reports.details(workspace_id, {
       start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
     });
 
@@ -56,12 +57,9 @@ describe('smoke test', () => {
   });
 
   it('should throw an error if a start date is not provided with a details report', async () => {
-    const client = togglClient();
-
-    const workspaces = await client.workspaces.list();
 
     try {
-      await client.reports.details(workspaces[0].id);
+      await client.reports.details(workspace_id);
       expect.fail('Expected an error to be thrown');
     } catch (e) {
       expect(e.message).to.equal('The parameters must include start_date');
@@ -69,10 +67,8 @@ describe('smoke test', () => {
   });
 
   it('should get a weekly report', async () => {
-    const client = togglClient();
 
-    const workspaces = await client.workspaces.list();
-    const weeklyReport = await client.reports.weekly(workspaces[0].id);
+    const weeklyReport = await client.reports.weekly(workspace_id);
     debug(weeklyReport);
     expect(weeklyReport).to.exist.to.be.an('array');
     expect(weeklyReport).to.have.property('page');
@@ -83,10 +79,8 @@ describe('smoke test', () => {
   });
 
   it('should get a summary report', async () => {
-    const client = togglClient();
 
-    const workspaces = await client.workspaces.list();
-    const summaryReport = await client.reports.summary(workspaces[0].id, {
+    const summaryReport = await client.reports.summary(workspace_id, {
       start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
     });
     debug(summaryReport);
@@ -96,12 +90,9 @@ describe('smoke test', () => {
   });
 
   it('should throw an error if a start date is not provided with a summary report', async () => {
-    const client = togglClient();
-
-    const workspaces = await client.workspaces.list();
 
     try {
-      await client.reports.summary(workspaces[0].id);
+      await client.reports.summary(workspace_id);
       expect.fail('Expected an error to be thrown');
     } catch (e) {
       expect(e.message).to.equal('The parameters must include start_date');
@@ -109,7 +100,6 @@ describe('smoke test', () => {
   });
 
   it('should get a user', async () => {
-    const client = togglClient();
     const user = await client.user.current();
 
     debug(user);
@@ -123,14 +113,12 @@ describe('smoke test', () => {
   });
 
   it.skip('should get a new API token', async () => {
-    const client = togglClient();
     const newToken = await client.user.resetToken();
     debug(newToken);
     expect(newToken).to.exist.to.be.an('string');
   });
 
   it('should throw an error if current password not supplied', async () => {
-    const client = togglClient();
     const user = {
       password: 'foo',
     };
@@ -138,7 +126,6 @@ describe('smoke test', () => {
   });
 
   it('should throw an error if time of day format is invalid', async () => {
-    const client = togglClient();
     const user = {
       timeofday_format: 'foo',
     };
@@ -146,7 +133,6 @@ describe('smoke test', () => {
   });
 
   it('should throw an error if date format is invalid', async () => {
-    const client = togglClient();
     const user = {
       dateFormat: 'foo',
     };
@@ -158,12 +144,10 @@ describe('smoke test', () => {
   });
 
   it.skip('should generate time entries', async () => {
-    const client = togglClient();
-    const workspaces = await client.workspaces.list();
 
     for (let i = 0; i < 52; i++) {
       const timeEntryCreated = await client.timeEntries.create({
-        wid: workspaces[0].id,
+        wid: workspace_id,
         duration: 1200, // 20min
         start: new Date().toISOString(),
         description: 'Test Entry',
@@ -176,9 +160,7 @@ describe('smoke test', () => {
   });
 
   it('should list a users tags', async () => {
-    const client = togglClient();
-    const workspaces = await client.workspaces.list();
-    const tags = await client.workspaces.tags(workspaces[0].id);
+    const tags = await client.workspaces.tags(workspace_id);
     debug(tags);
     expect(tags).to.exist.to.be.an('array');
     expect(tags[0].name).to.exist;
