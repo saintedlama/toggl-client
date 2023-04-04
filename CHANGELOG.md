@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.3.0](https://github.com/saintedlama/toggl-client/compare/v3.2.0...v3.3.0) (2023-04-04)
+
+
+### Features
+
+* all time-entries functions suppport v9 ([#60](https://github.com/saintedlama/toggl-client/issues/60)) ([72b7fe8](https://github.com/saintedlama/toggl-client/commit/72b7fe8b5745bfabd9a23b63f44a57f6869daa5d)), closes [#33](https://github.com/saintedlama/toggl-client/issues/33)
+* updates user module for remaining v9 API changes ([#61](https://github.com/saintedlama/toggl-client/issues/61)) ([3e25e8d](https://github.com/saintedlama/toggl-client/commit/3e25e8d1469df079ffa69e1655497c320f3463b9)), closes [#36](https://github.com/saintedlama/toggl-client/issues/36)
+
 ## [3.2.0](https://github.com/saintedlama/toggl-client/compare/v3.1.1...v3.2.0) (2023-03-19)
 
 
