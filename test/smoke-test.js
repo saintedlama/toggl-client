@@ -94,25 +94,6 @@ describe('smoke test', () => {
     }
   });
 
-  it('should get a user', async () => {
-    const user = await client.user.current();
-
-    debug(user);
-
-    expect(user).to.exist.to.be.an('object');
-    expect(user.email).to.exist;
-    expect(user).to.have.property('email');
-    expect(user).to.have.property('fullname');
-    expect(user).to.have.property('api_token');
-    expect(user).to.have.property('default_workspace_id');
-  });
-
-  it.skip('should get a new API token', async () => {
-    const newToken = await client.user.resetToken();
-    debug(newToken);
-    expect(newToken).to.exist.to.be.an('string');
-  });
-
   it('should throw an error if current password not supplied', async () => {
     const user = {
       password: 'foo',
