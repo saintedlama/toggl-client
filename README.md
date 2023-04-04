@@ -201,7 +201,7 @@ Gets an existing project by id
 
 *   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to get
 
-Returns **any** Project if a project with the specified id exists, othererwise undefined
+Returns **any** Project if a project with the specified id exists, otherwise undefined
 
 #### update
 
@@ -338,27 +338,65 @@ Deletes an existing tag
 
 ### TimeEntries
 
-Access time entries. See <https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md>
+Access time entries. See https://developers.track.toggl.com/docs/api/time_entries
 
 #### list
 
-Lists time entries
+Lists time entries. The `query` must include `start_date` and `end_date`. Note that due to limitations of the v9 API, start_date must not be earlier 3 months ago. If you want results further back, use the reports endpoints.
 
 ##### Parameters
 
-*   `query` **any** 
+*   `query` **any** must include `start_date` and `end_date` and must be within the last 30 days.
 
 Returns **any** List of time entries
 
-#### create
+#### create or start
 
 Creates a new time entry
 
 ##### Parameters
 
-*   `time_entry` **any** 
+*   `time_entry` **any** must include `workspace_id` and `start`
 
 Returns **any** 
+
+#### stop
+
+Stops the current running time entry
+#### Parameters
+
+*   `time_entry` **any** time entry to stop, must include `workspace_id` and `id`
+
+
+#### current
+
+Gets the current running time entry
+
+Returns **any|null** Time Entry
+
+
+#### get
+
+Gets the time entry specified by id. Due to limitations of the v9 API, start_date must not be earlier than 3 months ago. If you want results further back, use the reports endpoints.
+
+#### Parameters
+
+*   `id` **[(number)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** id of the time entry to be returned
+
+Returns **any|null** Time Entry
+
+
+#### update
+
+Updates an existing time entry
+
+#### Parameters
+
+*   `id` **[(number)](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number)** id of the time entry to be updated
+*   `time_entry` **any** time entry with updated information
+
+Returns **any** List of time entries
+
 
 ### User
 
