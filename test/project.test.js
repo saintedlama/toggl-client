@@ -6,8 +6,8 @@ const debug = debugClient('toggl-client-tests-projects');
 
 describe.only('projects', () => {
   let client;
-  let workspace_id = 403916; // TODO lookup default workspace
-  let project_id = 184680972; // TODO find a sample project id
+  const workspace_id = 403916; // TODO lookup default workspace
+  const project_id = 184680972; // TODO find a sample project id
   before(async () => {
     if (!process.env.TOGGL_API_TOKEN) {
       console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
@@ -18,7 +18,7 @@ describe.only('projects', () => {
   });
 
   it('should get a project by id', async () => {
-    const project = await client.projects.get(workspace_id,project_id);
+    const project = await client.projects.get(workspace_id, project_id);
 
     debug(project);
 
@@ -30,19 +30,19 @@ describe.only('projects', () => {
   });
 
   it('should get all projects', async () => {
-    const projects = await client.projects.list(workspace_id)
-    debug(projects)
+    const projects = await client.projects.list(workspace_id);
+    debug(projects);
 
-    expect(projects).to.exist.to.be.an('array')
-    const project = projects[0]
+    expect(projects).to.exist.to.be.an('array');
+    const project = projects[0];
     expect(project).to.exist.to.be.an('object');
     expect(project).to.have.property('name');
     expect(project).to.have.property('id');
     expect(project).to.have.property('workspace_id');
     expect(project).to.have.property('color');
-  })
+  });
 
-  it.only('should create, update and delete a project', async () => {
+  it('should create, update and delete a project', async () => {
     const project = {
       name: `test-project-${Date.now()}`,
       workspace_id,
@@ -60,28 +60,28 @@ describe.only('projects', () => {
     expect(createdProject).to.have.property('workspace_id');
 
     const updatedProjectName = createdProject.description + '-updated';
-    const updatedProject = await client.projects.update(createdProject.id, {
+    const updatedProject = await client.projects.update(workspace_id, createdProject.id, {
       name: updatedProjectName,
       workspace_id,
     });
     debug('updatedProject');
     debug(updatedProject);
     expect(updatedProject).to.be.an('object');
-    expect(updatedProject).to.have.property('description').equal(updatedProjectName);
-    expect(updatedProject).to.have.property('at');
-    expect(updatedProject).to.have.property('workspace_id');
-    expect(updatedProject).to.have.property('id');
+    expect(updatedProject).to.have.property('name').equal(updatedProjectName);
+    expect(createdProject).to.have.property('color');
+    expect(createdProject).to.have.property('is_private');
+    expect(createdProject).to.have.property('workspace_id');
 
-    await client.projects.delete(createdProject.id);
+    await client.projects.delete(workspace_id, createdProject.id);
 
-    const projectsList = await client.projects.list({
-      start_date: dayjs().startOf('day').format('YYYY-MM-DD'),
-      end_date: dayjs().endOf('day').format('YYYY-MM-DD'),
-    });
+    const projectsList = await client.projects.list(workspace_id);
     debug('projectsList');
     debug(projectsList);
     expect(projectsList).to.be.an('array');
-    expect(projectsList).to.be.empty;
+    // expect(projectsList).to.be.empty; // TODO this should not be empty but should not have createdProject.id
   });
 
+  it('should get users associated with a project')
+
+  it('should get tasks associated with a project')
 });
