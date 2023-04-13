@@ -42,24 +42,46 @@ describe.only('projects', () => {
     expect(project).to.have.property('color');
   })
 
-  // it('should update a user', async () => {
-  //   // get current user
-  //   const user = await client.user.current();
-  //   debug(user);
-  //   const updatedFullname = user.fullname + ' updated';
+  it.only('should create, update and delete a project', async () => {
+    const project = {
+      name: `test-project-${Date.now()}`,
+      workspace_id,
+      start_date: new Date().toISOString(),
+    };
+    debug(project);
 
-  //   // update the fullname name
-  //   let updatedUser = await client.user.update({ fullname: updatedFullname });
-  //   debug(updatedUser);
-  //   expect(updatedUser).to.exist.to.be.an('object');
-  //   expect(updatedUser).to.have.property('fullname').equal(updatedFullname);
+    const createdProject = await client.projects.create(workspace_id, project);
+    debug('createdProject');
+    debug(createdProject);
+    expect(createdProject).to.be.an('object');
+    expect(createdProject).to.have.property('name').equal(project.name);
+    expect(createdProject).to.have.property('color');
+    expect(createdProject).to.have.property('is_private');
+    expect(createdProject).to.have.property('workspace_id');
 
-  //   // put the fullname back
-  //   updatedUser = await client.user.update({ fullname: user.fullname });
-  //   debug(updatedUser);
-  //   expect(updatedUser).to.exist.to.be.an('object');
-  //   expect(updatedUser).to.have.property('fullname');
-  //   expect(updatedUser).to.have.property('fullname').equal(user.fullname);
-  // });
+    const updatedProjectName = createdProject.description + '-updated';
+    const updatedProject = await client.projects.update(createdProject.id, {
+      name: updatedProjectName,
+      workspace_id,
+    });
+    debug('updatedProject');
+    debug(updatedProject);
+    expect(updatedProject).to.be.an('object');
+    expect(updatedProject).to.have.property('description').equal(updatedProjectName);
+    expect(updatedProject).to.have.property('at');
+    expect(updatedProject).to.have.property('workspace_id');
+    expect(updatedProject).to.have.property('id');
+
+    await client.projects.delete(createdProject.id);
+
+    const projectsList = await client.projects.list({
+      start_date: dayjs().startOf('day').format('YYYY-MM-DD'),
+      end_date: dayjs().endOf('day').format('YYYY-MM-DD'),
+    });
+    debug('projectsList');
+    debug(projectsList);
+    expect(projectsList).to.be.an('array');
+    expect(projectsList).to.be.empty;
+  });
 
 });
