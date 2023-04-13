@@ -29,7 +29,18 @@ describe.only('projects', () => {
     expect(project).to.have.property('color');
   });
 
-  it('should get all projects')
+  it('should get all projects', async () => {
+    const projects = await client.projects.list(workspace_id)
+    debug(projects)
+
+    expect(projects).to.exist.to.be.an('array')
+    const project = projects[0]
+    expect(project).to.exist.to.be.an('object');
+    expect(project).to.have.property('name');
+    expect(project).to.have.property('id');
+    expect(project).to.have.property('workspace_id');
+    expect(project).to.have.property('color');
+  })
 
   // it('should update a user', async () => {
   //   // get current user
