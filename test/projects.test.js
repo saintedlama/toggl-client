@@ -81,7 +81,7 @@ describe.only('projects', () => {
     // expect(projectsList).to.be.empty; // TODO this should not be empty but should not have createdProject.id
   });
 
-  it('should get users associated with a project')
+  it('should get users associated with a project') // TODO
 
-  it('should get tasks associated with a project')
+  it('should get tasks associated with a project') // TODO
 });
