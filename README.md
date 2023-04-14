@@ -181,7 +181,7 @@ Returns **any** project user created
 
 ### Projects
 
-Access projects. See <https://github.com/toggl/toggl_api_docs/blob/master/chapters/projects.md>
+Access projects. See <https://developers.track.toggl.com/docs/api/projects>
 
 #### create
 
@@ -189,6 +189,7 @@ Creates a new project
 
 ##### Parameters
 
+*   `workspace_id` **number** 
 *   `project` **any** 
 
 Returns **any** Project created
@@ -199,7 +200,8 @@ Gets an existing project by id
 
 ##### Parameters
 
-*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to get
+*   `workspace_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Id of the workspace to get
+*   `project_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Id of the project to get
 
 Returns **any** Project if a project with the specified id exists, otherwise undefined
 
@@ -209,7 +211,8 @@ Updates an existing project
 
 ##### Parameters
 
-*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to be updated
+*   `workspace_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) )** Id of the workspace to be updated
+*   `project_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) )** Id of the project to be updated
 *   `project` **any** 
 
 Returns **any** The updated project
@@ -220,17 +223,8 @@ Deletes an existing project
 
 ##### Parameters
 
-*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project to be deleted
-
-#### users
-
-Gets users associated with the given project
-
-##### Parameters
-
-*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project
-
-Returns **any** Array of users associated with the project
+*   `workspace_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Id of the workspace to be deleted
+*   `project_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Id of the project to be deleted
 
 #### tasks
 
@@ -238,7 +232,8 @@ Gets tasks associated with the given project
 
 ##### Parameters
 
-*   `id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number) | [string](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String))** Id of the project
+*   `workspace_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Id of the workspace
+*   `project_id` **([number](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number))** Id of the project
 
 Returns **any** Array of tasks associated with the project
 
