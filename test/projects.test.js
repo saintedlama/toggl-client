@@ -7,7 +7,7 @@ const debug = debugClient('toggl-client-tests-projects');
 describe('projects', () => {
   let client;
   let workspace_id;
-  let project_id
+  let project_id;
   before(async () => {
     if (!process.env.TOGGL_API_TOKEN) {
       console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
@@ -89,7 +89,7 @@ describe('projects', () => {
   // Workspace needs to have the Tasks feature enabled
   it.skip('should get tasks associated with a project', async () => {
     const projectTasks = await client.projects.tasks(workspace_id, project_id);
-    debug(projectTasks)
+    debug(projectTasks);
     // Not sure what to assert here...
-  })
+  });
 });
