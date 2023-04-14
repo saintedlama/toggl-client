@@ -6,7 +6,7 @@ const debug = debugClient('toggl-client-tests-projects');
 
 describe.only('projects', () => {
   let client;
-  const workspace_id = 403916; // TODO lookup default workspace
+  let workspace_id;
   const project_id = 184680972; // TODO find a sample project id
   before(async () => {
     if (!process.env.TOGGL_API_TOKEN) {
@@ -15,6 +15,8 @@ describe.only('projects', () => {
     }
 
     client = togglClient();
+    const workspaces = await client.workspaces.list();
+    workspace_id = workspaces[0].id;
   });
 
   it('should get a project by id', async () => {
