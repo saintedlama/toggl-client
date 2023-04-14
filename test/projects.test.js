@@ -7,7 +7,7 @@ const debug = debugClient('toggl-client-tests-projects');
 describe.only('projects', () => {
   let client;
   let workspace_id;
-  const project_id = 184680972; // TODO find a sample project id
+  let project_id
   before(async () => {
     if (!process.env.TOGGL_API_TOKEN) {
       console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
@@ -17,6 +17,8 @@ describe.only('projects', () => {
     client = togglClient();
     const workspaces = await client.workspaces.list();
     workspace_id = workspaces[0].id;
+    const projects = await client.projects.list(workspace_id);
+    project_id = projects[0].id;
   });
 
   it('should get a project by id', async () => {
