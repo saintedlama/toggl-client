@@ -81,8 +81,6 @@ describe.only('projects', () => {
     expect(projectsList).to.not.include({ id: createdProject.id });
   });
 
-  it('should get users associated with a project') // TODO
-
   // I don't have Tasks enabled, so skipping this test
   // Workspace needs to have the Tasks feature enabled
   it.skip('should get tasks associated with a project', async () => {
