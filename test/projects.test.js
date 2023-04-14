@@ -78,10 +78,16 @@ describe.only('projects', () => {
     debug('projectsList');
     debug(projectsList);
     expect(projectsList).to.be.an('array');
-    // expect(projectsList).to.be.empty; // TODO this should not be empty but should not have createdProject.id
+    expect(projectsList).to.not.include({ id: createdProject.id });
   });
 
   it('should get users associated with a project') // TODO
 
-  it('should get tasks associated with a project') // TODO
+  // I don't have Tasks enabled, so skipping this test
+  // Workspace needs to have the Tasks feature enabled
+  it.skip('should get tasks associated with a project', async () => {
+    const projectTasks = await client.projects.tasks(workspace_id, project_id);
+    debug(projectTasks)
+    // Not sure what to assert here...
+  })
 });
