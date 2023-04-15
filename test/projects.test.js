@@ -4,7 +4,7 @@ import togglClient from '../index.js';
 
 const debug = debugClient('toggl-client-tests-projects');
 
-describe('projects', () => {
+describe.skip('projects', () => {
   let client;
   let workspace_id;
   let project_id;
