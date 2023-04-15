@@ -15,6 +15,11 @@ describe('user', () => {
     client = togglClient();
   });
 
+  // Add a delay of 1 second between each test case
+  beforeEach((done) => {
+    setTimeout(done, 1000);
+  });
+
   it('should get a user', async () => {
     const user = await client.user.current();
 
