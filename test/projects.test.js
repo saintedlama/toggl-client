@@ -4,7 +4,7 @@ import togglClient from '../index.js';
 
 const debug = debugClient('toggl-client-tests-projects');
 
-describe.skip('projects', () => {
+describe('projects', () => {
   let client;
   let workspace_id;
   let project_id;
@@ -19,6 +19,11 @@ describe.skip('projects', () => {
     workspace_id = workspaces[0].id;
     const projects = await client.projects.list(workspace_id);
     project_id = projects[0].id;
+  });
+
+  // Add a delay of 1 second between each test case
+  beforeEach((done) => {
+    setTimeout(done, 1000);
   });
 
   it('should get a project by id', async () => {

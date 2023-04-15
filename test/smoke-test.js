@@ -18,6 +18,11 @@ describe('smoke test', () => {
     workspace_id = workspaces[0].id;
   });
 
+  // Add a delay of 1 second between each test case
+  beforeEach((done) => {
+    setTimeout(done, 1000);
+  });
+
   it('should list workspaces', async () => {
     const workspaces = await client.workspaces.list();
 
