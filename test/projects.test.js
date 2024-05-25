@@ -55,7 +55,7 @@ describe('projects', () => {
     const project = {
       name: `test-project-${Date.now()}`,
       workspace_id,
-      start_date: new Date().toISOString(),
+      start_date: new Date().toISOString().split('T')[0],
     };
     debug(project);
 
