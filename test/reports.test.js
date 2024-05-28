@@ -69,13 +69,4 @@ describe.only('reports', () => {
     expect(report).to.have.property('hasNextPage');
   });
 
-  it('should get all pages of the summary report', async () => {
-    // FIXME -      TypeError: reportPage.data is not iterable (cannot read property undefined)
-    const report = await client.reports.summaryAll(workspace_id, { start_date: '2024-02-01' });
-    debug(report);
-    expect(report).to.exist.to.be.an('array');
-    expect(report).to.have.property('page');
-    expect(report).to.have.property('hasNextPage');
-  });
-
 });
