@@ -46,13 +46,14 @@ describe.only('reports', () => {
     const report = await client.reports.details(workspace_id, { start_date: '2024-02-01' });
     debug(report);
     expect(report).to.exist.to.be.an('array');
+    expect(report).to.have.property('0');
     expect(report).to.have.property('page');
     expect(report).to.have.property('hasNextPage');
   });
 
-  it.skip('should get all pages of the detailed report', async () => {
+  it('should get all pages of the detailed report', async () => {
     // FIXME -      TypeError: reportPage.data is not iterable (cannot read property undefined)
-    const report = await client.reports.detailsAll(workspace_id, { start_date: '2024-02-01' });
+    const report = await client.reports.detailsAll(workspace_id, { start_date: '2022-02-01' });
     debug(report);
     expect(report).to.exist.to.be.an('array');
     expect(report).to.have.property('page');
@@ -63,11 +64,12 @@ describe.only('reports', () => {
     const report = await client.reports.summary(workspace_id, { start_date: '2024-02-01' });
     debug(report);
     expect(report).to.exist.to.be.an('object');
+    expect(report).to.have.property('groups');
     expect(report).to.have.property('page');
     expect(report).to.have.property('hasNextPage');
   });
 
-  it.skip('should get all pages of the summary report', async () => {
+  it('should get all pages of the summary report', async () => {
     // FIXME -      TypeError: reportPage.data is not iterable (cannot read property undefined)
     const report = await client.reports.summaryAll(workspace_id, { start_date: '2024-02-01' });
     debug(report);
