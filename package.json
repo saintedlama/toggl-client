@@ -18,17 +18,17 @@
   "repository": "saintedlama/toggl-client",
   "license": "ISC",
   "dependencies": {
-    "dayjs": "^1.11.7",
-    "debug": "^4.3.4",
-    "got": "^12.5.3"
+    "dayjs": "^1.11.23",
+    "debug": "^4.4.3",
+    "got": "^15.1.0"
   },
   "devDependencies": {
-    "chai": "^4.3.7",
-    "eslint": "^8.34.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "mocha": "^10.2.0",
-    "prettier": "^2.8.4",
+    "chai": "^6.2.2",
+    "eslint": "^10.9.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "mocha": "^11.8.0",
+    "prettier": "^3.9.6",
     "should-release": "^1.2.0",
     "standard-version": "^9.5.0"
   }
