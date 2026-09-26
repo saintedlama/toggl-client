@@ -1,9 +1,11 @@
 import js from '@eslint/js';
 import prettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
+import tseslint from 'typescript-eslint';
 
-export default [
+export default tseslint.config(
   js.configs.recommended,
+  ...tseslint.configs.recommended,
   prettierRecommended,
   {
     languageOptions: {
@@ -11,7 +13,6 @@ export default [
       sourceType: 'module',
       globals: {
         ...globals.node,
-        ...globals.mocha,
         Atomics: 'readonly',
         SharedArrayBuffer: 'readonly',
       },
@@ -19,9 +20,17 @@ export default [
     rules: {
       'no-var': 'error',
       'prefer-const': 'error',
+      '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
   },
   {
-    ignores: ['node_modules/', 'spec/', 'package-lock.json'],
+    files: ['test/**'],
+    rules: {
+      '@typescript-eslint/no-unused-expressions': 'off',
+    },
   },
-];
+  {
+    ignores: ['node_modules/', 'dist/', 'spec/', 'package-lock.json'],
+  },
+);

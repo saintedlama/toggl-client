@@ -1,4 +1,4 @@
-import got from 'got';
+import got, { type Got, type OptionsInit } from 'got';
 import debugClient from 'debug';
 
 import Workspaces from './workspaces.js';
@@ -10,30 +10,31 @@ import Projects from './projects.js';
 import TimeEntries from './time-entries.js';
 import Reports from './reports.js';
 import User from './user.js';
+import type { ClientOptions } from './types.js';
 
 const debug = debugClient('toggl-client');
 
 /**
  * Main class to interact with the toggl API.
  * Calling `togglClient({ apiToken: YOUR_API_TOKEN });` returns an instance of this class.
- *
- * @property {Workspaces} workspaces
- * @property {Projects} projects
- * @property {TimeEntries} timeEntries
- * @property {Clients} clients
- * @property {Groups} groups
- * @property {Tags} tags
- * @property {ProjectUsers} projectUsers
- * @property {User} user
- * @class TogglClient
  */
 class TogglClient {
+  options: ClientOptions;
+  clients: Clients;
+  groups: Groups;
+  tags: Tags;
+  projects: Projects;
+  timeEntries: TimeEntries;
+  projectUsers: ProjectUsers;
+  workspaces: Workspaces;
+  reports: Reports;
+  user: User;
+  httpClient: Got;
+
   /**
    * Creates an instance of TogglClient.
-   * @param {*} options
-   * @memberof TogglClient
    */
-  constructor(options) {
+  constructor(options?: ClientOptions) {
     this.options = options || {};
     this.options.apiToken = this.options.apiToken || process.env.TOGGL_API_TOKEN;
 
@@ -62,27 +63,27 @@ class TogglClient {
     });
   }
 
-  async get(path, searchParams) {
-    return await this.request(path, { method: 'GET', searchParams });
+  async get<T = unknown>(path: string, searchParams?: OptionsInit['searchParams']): Promise<T> {
+    return await this.request<T>(path, { method: 'GET', searchParams });
   }
 
-  async put(path, json) {
-    return await this.request(path, { method: 'PUT', json });
+  async put<T = unknown>(path: string, json?: unknown): Promise<T> {
+    return await this.request<T>(path, { method: 'PUT', json });
   }
 
-  async post(path, json) {
-    return await this.request(path, { method: 'POST', json });
+  async post<T = unknown>(path: string, json?: unknown): Promise<T> {
+    return await this.request<T>(path, { method: 'POST', json });
   }
 
-  async patch(path, json) {
-    return await this.request(path, { method: 'PATCH', json });
+  async patch<T = unknown>(path: string, json?: unknown): Promise<T> {
+    return await this.request<T>(path, { method: 'PATCH', json });
   }
 
-  async delete(path) {
-    return await this.request(path, { method: 'DELETE' });
+  async delete<T = unknown>(path: string): Promise<T> {
+    return await this.request<T>(path, { method: 'DELETE' });
   }
 
-  async request(path, options) {
+  async request<T = unknown>(path: string, options: OptionsInit): Promise<T> {
     // Disables retry logic following suggestion from https://github.com/sindresorhus/got/issues/1489
     options.retry = { limit: 0 };
     debug('requesting toggl API path %s with options %o', path, options);
@@ -93,7 +94,7 @@ class TogglClient {
       throw new Error(`Toggl API responded with status code ${response.statusCode}. Response: ${response.body}`);
     }
 
-    const resp = response.body ? JSON.parse(response.body) : {};
+    const resp = response.body ? (JSON.parse(response.body as string) as T) : ({} as T);
     debug(resp);
     return resp;
   }

@@ -1,0 +1,67 @@
+import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
+import debugClient from 'debug';
+import togglClient, { type TogglClient } from '../src/index.js';
+
+const debug = debugClient('toggl-client-tests-user');
+
+describe('user', () => {
+  let client: TogglClient;
+  beforeAll(async () => {
+    if (!process.env.TOGGL_API_TOKEN) {
+      console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
+      process.exit(1);
+    }
+
+    client = togglClient();
+  });
+
+  // Add a delay of 1 second between each test case
+  beforeEach(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+  });
+
+  it('should get a user', async () => {
+    const user = await client.user.current();
+
+    debug(user);
+
+    expect(user).to.exist.to.be.an('object');
+    expect(user.email).to.exist;
+    expect(user).to.have.property('email');
+    expect(user).to.have.property('fullname');
+    expect(user).to.have.property('api_token');
+    expect(user).to.have.property('default_workspace_id');
+  });
+
+  it('should update a user', async () => {
+    // get current user
+    const user = await client.user.current();
+    debug(user);
+    const updatedFullname = user.fullname + ' updated';
+
+    // update the fullname name
+    let updatedUser = await client.user.update({ fullname: updatedFullname });
+    debug(updatedUser);
+    expect(updatedUser).to.exist.to.be.an('object');
+    if (process.env.TOGGL_E2E) {
+      expect(updatedUser).to.have.property('fullname').equal(updatedFullname);
+    } else {
+      expect(updatedUser).to.have.property('fullname').that.is.a('string');
+    }
+
+    // put the fullname back
+    updatedUser = await client.user.update({ fullname: user.fullname });
+    debug(updatedUser);
+    expect(updatedUser).to.exist.to.be.an('object');
+    expect(updatedUser).to.have.property('fullname');
+    if (process.env.TOGGL_E2E) {
+      expect(updatedUser).to.have.property('fullname').equal(user.fullname);
+    }
+  });
+
+  it.skip('should get a new API token', async () => {
+    const newToken = await client.user.resetToken();
+    debug(newToken);
+    expect(newToken).to.exist.to.be.an('string');
+  });
+});
