@@ -137,6 +137,12 @@ describe('smoke test', () => {
     debug(summary);
     expect(summary).to.exist;
   });
+
+  it('should list workspace groups', async () => {
+    const groups = await client.groups.list(workspace_id);
+    debug(groups);
+    expect(groups).to.exist.to.be.an('array');
+  });
 });
 
 async function timeout() {

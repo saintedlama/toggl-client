@@ -63,9 +63,46 @@ export interface Client {
 
 export interface Group {
   id: number;
+  workspace_id?: number;
   name: string;
   at?: string;
+  has_users?: boolean;
+  permissions?: string[];
+  users?: number[];
+  workspaces?: number[];
   [key: string]: unknown;
+}
+
+export interface OrganizationGroupUser {
+  user_id: number;
+  joined: boolean;
+  avatar_url?: string;
+  email?: string;
+  name?: string;
+  [key: string]: unknown;
+}
+
+export interface OrganizationGroup {
+  group_id: number;
+  name: string;
+  at?: string;
+  permissions?: string[];
+  users?: OrganizationGroupUser[];
+  workspaces?: number[];
+  [key: string]: unknown;
+}
+
+export interface OrganizationGroupPayload {
+  name: string;
+  users?: number[];
+  workspaces?: number[];
+  [key: string]: unknown;
+}
+
+export interface OrganizationGroupParams {
+  name?: string;
+  workspace?: string;
+  [key: string]: string | number | boolean | undefined;
 }
 
 export interface Project {
