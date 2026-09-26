@@ -210,8 +210,22 @@ export interface UserUpdateInput {
 export interface ReportParams {
   start_date?: string;
   end_date?: string;
+  billable?: boolean;
+  client_ids?: number[];
+  description?: string;
+  group_ids?: number[];
+  project_ids?: number[];
+  tag_ids?: number[];
+  task_ids?: number[];
+  time_entry_ids?: number[];
+  user_ids?: number[];
+  rounding?: number;
+  rounding_minutes?: number;
   page?: number;
   per_page?: number;
+  page_size?: number;
+  first_id?: number;
+  first_row_number?: number;
   [key: string]: unknown;
 }
 
@@ -225,20 +239,19 @@ export interface DetailedReportParams extends ReportParams {
 
 export interface SummaryReportParams extends ReportParams {
   start_date: string;
+  grouping?: string;
+  sub_grouping?: string;
+  distinguish_rates?: boolean;
 }
 
 export interface ReportPagination {
-  page: number;
-  per_page: number;
-  total_count: number;
-  hasNextPage: boolean;
-  nextPage?: number;
-}
-
-export type ReportResult<T = unknown> = T & {
   page?: number;
   per_page?: number;
   total_count?: number;
   hasNextPage?: boolean;
   nextPage?: number;
-};
+  nextId?: string | number;
+  nextRowNumber?: string | number;
+}
+
+export type ReportResult<T = unknown> = T & ReportPagination;

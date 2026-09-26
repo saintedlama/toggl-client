@@ -123,6 +123,20 @@ describe('smoke test', () => {
     debug(preferences);
     expect(preferences).to.exist.to.be.an('object');
   });
+
+  it('should get detailed report totals', async () => {
+    const totals = await client.reports.totals(workspace_id, {
+      start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
+    });
+    debug(totals);
+    expect(totals).to.exist;
+  });
+
+  it('should get projects summary report', async () => {
+    const summary = await client.reports.projectsSummary(workspace_id);
+    debug(summary);
+    expect(summary).to.exist;
+  });
 });
 
 async function timeout() {

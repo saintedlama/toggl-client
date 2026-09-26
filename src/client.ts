@@ -1,6 +1,5 @@
-import got, { type Got, type OptionsInit } from 'got';
+import got, { type Got, type OptionsInit, type Response } from 'got';
 import debugClient from 'debug';
-
 import Workspaces from './workspaces.js';
 import Clients from './clients.js';
 import Groups from './groups.js';
@@ -16,17 +15,16 @@ import type { ClientOptions } from './types.js';
 const debug = debugClient('toggl-client');
 
 /**
- * Main class to interact with the toggl API.
- * Calling `togglClient({ apiToken: YOUR_API_TOKEN });` returns an instance of this class.
+ * Access Toggl Track API
  */
 class TogglClient {
   options: ClientOptions;
   clients: Clients;
   groups: Groups;
   tags: Tags;
+  projectUsers: ProjectUsers;
   projects: Projects;
   timeEntries: TimeEntries;
-  projectUsers: ProjectUsers;
   workspaces: Workspaces;
   reports: Reports;
   user: User;
@@ -34,7 +32,12 @@ class TogglClient {
   httpClient: Got;
 
   /**
-   * Creates an instance of TogglClient.
+   * Create TogglClient
+   *
+   * @param [options] Options for client
+   * @param [options.apiToken] Toggl API token (defaults to process.env.TOGGL_API_TOKEN)
+   * @param [options.baseUrl] Toggl Track API base URL (defaults to process.env.TOGGL_BASE_URL or https://api.track.toggl.com/api/v9)
+   * @param [options.reportsUrl] Toggl Reports API base URL (defaults to process.env.TOGGL_REPORTS_URL or https://api.track.toggl.com/reports/api/v3)
    */
   constructor(options?: ClientOptions) {
     this.options = options || {};
@@ -63,6 +66,9 @@ class TogglClient {
       username: this.options.apiToken,
       password: 'api_token',
       throwHttpErrors: false,
+      headers: {
+        'content-type': 'application/json',
+      },
     });
   }
 
@@ -86,7 +92,7 @@ class TogglClient {
     return await this.request<T>(path, { method: 'DELETE' });
   }
 
-  async request<T = unknown>(path: string, options: OptionsInit): Promise<T> {
+  async requestRaw(path: string, options: OptionsInit): Promise<Response<string>> {
     debug(options.method, path, options.searchParams, options.json);
     const response = await this.httpClient(path, options);
 
@@ -94,6 +100,12 @@ class TogglClient {
       debug(response.statusCode, response.statusMessage, response.body);
       throw new Error(response.body as string);
     }
+
+    return response;
+  }
+
+  async request<T = unknown>(path: string, options: OptionsInit): Promise<T> {
+    const response = await this.requestRaw(path, options);
 
     if (!response.body) {
       return undefined as T;
