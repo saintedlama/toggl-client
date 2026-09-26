@@ -7,8 +7,6 @@
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "release": "standard-version",
-    "should-release": "should-release",
     "test": "concurrently -k -s first -n track,reports,mocha \"npm:mock:track\" \"npm:mock:reports\" \"wait-on tcp:4010 tcp:4011 && mocha\"",
     "mock:track": "prism mock spec/track-api.json -p 4010",
     "mock:reports": "prism mock spec/reports-api.json -p 4011",
@@ -39,8 +37,6 @@
     "globals": "^17.12.0",
     "mocha": "^12.0.2",
     "prettier": "^3.9.9",
-    "should-release": "^1.2.0",
-    "standard-version": "^9.5.0",
     "wait-on": "^9.1.0"
   }
 }
