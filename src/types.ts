@@ -4,7 +4,7 @@ export interface AlphaFeature {
   [key: string]: unknown;
 }
 
-export interface Preferences {
+export interface UserPreferences {
   date_format?: string;
   timeofday_format?: string;
   duration_format?: string;
@@ -24,6 +24,8 @@ export interface Preferences {
   time_entry_display_mode?: string;
   [key: string]: unknown;
 }
+
+export type Preferences = UserPreferences;
 
 export interface ClientOptions {
   apiToken?: string;
@@ -214,7 +216,7 @@ export interface TimeEntryUpdateInput {
   [key: string]: unknown;
 }
 
-export interface User {
+export interface UserProfile {
   id: number;
   api_token?: string;
   email: string;
@@ -229,6 +231,8 @@ export interface User {
   at?: string;
   [key: string]: unknown;
 }
+
+export type User = UserProfile;
 
 export interface UserUpdateInput {
   country_id?: number;
