@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.6.0](https://github.com/saintedlama/toggl-client/compare/v3.5.0...v3.6.0) (2026-09-26)
+
+
+### Features
+
+* add preferences api ([#76](https://github.com/saintedlama/toggl-client/issues/76)) ([c75cf75](https://github.com/saintedlama/toggl-client/commit/c75cf759549d2a724fe27a32e3ddeed74a5319bb))
+
 ## [3.5.0](https://github.com/saintedlama/toggl-client/compare/v3.4.0...v3.5.0) (2023-04-15)
 
 
