@@ -106,7 +106,11 @@ describe('time-entries', async () => {
     debug('createdTimeEntry');
     debug(createdTimeEntry);
     expect(createdTimeEntry).to.be.an('object');
-    expect(createdTimeEntry).to.have.property('description').equal(timeEntry.description);
+    if (process.env.TOGGL_E2E) {
+      expect(createdTimeEntry).to.have.property('description').equal(timeEntry.description);
+    } else {
+      expect(createdTimeEntry).to.have.property('description').that.is.a('string');
+    }
     expect(createdTimeEntry).to.have.property('at');
     expect(createdTimeEntry).to.have.property('workspace_id');
     expect(createdTimeEntry).to.have.property('id');
@@ -119,12 +123,16 @@ describe('time-entries', async () => {
     debug('updatedTimeEntry');
     debug(updatedTimeEntry);
     expect(updatedTimeEntry).to.be.an('object');
-    expect(updatedTimeEntry).to.have.property('description').equal(updatedTimeEntryDescription);
+    if (process.env.TOGGL_E2E) {
+      expect(updatedTimeEntry).to.have.property('description').equal(updatedTimeEntryDescription);
+    } else {
+      expect(updatedTimeEntry).to.have.property('description').that.is.a('string');
+    }
     expect(updatedTimeEntry).to.have.property('at');
     expect(updatedTimeEntry).to.have.property('workspace_id');
     expect(updatedTimeEntry).to.have.property('id');
 
-    await client.timeEntries.delete(createdTimeEntry.id);
+    await client.timeEntries.delete(workspace_id, createdTimeEntry.id);
 
     const timeEntriesList = await client.timeEntries.list({
       start_date: dayjs().startOf('day').format('YYYY-MM-DD'),
@@ -133,6 +141,8 @@ describe('time-entries', async () => {
     debug('timeEntriesList');
     debug(timeEntriesList);
     expect(timeEntriesList).to.be.an('array');
-    expect(timeEntriesList).to.be.empty;
+    if (process.env.TOGGL_E2E) {
+      expect(timeEntriesList).to.be.empty;
+    }
   });
 });
