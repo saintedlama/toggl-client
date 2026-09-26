@@ -63,7 +63,11 @@ describe('projects', () => {
     debug('createdProject');
     debug(createdProject);
     expect(createdProject).to.be.an('object');
-    expect(createdProject).to.have.property('name').equal(project.name);
+    if (process.env.TOGGL_E2E) {
+      expect(createdProject).to.have.property('name').equal(project.name);
+    } else {
+      expect(createdProject).to.have.property('name').that.is.a('string');
+    }
     expect(createdProject).to.have.property('color');
     expect(createdProject).to.have.property('is_private');
     expect(createdProject).to.have.property('workspace_id');
@@ -76,7 +80,11 @@ describe('projects', () => {
     debug('updatedProject');
     debug(updatedProject);
     expect(updatedProject).to.be.an('object');
-    expect(updatedProject).to.have.property('name').equal(updatedProjectName);
+    if (process.env.TOGGL_E2E) {
+      expect(updatedProject).to.have.property('name').equal(updatedProjectName);
+    } else {
+      expect(updatedProject).to.have.property('name').that.is.a('string');
+    }
     expect(createdProject).to.have.property('color');
     expect(createdProject).to.have.property('is_private');
     expect(createdProject).to.have.property('workspace_id');

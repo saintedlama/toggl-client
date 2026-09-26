@@ -9,7 +9,13 @@
     "lint:fix": "eslint . --fix",
     "release": "standard-version",
     "should-release": "should-release",
-    "test": "mocha"
+    "test": "concurrently -k -s first -n track,reports,mocha \"npm:mock:track\" \"npm:mock:reports\" \"wait-on tcp:4010 tcp:4011 && mocha\"",
+    "mock:track": "prism mock spec/track-api.json -p 4010",
+    "mock:reports": "prism mock spec/reports-api.json -p 4011",
+    "mock": "concurrently -k -s first -n track,reports \"npm:mock:track\" \"npm:mock:reports\"",
+    "test:unit": "mocha",
+    "test:e2e": "node -e \"process.env.TOGGL_E2E='true'; import('./node_modules/mocha/bin/mocha.js')\"",
+    "test:smoke": "node -e \"process.env.TOGGL_E2E='true'; import('./node_modules/mocha/bin/mocha.js')\" -- test/smoke-test.js"
   },
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
   "contributors": [
@@ -18,18 +24,23 @@
   "repository": "saintedlama/toggl-client",
   "license": "ISC",
   "dependencies": {
-    "dayjs": "^1.11.7",
-    "debug": "^4.3.4",
-    "got": "^12.5.3"
+    "dayjs": "^1.11.23",
+    "debug": "^4.4.3",
+    "got": "^16.0.0"
   },
   "devDependencies": {
-    "chai": "^4.3.7",
-    "eslint": "^8.34.0",
-    "eslint-config-prettier": "^8.6.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "mocha": "^10.2.0",
-    "prettier": "^2.8.4",
+    "@eslint/js": "^10.0.1",
+    "@stoplight/prism-cli": "^5.16.0",
+    "chai": "^6.2.2",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.11.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.6",
+    "globals": "^17.12.0",
+    "mocha": "^12.0.2",
+    "prettier": "^3.9.9",
     "should-release": "^1.2.0",
-    "standard-version": "^9.5.0"
+    "standard-version": "^9.5.0",
+    "wait-on": "^9.1.0"
   }
 }
