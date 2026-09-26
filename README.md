@@ -59,12 +59,22 @@ const client = togglClient({ apiToken: YOUR_API_TOKEN });
     *   [projects][37]
         *   [Parameters][38]
 *   [Groups][39]
+    *   [list][153]
+        *   [Parameters][154]
     *   [create][40]
         *   [Parameters][41]
     *   [update][42]
         *   [Parameters][43]
     *   [delete][44]
         *   [Parameters][45]
+    *   [listInOrganization][155]
+        *   [Parameters][156]
+    *   [createInOrganization][157]
+        *   [Parameters][158]
+    *   [updateInOrganization][159]
+        *   [Parameters][160]
+    *   [deleteInOrganization][161]
+        *   [Parameters][162]
 *   [Tags][46]
     *   [validateTag][47]
         *   [Parameters][48]
@@ -353,36 +363,92 @@ Lists projects associated with the given client
 
 ## Groups
 
-Access groups. See [https://github.com/toggl/toggl\_api\_docs/blob/master/chapters/groups.md][120]
+Access groups. See [https://developers.track.toggl.com/docs/api/groups][120]
+
+### list
+
+Lists groups in a workspace. See [https://developers.track.toggl.com/docs/api/groups#get-workspace-groups][163]
+
+#### Parameters
+
+*   `workspaceId` **[number][113]** ID of the workspace
+
+Returns **[Array][112]** Groups in the workspace
 
 ### create
 
-Creates a group
+Creates a new group in a workspace. See [https://developers.track.toggl.com/docs/api/groups#post-workspace-group][164]
 
 #### Parameters
 
-*   `group` **any**&#x20;
+*   `workspaceId` **[number][113]** ID of the workspace (or group object containing workspace_id)
+*   `group` **[Object][116]?** Group data `{ name: string }`
 
-Returns **any** group created
+Returns **[Object][116]** Created group
 
 ### update
 
-Updates a group
+Updates an existing group in a workspace. See [https://developers.track.toggl.com/docs/api/groups#put-workspace-group][165]
 
 #### Parameters
 
-*   `id` **([number][113] | [string][114])** group id that should be updated
-*   `group` **any**&#x20;
+*   `workspaceId` **[number][113]** ID of the workspace
+*   `groupId` **([number][113] | [string][114])** ID of the group to update
+*   `group` **[Object][116]** Group payload `{ name: string }`
 
-Returns **any** result of update operation
+Returns **[Object][116]** Updated group
 
 ### delete
 
-Deletes a group
+Deletes a group from a workspace. See [https://developers.track.toggl.com/docs/api/groups#delete-workspace-group][166]
 
 #### Parameters
 
-*   `id` **([number][113] | [string][114])** group id that should be deleted
+*   `workspaceId` **[number][113]** ID of the workspace
+*   `groupId` **([number][113] | [string][114])** ID of the group to delete
+
+### listInOrganization
+
+Lists groups in an organization with user and workspace assignments. See [https://developers.track.toggl.com/docs/api/groups#get-organization-groups][167]
+
+#### Parameters
+
+*   `organizationId` **[number][113]** ID of the organization
+*   `params` **[Object][116]?** Optional query parameters (name, workspace)
+
+Returns **[Array][112]** Array of organization groups
+
+### createInOrganization
+
+Creates a group in an organization. See [https://developers.track.toggl.com/docs/api/groups#post-organization-group][168]
+
+#### Parameters
+
+*   `organizationId` **[number][113]** ID of the organization
+*   `group` **[Object][116]** Group payload (`name`, `users`, `workspaces`)
+
+Returns **[Object][116]** Created organization group
+
+### updateInOrganization
+
+Updates a group in an organization. See [https://developers.track.toggl.com/docs/api/groups#put-organization-group][169]
+
+#### Parameters
+
+*   `organizationId` **[number][113]** ID of the organization
+*   `groupId` **([number][113] | [string][114])** ID of the group to update
+*   `group` **[Object][116]** Updated group payload (`name`, `users`, `workspaces`)
+
+Returns **[Object][116]** Updated organization group
+
+### deleteInOrganization
+
+Deletes a group from an organization. See [https://developers.track.toggl.com/docs/api/groups#delete-organization-group][170]
+
+#### Parameters
+
+*   `organizationId` **[number][113]** ID of the organization
+*   `groupId` **([number][113] | [string][114])** ID of the group to delete
 
 ## Tags
 
@@ -1041,7 +1107,7 @@ Returns **[String][114]** Status response string.
 
 [119]: https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md
 
-[120]: https://github.com/toggl/toggl_api_docs/blob/master/chapters/groups.md
+[120]: https://developers.track.toggl.com/docs/api/groups
 
 [121]: https://developers.track.toggl.com/docs/api/tags
 
@@ -1106,3 +1172,39 @@ Returns **[String][114]** Status response string.
 [151]: #parameters-51
 
 [152]: https://developers.track.toggl.com/docs/reports/projects_reports
+
+[153]: #list-1
+
+[154]: #parameters-10
+
+[155]: #listinorganization
+
+[156]: #parameters-14
+
+[157]: #createinorganization
+
+[158]: #parameters-15
+
+[159]: #updateinorganization
+
+[160]: #parameters-16
+
+[161]: #deleteinorganization
+
+[162]: #parameters-17
+
+[163]: https://developers.track.toggl.com/docs/api/groups#get-workspace-groups
+
+[164]: https://developers.track.toggl.com/docs/api/groups#post-workspace-group
+
+[165]: https://developers.track.toggl.com/docs/api/groups#put-workspace-group
+
+[166]: https://developers.track.toggl.com/docs/api/groups#delete-workspace-group
+
+[167]: https://developers.track.toggl.com/docs/api/groups#get-organization-groups
+
+[168]: https://developers.track.toggl.com/docs/api/groups#post-organization-group
+
+[169]: https://developers.track.toggl.com/docs/api/groups#put-organization-group
+
+[170]: https://developers.track.toggl.com/docs/api/groups#delete-organization-group
