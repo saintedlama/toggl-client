@@ -1,5 +1,5 @@
-import { expect } from 'chai';
-import { defaultToEmpty, mapData } from '../lib/utils.js';
+import { describe, it, expect } from 'vitest';
+import { defaultToEmpty, mapData } from '../src/utils.js';
 
 describe('utilities', () => {
   it('should return the passed in input', () => {
@@ -16,7 +16,7 @@ describe('utilities', () => {
     expect(output).to.be.an('array').that.is.empty;
   });
 
-  it('should return the undefined if there is no data property', () => {
+  it('should return undefined if there is no data property', () => {
     const input = { some: 'random', object: { with: ['nested', 'array'] } };
     const output = mapData(input);
     expect(output).to.be.undefined;

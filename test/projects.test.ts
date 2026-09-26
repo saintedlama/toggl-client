@@ -1,14 +1,14 @@
-import { expect } from 'chai';
+import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
 import debugClient from 'debug';
-import togglClient from '../index.js';
+import togglClient, { type TogglClient } from '../src/index.js';
 
 const debug = debugClient('toggl-client-tests-projects');
 
 describe('projects', () => {
-  let client;
-  let workspace_id;
-  let project_id;
-  before(async () => {
+  let client: TogglClient;
+  let workspace_id: number;
+  let project_id: number;
+  beforeAll(async () => {
     if (!process.env.TOGGL_API_TOKEN) {
       console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
       process.exit(1);
@@ -22,8 +22,8 @@ describe('projects', () => {
   });
 
   // Add a delay of 1 second between each test case
-  beforeEach((done) => {
-    setTimeout(done, 1000);
+  beforeEach(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should get a project by id', async () => {
@@ -72,7 +72,7 @@ describe('projects', () => {
     expect(createdProject).to.have.property('is_private');
     expect(createdProject).to.have.property('workspace_id');
 
-    const updatedProjectName = createdProject.description + '-updated';
+    const updatedProjectName = (createdProject.description || 'project') + '-updated';
     const updatedProject = await client.projects.update(workspace_id, createdProject.id, {
       name: updatedProjectName,
       workspace_id,
@@ -103,6 +103,5 @@ describe('projects', () => {
   it.skip('should get tasks associated with a project', async () => {
     const projectTasks = await client.projects.tasks(workspace_id, project_id);
     debug(projectTasks);
-    // Not sure what to assert here...
   });
 });

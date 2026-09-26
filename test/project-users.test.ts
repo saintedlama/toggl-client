@@ -1,13 +1,13 @@
-import { expect } from 'chai';
+import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
 import debugClient from 'debug';
-import togglClient from '../index.js';
+import togglClient, { type TogglClient } from '../src/index.js';
 
 const debug = debugClient('toggl-client-tests-project-users');
 
 describe('projects-users', () => {
-  let client;
-  let workspace_id;
-  before(async () => {
+  let client: TogglClient;
+  let workspace_id: number;
+  beforeAll(async () => {
     if (!process.env.TOGGL_API_TOKEN) {
       console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
       process.exit(1);
@@ -19,8 +19,8 @@ describe('projects-users', () => {
   });
 
   // Add a delay of 1 second between each test case
-  beforeEach((done) => {
-    setTimeout(done, 1000);
+  beforeEach(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should get project-users by project id', async () => {
@@ -39,7 +39,6 @@ describe('projects-users', () => {
   // Unable to test this without additional users
   it.skip('should create, update and delete a project-user', async () => {
     const projectUser = {
-      //user_id: ,
       workspace_id,
       manager: false,
     };
@@ -52,7 +51,7 @@ describe('projects-users', () => {
     expect(addedProjectUser).to.have.property('project_id');
     expect(addedProjectUser).to.have.property('manager');
 
-    const updatedProjectUser = await client.projectUsers.update(workspace_id, projectUser.id, {
+    const updatedProjectUser = await client.projectUsers.update(workspace_id, (projectUser as any).id, {
       manager: true,
     });
     debug('updatedProjectUser');
@@ -62,11 +61,11 @@ describe('projects-users', () => {
     expect(addedProjectUser).to.have.property('project_id');
     expect(addedProjectUser).to.have.property('manager').equal(false);
 
-    await client.projectUsers.delete(workspace_id, projectUser.id);
-    const projectusers = client.projectUsers.get(workspace_id);
+    await client.projectUsers.delete(workspace_id, (projectUser as any).id);
+    const projectusers = await client.projectUsers.get(workspace_id);
     debug('projectusers');
     debug(projectusers);
     expect(projectusers).to.be.an('array');
-    expect(projectusers).to.not.include({ id: projectUser.id });
+    expect(projectusers).to.not.include({ id: (projectUser as any).id });
   });
 });

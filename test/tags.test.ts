@@ -1,6 +1,6 @@
-import { expect } from 'chai';
+import { describe, it, expect } from 'vitest';
 import debugClient from 'debug';
-import togglClient from '../index.js';
+import togglClient from '../src/index.js';
 
 const debug = debugClient('toggl-client-tests-tags');
 

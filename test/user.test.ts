@@ -1,12 +1,12 @@
-import { expect } from 'chai';
+import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
 import debugClient from 'debug';
-import togglClient from '../index.js';
+import togglClient, { type TogglClient } from '../src/index.js';
 
 const debug = debugClient('toggl-client-tests-user');
 
 describe('user', () => {
-  let client;
-  before(async () => {
+  let client: TogglClient;
+  beforeAll(async () => {
     if (!process.env.TOGGL_API_TOKEN) {
       console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
       process.exit(1);
@@ -16,8 +16,8 @@ describe('user', () => {
   });
 
   // Add a delay of 1 second between each test case
-  beforeEach((done) => {
-    setTimeout(done, 1000);
+  beforeEach(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should get a user', async () => {

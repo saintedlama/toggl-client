@@ -1,14 +1,16 @@
-import { expect } from 'chai';
+import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
 import dayjs from 'dayjs';
 import debugClient from 'debug';
-import togglClient from '../index.js';
+import togglClient, { type TogglClient } from '../src/index.js';
 
 const debug = debugClient('toggl-client-tests-time-entries');
 
-describe('time-entries', async () => {
-  let workspace_id, timeEntryId, client;
+describe('time-entries', () => {
+  let workspace_id: number;
+  let timeEntryId: number;
+  let client: TogglClient;
 
-  before(async () => {
+  beforeAll(async () => {
     client = togglClient();
     const query = {
       start_date: dayjs().subtract(3, 'month').format('YYYY-MM-DD'),
@@ -23,8 +25,8 @@ describe('time-entries', async () => {
   });
 
   // Add a delay of 1 second between each test case
-  beforeEach((done) => {
-    setTimeout(done, 1000);
+  beforeEach(async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should get a time entry by id', async () => {
@@ -40,7 +42,7 @@ describe('time-entries', async () => {
   it('should get the current running time entry', async () => {
     const timeEntry = await client.timeEntries.current();
     debug(timeEntry);
-    expect(typeof timeEntry).to.be.oneOf([null, 'object']);
+    expect(typeof timeEntry).to.be.oneOf(['undefined', 'object']);
     if (timeEntry) {
       expect(timeEntry).to.have.property('workspace_id');
       expect(timeEntry).to.have.property('project_id');
@@ -69,14 +71,14 @@ describe('time-entries', async () => {
     try {
       await client.timeEntries.list();
       expect.fail('Expected an error to be thrown');
-    } catch (e) {
+    } catch (e: any) {
       expect(e.message).to.equal('The parameters must include start_date');
     }
 
     try {
-      await client.timeEntries.list({ start_date: '2023-02-04' });
+      await client.timeEntries.list({ start_date: '2023-02-04' } as any);
       expect.fail('Expected an error to be thrown');
-    } catch (e) {
+    } catch (e: any) {
       expect(e.message).to.equal('The parameters must include end_date');
     }
   });
@@ -87,9 +89,9 @@ describe('time-entries', async () => {
     };
 
     try {
-      await client.timeEntries.start(timeEntry);
+      await client.timeEntries.start(timeEntry as any);
       expect.fail('Expected an error to be thrown');
-    } catch (e) {
+    } catch (e: any) {
       expect(e.message).to.equal('The parameters must include workspace_id');
     }
   });
@@ -115,7 +117,7 @@ describe('time-entries', async () => {
     expect(createdTimeEntry).to.have.property('workspace_id');
     expect(createdTimeEntry).to.have.property('id');
 
-    const updatedTimeEntryDescription = createdTimeEntry.description + '-updated';
+    const updatedTimeEntryDescription = (createdTimeEntry.description || 'entry') + '-updated';
     const updatedTimeEntry = await client.timeEntries.update(createdTimeEntry.id, {
       description: updatedTimeEntryDescription,
       workspace_id,
