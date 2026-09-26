@@ -125,6 +125,12 @@ const client = togglClient({ apiToken: YOUR_API_TOKEN });
         *   [Parameters][103]
     *   [summaryAll][104]
         *   [Parameters][105]
+    *   [totals][146]
+        *   [Parameters][147]
+    *   [projectsSummary][148]
+        *   [Parameters][149]
+    *   [projectSummary][150]
+        *   [Parameters][151]
 *   [User][106]
     *   [current][107]
     *   [update][108]
@@ -620,67 +626,112 @@ Returns **any**&#x20;
 
 ## Reports
 
-Access reports. See [https://github.com/toggl/toggl\_api\_docs/blob/master/reports.md][126]
+Access reports. See [https://developers.track.toggl.com/docs/reports][126]
 
 ### weekly
 
-Weekly report
-[https://developers.track.toggl.com/docs/reports/weekly\_reports#post-search-time-entries][127]
+Fetch a weekly report for a workspace. See [https://developers.track.toggl.com/docs/reports/weekly_reports#post-search-time-entries][127]
 
 #### Parameters
 
-*   `workspaceId` &#x20;
-*   `params` &#x20;
+*   `workspaceId` **[Number][113]** Workspace ID
+*   `params` **[Object][116]?** Optional weekly report parameters (defaults to start of current week)
+
+Returns **[Array][112]** Weekly report items
 
 ### weeklyAll
 
-Weekly report containing all pages fetched with wait time between requests of 1010ms
-[https://developers.track.toggl.com/docs/reports/weekly\_reports#post-search-time-entries][127]
+Fetch all entries of a weekly report. See [https://developers.track.toggl.com/docs/reports/weekly_reports#post-search-time-entries][127]
 
 #### Parameters
 
-*   `workspaceId` &#x20;
-*   `params` &#x20;
+*   `workspaceId` **[Number][113]** Workspace ID
+*   `params` **[Object][116]?** Optional weekly report parameters
+
+Returns **[Array][112]** Array of weekly report items
 
 ### details
 
-Detailed report URL: GET [https://api.track.toggl.com/reports/api/v3/workspace/{workspace\_id}/search/time\_entries][128]
-[https://developers.track.toggl.com/docs/reports/detailed\_reports#post-load-totals-detailed-report][129]
-params must include start\_date
+Fetch a detailed time entries report. See [https://developers.track.toggl.com/docs/reports/detailed_reports#post-search-time-entries][128]
+params must include `start_date`
 
 #### Parameters
 
-*   `workspaceId` &#x20;
-*   `params` &#x20;
+*   `workspaceId` **[Number][113]** Workspace ID
+*   `params` **[Object][116]** Detailed report parameters (must include start_date)
+
+Returns **[Array][112]** Array of detailed time entry items with pagination metadata
 
 ### detailsAll
 
-Detailed report containing all pages fetched with wait time between requests of 1010ms URL: GET [https://api.track.toggl.com/reports/api/v3/workspace/{workspace\_id}/search/time\_entries][128]
-[https://developers.track.toggl.com/docs/reports/detailed\_reports#post-load-totals-detailed-report][129]
-params must include start\_date
+Fetch all pages of a detailed report with rate-limiting pauses between requests. See [https://developers.track.toggl.com/docs/reports/detailed_reports#post-search-time-entries][128]
+params must include `start_date`
 
 #### Parameters
 
-*   `workspaceId` &#x20;
-*   `params` &#x20;
+*   `workspaceId` **[Number][113]** Workspace ID
+*   `params` **[Object][116]** Detailed report parameters (must include start_date)
+
+Returns **[Array][112]** Array containing all detailed time entry items across all pages
 
 ### summary
 
-Summary report URL: GET [https://api.track.toggl.com/reports/api/v2/summary][130]
+Fetch a summary report. See [https://developers.track.toggl.com/docs/reports/summary_reports#post-search-time-entries][130]
+params must include `start_date`
 
 #### Parameters
 
-*   `workspaceId` &#x20;
-*   `params` &#x20;
+*   `workspaceId` **[Number][113]** Workspace ID
+*   `params` **[Object][116]** Summary report parameters (must include start_date)
+
+Returns **[Object][116]** Summary report containing `groups`
 
 ### summaryAll
 
-Summary report containing all pages fetched with wait time between requests of 1010ms URL: GET [https://api.track.toggl.com/reports/api/v2/summary][130]
+Fetch all groups of a summary report. See [https://developers.track.toggl.com/docs/reports/summary_reports#post-search-time-entries][130]
+params must include `start_date`
 
 #### Parameters
 
-*   `workspaceId` &#x20;
-*   `params` &#x20;
+*   `workspaceId` **[Number][113]** Workspace ID
+*   `params` **[Object][116]** Summary report parameters (must include start_date)
+
+Returns **[Array][112]** Array of summary report groups
+
+### totals
+
+Load totals for a detailed report. See [https://developers.track.toggl.com/docs/reports/detailed_reports#post-load-totals-detailed-report][129]
+params must include `start_date`
+
+#### Parameters
+
+*   `workspaceId` **[Number][113]** Workspace ID
+*   `params` **[Object][116]** Detailed report parameters (must include start_date)
+
+Returns **any** Totals response
+
+### projectsSummary
+
+List project users summary. See [https://developers.track.toggl.com/docs/reports/projects_reports][152]
+
+#### Parameters
+
+*   `workspaceId` **[Number][113]** Workspace ID
+*   `params` **[Object][116]?** Optional report parameters
+
+Returns **[Array][112]** Project users summary items
+
+### projectSummary
+
+Load project summary for a specific project. See [https://developers.track.toggl.com/docs/reports/projects_reports][152]
+
+#### Parameters
+
+*   `workspaceId` **[Number][113]** Workspace ID
+*   `projectId` **[Number][113]** Project ID
+*   `params` **[Object][116]?** Optional report parameters
+
+Returns **[Object][116]** Project summary data
 
 ## User
 
@@ -1002,15 +1053,15 @@ Returns **[String][114]** Status response string.
 
 [125]: https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md
 
-[126]: https://github.com/toggl/toggl_api_docs/blob/master/reports.md
+[126]: https://developers.track.toggl.com/docs/reports
 
 [127]: https://developers.track.toggl.com/docs/reports/weekly_reports#post-search-time-entries
 
-[128]: https://api.track.toggl.com/reports/api/v3/workspace/{workspace_id}/search/time_entries
+[128]: https://developers.track.toggl.com/docs/reports/detailed_reports#post-search-time-entries
 
 [129]: https://developers.track.toggl.com/docs/reports/detailed_reports#post-load-totals-detailed-report
 
-[130]: https://api.track.toggl.com/reports/api/v2/summary
+[130]: https://developers.track.toggl.com/docs/reports/summary_reports#post-search-time-entries
 
 [131]: https://developers.track.toggl.com/docs/api/me
 
@@ -1041,3 +1092,17 @@ Returns **[String][114]** Status response string.
 [144]: https://developers.track.toggl.com/docs/api/preferences#get-preferences-for-the-current-user
 
 [145]: https://developers.track.toggl.com/docs/api/preferences#update-the-preferences-for-the-current-user
+
+[146]: #totals
+
+[147]: #parameters-49
+
+[148]: #projectssummary
+
+[149]: #parameters-50
+
+[150]: #projectsummary
+
+[151]: #parameters-51
+
+[152]: https://developers.track.toggl.com/docs/reports/projects_reports
