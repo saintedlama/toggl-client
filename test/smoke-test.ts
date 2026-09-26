@@ -117,6 +117,12 @@ describe('smoke test', () => {
     expect(tags).to.exist.to.be.an('array');
     expect(tags[0].name).to.exist;
   });
+
+  it('should get current user preferences', async () => {
+    const preferences = await client.preferences.current();
+    debug(preferences);
+    expect(preferences).to.exist.to.be.an('object');
+  });
 });
 
 async function timeout() {
