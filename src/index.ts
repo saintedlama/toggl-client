@@ -9,6 +9,7 @@ export { connect, TogglClient };
 export * from './types.js';
 export { default as Clients } from './clients.js';
 export { default as Groups } from './groups.js';
+export { default as Preferences } from './preferences.js';
 export { default as ProjectUsers } from './project-users.js';
 export { default as Projects } from './projects.js';
 export { default as Reports } from './reports.js';

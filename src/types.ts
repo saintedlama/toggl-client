@@ -1,3 +1,30 @@
+export interface AlphaFeature {
+  code?: string;
+  enabled?: boolean;
+  [key: string]: unknown;
+}
+
+export interface Preferences {
+  date_format?: string;
+  timeofday_format?: string;
+  duration_format?: string;
+  beginningOfWeek?: number;
+  alpha_features?: AlphaFeature[];
+  autotracking_enabled?: boolean;
+  collapseTimeEntries?: boolean;
+  collapseDetailedReportEntries?: boolean;
+  default_project_id?: number;
+  default_task_id?: number;
+  pomodoro_enabled?: boolean;
+  pomodoro_focus_interval_in_minutes?: number;
+  pomodoro_break_interval_in_minutes?: number;
+  send_product_emails?: boolean;
+  send_weekly_report?: boolean;
+  send_timer_notifications?: boolean;
+  time_entry_display_mode?: string;
+  [key: string]: unknown;
+}
+
 export interface ClientOptions {
   apiToken?: string;
   baseUrl?: string;
@@ -15,11 +42,11 @@ export interface Workspace {
   only_admins_may_create_projects?: boolean;
   only_admins_see_billable_rates?: boolean;
   only_admins_see_team_dashboard?: boolean;
+  projects_billable_by_default?: boolean;
   rounding?: number;
   rounding_minutes?: number;
+  api_token?: string;
   at?: string;
-  logo_url?: string;
-  ical_url?: string;
   ical_enabled?: boolean;
   [key: string]: unknown;
 }
@@ -27,89 +54,50 @@ export interface Workspace {
 export interface Client {
   id: number;
   wid?: number;
+  workspace_id?: number;
   name: string;
   at?: string;
   notes?: string;
-  archived?: boolean;
+  [key: string]: unknown;
+}
+
+export interface Group {
+  id: number;
+  name: string;
+  at?: string;
   [key: string]: unknown;
 }
 
 export interface Project {
   id: number;
   workspace_id: number;
-  client_id?: number | null;
+  client_id?: number;
   name: string;
   is_private?: boolean;
   active?: boolean;
   at?: string;
   created_at?: string;
+  auto_estimates?: boolean;
+  estimated_hours?: number;
   color?: string;
-  billable?: boolean | null;
-  auto_estimates?: boolean | null;
-  estimated_hours?: number | null;
-  rate?: number | null;
-  currency?: string | null;
-  description?: string;
+  rate?: number;
+  currency?: string;
+  recurring?: boolean;
+  template?: boolean;
   [key: string]: unknown;
 }
 
-export interface TimeEntry {
+export interface Task {
   id: number;
+  name: string;
   workspace_id: number;
-  project_id?: number | null;
-  task_id?: number | null;
-  billable?: boolean;
-  start: string;
-  stop?: string | null;
-  duration: number;
-  description?: string | null;
-  tags?: string[] | null;
-  tag_ids?: number[] | null;
-  duronly?: boolean;
-  at?: string;
-  server_deleted_at?: string | null;
-  user_id?: number;
-  uid?: number;
-  wid?: number;
-  pid?: number;
-  created_with?: string;
+  project_id: number;
   [key: string]: unknown;
-}
-
-export interface TimeEntryInput {
-  workspace_id: number;
-  start: string;
-  stop?: string;
-  duration?: number;
-  description?: string;
-  project_id?: number;
-  task_id?: number;
-  billable?: boolean;
-  tags?: string[];
-  tag_ids?: number[];
-  duronly?: boolean;
-  created_with?: string;
-  [key: string]: unknown;
-}
-
-export interface TimeEntriesQueryParams {
-  start_date: string;
-  end_date: string;
-  [key: string]: string | number | boolean | undefined;
 }
 
 export interface Tag {
   id: number;
   workspace_id: number;
-  name: string;
-  at?: string;
-  deleted_at?: string | null;
-  [key: string]: unknown;
-}
-
-export interface Group {
-  id: number;
-  workspace_id?: number;
   name: string;
   at?: string;
   [key: string]: unknown;
@@ -121,21 +109,71 @@ export interface ProjectUser {
   user_id: number;
   workspace_id: number;
   manager?: boolean;
-  rate?: number | null;
+  rate?: number;
   at?: string;
   [key: string]: unknown;
 }
 
-export interface Task {
+export interface TimeEntry {
   id: number;
-  name: string;
-  project_id: number;
   workspace_id: number;
-  user_id?: number | null;
-  estimated_seconds?: number;
-  active?: boolean;
+  project_id?: number;
+  task_id?: number;
+  billable?: boolean;
+  start: string;
+  stop?: string;
+  duration: number;
+  description?: string;
+  tags?: string[];
+  tag_ids?: number[];
+  duronly?: boolean;
   at?: string;
-  tracked_seconds?: number;
+  server_deleted_at?: string;
+  user_id?: number;
+  uid?: number;
+  wid?: number;
+  pid?: number;
+  tid?: number;
+  [key: string]: unknown;
+}
+
+export interface TimeEntryParams {
+  start_date?: string;
+  end_date?: string;
+  meta?: boolean;
+  [key: string]: string | number | boolean | undefined;
+}
+
+export type TimeEntriesQueryParams = TimeEntryParams;
+
+export interface TimeEntryCreateInput {
+  workspace_id: number;
+  start: string;
+  duration: number;
+  description?: string;
+  project_id?: number;
+  task_id?: number;
+  billable?: boolean;
+  tags?: string[];
+  tag_ids?: number[];
+  stop?: string;
+  created_with?: string;
+  [key: string]: unknown;
+}
+
+export type TimeEntryInput = Partial<TimeEntryCreateInput>;
+
+export interface TimeEntryUpdateInput {
+  workspace_id: number;
+  start?: string;
+  duration?: number;
+  description?: string;
+  project_id?: number;
+  task_id?: number;
+  billable?: boolean;
+  tags?: string[];
+  tag_ids?: number[];
+  stop?: string;
   [key: string]: unknown;
 }
 

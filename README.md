@@ -130,6 +130,14 @@ const client = togglClient({ apiToken: YOUR_API_TOKEN });
     *   [update][108]
         *   [Parameters][109]
     *   [resetToken][110]
+*   [Preferences][135]
+    *   [current][136]
+    *   [update][137]
+        *   [Parameters][138]
+    *   [currentForClient][139]
+        *   [Parameters][140]
+    *   [updateForClient][141]
+        *   [Parameters][142]
 
 ## TogglClient
 
@@ -702,6 +710,48 @@ Resets API token [https://developers.track.toggl.com/docs/api/authentication#pos
 
 Returns **any** New API token {String}
 
+## Preferences
+
+Access user preferences. See [https://developers.track.toggl.com/docs/api/preferences][143]
+
+### current
+
+Gets preferences for the current user. See [https://developers.track.toggl.com/docs/api/preferences#get-preferences-for-the-current-user][144]
+
+Returns **[Object][116]** The current user preferences.
+
+### update
+
+Updates preferences for the current user. See [https://developers.track.toggl.com/docs/api/preferences#update-the-preferences-for-the-current-user][145]
+
+#### Parameters
+
+*   preferences **[Object][116]** Preferences to update.
+
+Returns **[String][114]** Status response string.
+
+### currentForClient
+
+Gets preferences for a specific client (desktop or web) of the current user.
+
+#### Parameters
+
+*   clientType **[String][114]** Either 'desktop' or 'web'.
+*   since **[Number][113]?** Retrieve preferences modified since this UNIX timestamp.
+
+Returns **[Object][116]** The user preferences for the given client.
+
+### updateForClient
+
+Updates preferences for a specific client (desktop or web) of the current user.
+
+#### Parameters
+
+*   clientType **[String][114]** Either 'desktop' or 'web'.
+*   preferences **[Object][116]** Preferences to update.
+
+Returns **[String][114]** Status response string.
+
 [1]: #togglclient
 
 [2]: #properties
@@ -969,3 +1019,25 @@ Returns **any** New API token {String}
 [133]: https://developers.track.toggl.com/docs/api/me#put-me
 
 [134]: https://developers.track.toggl.com/docs/api/authentication#post-resettoken
+
+[135]: #preferences
+
+[136]: #current-2
+
+[137]: #update-8
+
+[138]: #parameters-46
+
+[139]: #currentforclient
+
+[140]: #parameters-47
+
+[141]: #updateforclient
+
+[142]: #parameters-48
+
+[143]: https://developers.track.toggl.com/docs/api/preferences
+
+[144]: https://developers.track.toggl.com/docs/api/preferences#get-preferences-for-the-current-user
+
+[145]: https://developers.track.toggl.com/docs/api/preferences#update-the-preferences-for-the-current-user

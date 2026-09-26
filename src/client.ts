@@ -10,6 +10,7 @@ import Projects from './projects.js';
 import TimeEntries from './time-entries.js';
 import Reports from './reports.js';
 import User from './user.js';
+import Preferences from './preferences.js';
 import type { ClientOptions } from './types.js';
 
 const debug = debugClient('toggl-client');
@@ -29,6 +30,7 @@ class TogglClient {
   workspaces: Workspaces;
   reports: Reports;
   user: User;
+  preferences: Preferences;
   httpClient: Got;
 
   /**
@@ -51,6 +53,7 @@ class TogglClient {
     this.workspaces = new Workspaces(this);
     this.reports = new Reports(this);
     this.user = new User(this);
+    this.preferences = new Preferences(this);
 
     this.options.baseUrl = this.options.baseUrl || process.env.TOGGL_BASE_URL || 'https://api.track.toggl.com/api/v9';
     this.options.reportsUrl = this.options.reportsUrl || process.env.TOGGL_REPORTS_URL || 'https://api.track.toggl.com/reports/api/v3';
@@ -84,19 +87,24 @@ class TogglClient {
   }
 
   async request<T = unknown>(path: string, options: OptionsInit): Promise<T> {
-    // Disables retry logic following suggestion from https://github.com/sindresorhus/got/issues/1489
-    options.retry = { limit: 0 };
-    debug('requesting toggl API path %s with options %o', path, options);
-
+    debug(options.method, path, options.searchParams, options.json);
     const response = await this.httpClient(path, options);
 
-    if (response.statusCode < 200 || response.statusCode >= 300) {
-      throw new Error(`Toggl API responded with status code ${response.statusCode}. Response: ${response.body}`);
+    if (response.statusCode >= 400) {
+      debug(response.statusCode, response.statusMessage, response.body);
+      throw new Error(response.body as string);
     }
 
-    const resp = response.body ? (JSON.parse(response.body as string) as T) : ({} as T);
-    debug(resp);
-    return resp;
+    if (!response.body) {
+      return undefined as T;
+    }
+
+    const contentType = response.headers['content-type'];
+    if (contentType && contentType.includes('application/json')) {
+      return JSON.parse(response.body as string) as T;
+    }
+
+    return response.body as T;
   }
 }
 
