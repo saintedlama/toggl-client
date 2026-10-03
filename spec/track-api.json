@@ -1036,6 +1036,12 @@
               "type": "string"
             }
           },
+          "409": {
+            "description": "the organization's subscription is paused",
+            "schema": {
+              "type": "string"
+            }
+          },
           "500": {
             "description": "Internal Server Error",
             "schema": {
@@ -5158,7 +5164,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Subscription updated"
+            "description": "Subscription updated; deferred reports whether it takes effect at period end",
+            "schema": {
+              "$ref": "#/definitions/models.UpdatePlanResponse"
+            }
           },
           "400": {
             "description": "pricing_plan_tag is a required field",
@@ -5203,7 +5212,10 @@
         ],
         "responses": {
           "200": {
-            "description": "Subscription created"
+            "description": "Subscription created; charge state of its first invoice",
+            "schema": {
+              "$ref": "#/definitions/models.SubscriptionPaymentResponse"
+            }
           },
           "400": {
             "description": "pricing_plan_tag is a required field",
@@ -5599,6 +5611,62 @@
           },
           "500": {
             "description": "Internal Server Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{organization_id}/subscription/payment/confirm": {
+      "post": {
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ],
+        "description": "Re-reads and saves the subscription after the customer completed a payment challenge, and reports whether it is\nactive together with the settlement state of the named invoice (or the latest one). Safe to poll.",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "subscription"
+        ],
+        "summary": "Confirm a subscription payment",
+        "operationId": "post-organization-subscription-payment-confirm",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Numeric ID of the organization.",
+            "name": "organization_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "description": "Invoice to confirm; an empty object scores the latest invoice.",
+            "name": "organization_subscription_payment_confirm_request",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/models.ConfirmSubscriptionPaymentRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Subscription state and payment settlement",
+            "schema": {
+              "$ref": "#/definitions/models.ConfirmSubscriptionPaymentResponse"
+            }
+          },
+          "400": {
+            "description": "The invoice belongs to another customer",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "The organization has no subscription",
             "schema": {
               "type": "string"
             }
@@ -7750,6 +7818,76 @@
           },
           "400": {
             "description": "Possible errors:<ul><li>invalid 'alert_id' passed in URL</li></ul>",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "403": {
+            "description": "Alert not found or not accessible",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/workspaces/{workspace_id}/alerts/{alert_id}/deliveries": {
+      "get": {
+        "security": [
+          {
+            "BasicAuth": []
+          }
+        ],
+        "description": "Returns up to 151 active delivery records ordered by ID. Use the last ID as after_id until an empty page is returned. Requires workspace alert management access. Deleted delivery records represent reset alerts and are excluded. delivery_date uses Track's database calendar for recurring periods. Recipient details are not returned.",
+        "produces": [
+          "application/json"
+        ],
+        "tags": [
+          "alerts"
+        ],
+        "summary": "Active project alert delivery history",
+        "operationId": "get-alert-deliveries",
+        "parameters": [
+          {
+            "type": "integer",
+            "description": "Numeric ID of the workspace",
+            "name": "workspace_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "integer",
+            "description": "Numeric ID of the alert",
+            "name": "alert_id",
+            "in": "path",
+            "required": true
+          },
+          {
+            "minimum": 0,
+            "type": "integer",
+            "description": "Return records with a greater ID; defaults to 0",
+            "name": "after_id",
+            "in": "query"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/models.AlertDelivery"
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid alert ID or cursor",
             "schema": {
               "type": "string"
             }
@@ -11250,31 +11388,36 @@
             "type": "string",
             "description": "name",
             "name": "name",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "type": "integer",
             "description": "page",
             "name": "page",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "type": "string",
             "description": "sort_field",
             "name": "sort_field",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "type": "string",
             "description": "sort_order",
             "name": "sort_order",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "type": "boolean",
             "description": "only_templates",
             "name": "only_templates",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "type": "boolean",
@@ -11298,13 +11441,15 @@
             "type": "boolean",
             "description": "Place pinned projects at top of response",
             "name": "sort_pinned",
-            "in": "query"
+            "in": "query",
+            "required": true
           },
           {
             "type": "string",
             "description": "search",
             "name": "search",
-            "in": "query"
+            "in": "query",
+            "required": true
           }
         ],
         "responses": {
@@ -12528,7 +12673,7 @@
             "description": "Successfully created."
           },
           "400": {
-            "description": "Possible error messages:<ul><li>Request payload must be informed</li><li>Invalid workspace ID</li></ul>",
+            "description": "Possible error messages:<ul><li>Request payload must be informed</li><li>Invalid workspace ID</li><li>User not found</li></ul>",
             "schema": {
               "type": "string"
             }
@@ -12541,6 +12686,12 @@
           },
           "403": {
             "description": "User cannot access billable rate(s).",
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "description": "Project user not found/accessible",
             "schema": {
               "type": "string"
             }
@@ -18225,6 +18376,9 @@
             "$ref": "#/definitions/importer.PreviewCountEntity"
           }
         },
+        "exclude_integration_provider": {
+          "type": "string"
+        },
         "exclude_private_projects": {
           "type": "boolean"
         },
@@ -18508,6 +18662,35 @@
         },
         "timezone": {
           "description": "User's timezone",
+          "type": "string"
+        }
+      }
+    },
+    "models.AlertDelivery": {
+      "type": "object",
+      "properties": {
+        "alert_id": {
+          "type": "integer"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "delivery_date": {
+          "type": "string"
+        },
+        "id": {
+          "type": "integer"
+        },
+        "project_id": {
+          "type": "integer"
+        },
+        "source_kind": {
+          "type": "string"
+        },
+        "threshold": {
+          "type": "integer"
+        },
+        "threshold_type": {
           "type": "string"
         }
       }
@@ -19322,6 +19505,32 @@
         }
       }
     },
+    "models.ConfirmSubscriptionPaymentRequest": {
+      "type": "object",
+      "properties": {
+        "invoice_id": {
+          "description": "InvoiceID is the invoice a create or update reported. When set, that invoice is scored instead of\nthe subscription's latest one; it must belong to the organization's customer.",
+          "type": "string"
+        }
+      }
+    },
+    "models.ConfirmSubscriptionPaymentResponse": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "description": "Active is true once the subscription is active or trialing in Stripe and saved as such.",
+          "type": "boolean"
+        },
+        "payment": {
+          "description": "Payment is the settlement state of the named invoice, or of the subscription's latest invoice when invoice_id is omitted.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.SubscriptionPaymentResponse"
+            }
+          ]
+        }
+      }
+    },
     "models.ContactDetail": {
       "type": "object",
       "properties": {
@@ -19957,6 +20166,10 @@
           "type": "integer",
           "x-nullable": true
         },
+        "paused": {
+          "description": "Whether the subscription is currently paused; the organization is read-only while it is. This is the\nread-only signal, not resumes_at below",
+          "type": "boolean"
+        },
         "payment_failed": {
           "description": "Whether the latest renewal payment failed and the subscription is in the dunning window",
           "type": "boolean"
@@ -19972,6 +20185,19 @@
         "plan_name": {
           "description": "Human-readable plan name (e.g. \"Free\", \"Starter\", \"Premium\")",
           "type": "string"
+        },
+        "resumes_at": {
+          "description": "Date (YYYY-MM-DD) the pause ends and billing resumes. Subscriptions sets it for the whole open pause,\nincluding the paid period before it starts, so it can be present while paused is still false. Nil when\nno pause is open, or when the pause is open-ended",
+          "type": "string",
+          "x-nullable": true
+        },
+        "scheduled_change": {
+          "description": "Plan change deferred to the end of the current period (absent when none is pending)",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.OrgSubscriptionScheduledChange"
+            }
+          ]
         },
         "seats": {
           "description": "Number of used seats — active users (nil for free orgs)",
@@ -19993,6 +20219,29 @@
               "$ref": "#/definitions/models.OrgSubscriptionTrial"
             }
           ]
+        }
+      }
+    },
+    "models.OrgSubscriptionScheduledChange": {
+      "type": "object",
+      "properties": {
+        "billing_period_in_months": {
+          "description": "Billing period in months of the plan moved to (1 = monthly, 12 = yearly).\nKeyed `billing_period_in_months`, unlike the surrounding block's\n`billing_period_months`: this object mirrors the subscriptions service's\nscheduled-change contract, which the clients read directly.",
+          "type": "integer",
+          "x-nullable": true
+        },
+        "cost_in_cents": {
+          "description": "Per-seat cost of the plan moved to, in cents",
+          "type": "integer",
+          "x-nullable": true
+        },
+        "effective_at": {
+          "description": "Date the change takes effect — the end of the current billing period.\nA calendar date (`YYYY-MM-DD`), not an instant: an RFC3339 value rendered\nthrough a client's local timezone slides the date by a day.",
+          "type": "string"
+        },
+        "pricing_plan_tag": {
+          "description": "Tag of the pricing plan the subscription moves to (e.g. \"premium_monthly\")",
+          "type": "string"
         }
       }
     },
@@ -20245,6 +20494,10 @@
         "doc_url": {
           "type": "string"
         },
+        "hosted_invoice_url": {
+          "description": "HostedInvoiceURL is Stripe's hosted page where the customer confirms or pays the invoice.",
+          "type": "string"
+        },
         "invoice_total_amount": {
           "type": "integer"
         },
@@ -20256,6 +20509,14 @@
         },
         "organization_id": {
           "type": "integer"
+        },
+        "payment_status": {
+          "description": "PaymentStatus is requires_action for a charge the bank holds for customer authentication,\nrequires_payment_method for a decline. The decline fields are empty for a held charge.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.PaymentStatus"
+            }
+          ]
         }
       }
     },
@@ -20275,6 +20536,25 @@
           "type": "string"
         }
       }
+    },
+    "models.PaymentStatus": {
+      "type": "string",
+      "enum": [
+        "not_required",
+        "paid",
+        "processing",
+        "requires_action",
+        "requires_payment_method",
+        "unknown"
+      ],
+      "x-enum-varnames": [
+        "PaymentStatusNotRequired",
+        "PaymentStatusPaid",
+        "PaymentStatusProcessing",
+        "PaymentStatusRequiresAction",
+        "PaymentStatusRequiresPaymentMethod",
+        "PaymentStatusUnknown"
+      ]
     },
     "models.Period": {
       "type": "object",
@@ -20389,14 +20669,16 @@
         "starter",
         "premium",
         "enterprise",
-        "time_off_module"
+        "time_off_module",
+        "capacity_module"
       ],
       "x-enum-varnames": [
         "ProductHandleFree",
         "ProductHandleStarter",
         "ProductHandlePremium",
         "ProductHandleEnterprise",
-        "ProductHandleTimeOffModule"
+        "ProductHandleTimeOffModule",
+        "ProductHandleCapacityModule"
       ]
     },
     "models.ProjectGroup": {
@@ -20962,6 +21244,26 @@
         }
       }
     },
+    "models.SubscriptionPaymentResponse": {
+      "type": "object",
+      "properties": {
+        "client_secret": {
+          "description": "ClientSecret of the invoice's PaymentIntent. Set only for requires_action.",
+          "type": "string"
+        },
+        "hosted_invoice_url": {
+          "description": "HostedInvoiceURL is Stripe's hosted page where the invoice can be paid. Set whenever InvoiceID is.",
+          "type": "string"
+        },
+        "invoice_id": {
+          "description": "InvoiceID is the Stripe invoice carrying the charge. Empty when the mutation created no invoice.",
+          "type": "string"
+        },
+        "payment_status": {
+          "$ref": "#/definitions/models.PaymentStatus"
+        }
+      }
+    },
     "models.Suggestion": {
       "type": "object",
       "properties": {
@@ -21517,6 +21819,34 @@
         },
         "next": {
           "type": "string"
+        }
+      }
+    },
+    "models.UpdatePlanResponse": {
+      "type": "object",
+      "properties": {
+        "client_secret": {
+          "description": "ClientSecret of the invoice's PaymentIntent. Set only for requires_action.",
+          "type": "string"
+        },
+        "deferred": {
+          "description": "Deferred is true when the change was scheduled for the end of the current period\n(a commitment reduction on an annual subscription) instead of applying immediately.",
+          "type": "boolean"
+        },
+        "effective_at": {
+          "description": "EffectiveAt is the date a deferred change takes effect (the current period end),\nYYYY-MM-DD; nil for immediate changes.",
+          "type": "string"
+        },
+        "hosted_invoice_url": {
+          "description": "HostedInvoiceURL is Stripe's hosted page where the invoice can be paid. Set whenever InvoiceID is.",
+          "type": "string"
+        },
+        "invoice_id": {
+          "description": "InvoiceID is the Stripe invoice carrying the charge. Empty when the mutation created no invoice.",
+          "type": "string"
+        },
+        "payment_status": {
+          "$ref": "#/definitions/models.PaymentStatus"
         }
       }
     },
@@ -22400,6 +22730,14 @@
         },
         "renewal_date": {
           "type": "string"
+        },
+        "scheduled_change": {
+          "description": "ScheduledChange is a plan change deferred to the end of the current period\n(absent when none is pending). Only unified subscriptions can carry one.",
+          "allOf": [
+            {
+              "$ref": "#/definitions/models.OrgSubscriptionScheduledChange"
+            }
+          ]
         },
         "seat_cost_in_cents": {
           "type": "integer"
@@ -23372,6 +23710,9 @@
             "type": "string"
           }
         },
+        "deleted_at": {
+          "type": "string"
+        },
         "description": {
           "type": "string"
         },
@@ -23915,11 +24256,5 @@
     "BasicAuth": {
       "type": "basic"
     }
-  },
-  "consumes": [
-    "application/json"
-  ],
-  "produces": [
-    "application/json"
-  ]
+  }
 }
