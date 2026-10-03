@@ -1,6 +1,6 @@
 {
   "name": "toggl-client",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "description": "API Client for the Toggl API",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
