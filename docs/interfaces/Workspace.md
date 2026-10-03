@@ -6,7 +6,7 @@
 
 # Interface: Workspace
 
-Defined in: [types.ts:36](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L36)
+Defined in: [types.ts:36](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L36)
 
 ## Indexable
 
@@ -18,7 +18,7 @@ Defined in: [types.ts:36](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **admin?**: `boolean`
 
-Defined in: [types.ts:41](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L41)
+Defined in: [types.ts:41](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L41)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [types.ts:41](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **api\_token?**: `string`
 
-Defined in: [types.ts:50](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L50)
+Defined in: [types.ts:50](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L50)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: [types.ts:50](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **at?**: `string`
 
-Defined in: [types.ts:51](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L51)
+Defined in: [types.ts:51](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L51)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: [types.ts:51](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **default\_currency?**: `string`
 
-Defined in: [types.ts:43](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L43)
+Defined in: [types.ts:43](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L43)
 
 ***
 
@@ -50,7 +50,7 @@ Defined in: [types.ts:43](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **default\_hourly\_rate?**: `number`
 
-Defined in: [types.ts:42](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L42)
+Defined in: [types.ts:42](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L42)
 
 ***
 
@@ -58,7 +58,7 @@ Defined in: [types.ts:42](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **ical\_enabled?**: `boolean`
 
-Defined in: [types.ts:52](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L52)
+Defined in: [types.ts:52](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L52)
 
 ***
 
@@ -66,7 +66,7 @@ Defined in: [types.ts:52](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > **id**: `number`
 
-Defined in: [types.ts:37](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L37)
+Defined in: [types.ts:37](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L37)
 
 ***
 
@@ -74,7 +74,7 @@ Defined in: [types.ts:37](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > **name**: `string`
 
-Defined in: [types.ts:38](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L38)
+Defined in: [types.ts:38](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L38)
 
 ***
 
@@ -82,7 +82,7 @@ Defined in: [types.ts:38](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **only\_admins\_may\_create\_projects?**: `boolean`
 
-Defined in: [types.ts:44](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L44)
+Defined in: [types.ts:44](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L44)
 
 ***
 
@@ -90,7 +90,7 @@ Defined in: [types.ts:44](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **only\_admins\_see\_billable\_rates?**: `boolean`
 
-Defined in: [types.ts:45](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L45)
+Defined in: [types.ts:45](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L45)
 
 ***
 
@@ -98,7 +98,7 @@ Defined in: [types.ts:45](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **only\_admins\_see\_team\_dashboard?**: `boolean`
 
-Defined in: [types.ts:46](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L46)
+Defined in: [types.ts:46](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L46)
 
 ***
 
@@ -106,7 +106,7 @@ Defined in: [types.ts:46](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **premium?**: `boolean`
 
-Defined in: [types.ts:40](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L40)
+Defined in: [types.ts:40](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L40)
 
 ***
 
@@ -114,7 +114,7 @@ Defined in: [types.ts:40](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **profile?**: `number`
 
-Defined in: [types.ts:39](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L39)
+Defined in: [types.ts:39](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L39)
 
 ***
 
@@ -122,7 +122,7 @@ Defined in: [types.ts:39](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **projects\_billable\_by\_default?**: `boolean`
 
-Defined in: [types.ts:47](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L47)
+Defined in: [types.ts:47](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L47)
 
 ***
 
@@ -130,7 +130,7 @@ Defined in: [types.ts:47](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **rounding?**: `number`
 
-Defined in: [types.ts:48](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L48)
+Defined in: [types.ts:48](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L48)
 
 ***
 
@@ -138,4 +138,4 @@ Defined in: [types.ts:48](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **rounding\_minutes?**: `number`
 
-Defined in: [types.ts:49](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L49)
+Defined in: [types.ts:49](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L49)

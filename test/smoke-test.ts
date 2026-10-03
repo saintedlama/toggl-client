@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { debuglog } from 'node:util';
 import togglClient, { type TogglClient, offsetDate } from '../src/index.js';
 
@@ -8,19 +8,9 @@ describe('smoke test', () => {
   let client: TogglClient;
   let workspace_id: number;
   beforeAll(async () => {
-    if (!process.env.TOGGL_API_TOKEN) {
-      console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
-      process.exit(1);
-    }
-
     client = togglClient();
     const workspaces = await client.workspaces.list();
     workspace_id = workspaces[0].id;
-  });
-
-  // Add a delay of 1 second between each test case
-  beforeEach(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should list workspaces', async () => {
@@ -95,21 +85,6 @@ describe('smoke test', () => {
     await expect(client.user.update(user)).rejects.toThrow('To change the password you must include the current password');
   });
 
-  it.skip('should generate time entries', async () => {
-    for (let i = 0; i < 52; i++) {
-      const timeEntryCreated = await client.timeEntries.create({
-        workspace_id,
-        duration: 1200, // 20min
-        start: new Date().toISOString(),
-        description: 'Test Entry',
-      });
-
-      debug('%o', timeEntryCreated);
-
-      await timeout();
-    }
-  });
-
   it('should list a users tags', async () => {
     const tags = await client.workspaces.tags(workspace_id);
     debug('%o', tags);
@@ -143,9 +118,3 @@ describe('smoke test', () => {
     expect(groups).to.exist.to.be.an('array');
   });
 });
-
-async function timeout() {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(undefined), 500);
-  });
-}

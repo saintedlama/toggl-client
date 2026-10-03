@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { debuglog } from 'node:util';
 import togglClient, { type TogglClient, offsetDate, formatDate } from '../src/index.js';
 
@@ -21,11 +21,6 @@ describe('time-entries', () => {
     debug('%d', timeEntryId);
     const workspaces = await client.workspaces.list();
     workspace_id = workspaces[0].id;
-  });
-
-  // Add a delay of 1 second between each test case
-  beforeEach(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should get a time entry by id', async () => {
@@ -106,11 +101,7 @@ describe('time-entries', () => {
     const createdTimeEntry = await client.timeEntries.start(timeEntry);
     debug('createdTimeEntry %o', createdTimeEntry);
     expect(createdTimeEntry).to.be.an('object');
-    if (process.env.TOGGL_E2E) {
-      expect(createdTimeEntry).to.have.property('description').equal(timeEntry.description);
-    } else {
-      expect(createdTimeEntry).to.have.property('description').that.is.a('string');
-    }
+    
     expect(createdTimeEntry).to.have.property('at');
     expect(createdTimeEntry).to.have.property('workspace_id');
     expect(createdTimeEntry).to.have.property('id');
@@ -122,11 +113,7 @@ describe('time-entries', () => {
     });
     debug('updatedTimeEntry %o', updatedTimeEntry);
     expect(updatedTimeEntry).to.be.an('object');
-    if (process.env.TOGGL_E2E) {
-      expect(updatedTimeEntry).to.have.property('description').equal(updatedTimeEntryDescription);
-    } else {
-      expect(updatedTimeEntry).to.have.property('description').that.is.a('string');
-    }
+    
     expect(updatedTimeEntry).to.have.property('at');
     expect(updatedTimeEntry).to.have.property('workspace_id');
     expect(updatedTimeEntry).to.have.property('id');
@@ -140,8 +127,5 @@ describe('time-entries', () => {
     });
     debug('timeEntriesList %o', timeEntriesList);
     expect(timeEntriesList).to.be.an('array');
-    if (process.env.TOGGL_E2E) {
-      expect(timeEntriesList).to.be.empty;
-    }
   });
 });

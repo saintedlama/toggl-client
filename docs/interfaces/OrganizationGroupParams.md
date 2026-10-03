@@ -6,7 +6,7 @@
 
 # Interface: OrganizationGroupParams
 
-Defined in: [types.ts:104](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L104)
+Defined in: [types.ts:104](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L104)
 
 ## Indexable
 
@@ -18,7 +18,7 @@ Defined in: [types.ts:104](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **name?**: `string`
 
-Defined in: [types.ts:105](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L105)
+Defined in: [types.ts:105](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L105)
 
 ***
 
@@ -26,4 +26,4 @@ Defined in: [types.ts:105](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **workspace?**: `string`
 
-Defined in: [types.ts:106](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L106)
+Defined in: [types.ts:106](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L106)

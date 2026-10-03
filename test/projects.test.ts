@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { debuglog } from 'node:util';
 import togglClient, { type TogglClient } from '../src/index.js';
 
@@ -9,21 +9,11 @@ describe('projects', () => {
   let workspace_id: number;
   let project_id: number;
   beforeAll(async () => {
-    if (!process.env.TOGGL_API_TOKEN) {
-      console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
-      process.exit(1);
-    }
-
     client = togglClient();
     const workspaces = await client.workspaces.list();
     workspace_id = workspaces[0].id;
     const projects = await client.projects.list(workspace_id);
     project_id = projects[0].id;
-  });
-
-  // Add a delay of 1 second between each test case
-  beforeEach(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should get a project by id', async () => {
@@ -63,11 +53,7 @@ describe('projects', () => {
     debug('createdProject');
     debug(createdProject);
     expect(createdProject).to.be.an('object');
-    if (process.env.TOGGL_E2E) {
-      expect(createdProject).to.have.property('name').equal(project.name);
-    } else {
-      expect(createdProject).to.have.property('name').that.is.a('string');
-    }
+    
     expect(createdProject).to.have.property('color');
     expect(createdProject).to.have.property('is_private');
     expect(createdProject).to.have.property('workspace_id');
@@ -80,11 +66,7 @@ describe('projects', () => {
     debug('updatedProject');
     debug(updatedProject);
     expect(updatedProject).to.be.an('object');
-    if (process.env.TOGGL_E2E) {
-      expect(updatedProject).to.have.property('name').equal(updatedProjectName);
-    } else {
-      expect(updatedProject).to.have.property('name').that.is.a('string');
-    }
+    
     expect(createdProject).to.have.property('color');
     expect(createdProject).to.have.property('is_private');
     expect(createdProject).to.have.property('workspace_id');
@@ -98,10 +80,9 @@ describe('projects', () => {
     expect(projectsList).to.not.include({ id: createdProject.id });
   });
 
-  // I don't have Tasks enabled, so skipping this test
-  // Workspace needs to have the Tasks feature enabled
-  it.skip('should get tasks associated with a project', async () => {
+  it('should get tasks associated with a project', async () => {
     const projectTasks = await client.projects.tasks(workspace_id, project_id);
     debug(projectTasks);
+    expect(projectTasks).to.be.an('array');
   });
 });

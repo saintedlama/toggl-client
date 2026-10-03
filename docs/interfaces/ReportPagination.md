@@ -6,7 +6,7 @@
 
 # Interface: ReportPagination
 
-Defined in: [types.ts:288](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L288)
+Defined in: [types.ts:288](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L288)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types.ts:288](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **hasNextPage?**: `boolean`
 
-Defined in: [types.ts:292](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L292)
+Defined in: [types.ts:292](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L292)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types.ts:292](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **nextId?**: `string` \| `number`
 
-Defined in: [types.ts:294](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L294)
+Defined in: [types.ts:294](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L294)
 
 ***
 
@@ -30,7 +30,7 @@ Defined in: [types.ts:294](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **nextPage?**: `number`
 
-Defined in: [types.ts:293](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L293)
+Defined in: [types.ts:293](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L293)
 
 ***
 
@@ -38,7 +38,7 @@ Defined in: [types.ts:293](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **nextRowNumber?**: `string` \| `number`
 
-Defined in: [types.ts:295](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L295)
+Defined in: [types.ts:295](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L295)
 
 ***
 
@@ -46,7 +46,7 @@ Defined in: [types.ts:295](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **page?**: `number`
 
-Defined in: [types.ts:289](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L289)
+Defined in: [types.ts:289](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L289)
 
 ***
 
@@ -54,7 +54,7 @@ Defined in: [types.ts:289](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **per\_page?**: `number`
 
-Defined in: [types.ts:290](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L290)
+Defined in: [types.ts:290](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L290)
 
 ***
 
@@ -62,4 +62,4 @@ Defined in: [types.ts:290](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **total\_count?**: `number`
 
-Defined in: [types.ts:291](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L291)
+Defined in: [types.ts:291](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L291)

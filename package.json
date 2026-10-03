@@ -23,9 +23,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "npm run build && vitest run",
-    "test:unit": "vitest run",
-    "test:e2e": "npm run build && node -e \"process.env.TOGGL_E2E='true'; import('vitest/node').then(m => m.startVitest('test', ['run']))\"",
-    "test:smoke": "npm run build && node -e \"process.env.TOGGL_E2E='true'; import('vitest/node').then(m => m.startVitest('test', ['run', 'test/smoke-test.ts']))\""
+    "test:unit": "vitest run"
   },
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
   "contributors": [

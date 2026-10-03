@@ -23,6 +23,7 @@
 - [AlphaFeature](interfaces/AlphaFeature.md)
 - [Client](interfaces/Client.md)
 - [ClientOptions](interfaces/ClientOptions.md)
+- [ClientResponse](interfaces/ClientResponse.md)
 - [DetailedReportParams](interfaces/DetailedReportParams.md)
 - [Group](interfaces/Group.md)
 - [OrganizationGroup](interfaces/OrganizationGroup.md)
@@ -33,6 +34,7 @@
 - [ProjectUser](interfaces/ProjectUser.md)
 - [ReportPagination](interfaces/ReportPagination.md)
 - [ReportParams](interfaces/ReportParams.md)
+- [RequestOptions](interfaces/RequestOptions.md)
 - [SummaryReportParams](interfaces/SummaryReportParams.md)
 - [Tag](interfaces/Tag.md)
 - [Task](interfaces/Task.md)
@@ -56,7 +58,10 @@
 
 - [connect](functions/connect.md)
 - [defaultToEmpty](functions/defaultToEmpty.md)
+- [formatDate](functions/formatDate.md)
 - [mapData](functions/mapData.md)
+- [offsetDate](functions/offsetDate.md)
+- [startOfWeekDate](functions/startOfWeekDate.md)
 
 ## References
 

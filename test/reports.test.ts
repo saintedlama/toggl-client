@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
+import { describe, it, expect, beforeAll } from 'vitest';
 import { debuglog } from 'node:util';
 import togglClient, { type TogglClient, offsetDate } from '../src/index.js';
 
@@ -9,18 +9,9 @@ describe('reports', () => {
   let workspaceId: number;
 
   beforeAll(async () => {
-    if (!process.env.TOGGL_API_TOKEN) {
-      console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the tests');
-      process.exit(1);
-    }
-
     client = togglClient();
     const workspaces = await client.workspaces.list();
     workspaceId = workspaces[0].id;
-  });
-
-  beforeEach(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should get a details report', async () => {

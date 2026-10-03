@@ -6,7 +6,7 @@
 
 # Class: Clients
 
-Defined in: [clients.ts:8](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/clients.ts#L8)
+Defined in: [clients.ts:8](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/clients.ts#L8)
 
 Access clients. See https://github.com/toggl/toggl_api_docs/blob/master/chapters/clients.md
 
@@ -16,7 +16,7 @@ Access clients. See https://github.com/toggl/toggl_api_docs/blob/master/chapters
 
 > **new Clients**(`client`): `Clients`
 
-Defined in: [clients.ts:11](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/clients.ts#L11)
+Defined in: [clients.ts:11](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/clients.ts#L11)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [clients.ts:11](https://github.com/saintedlama/toggl-client/blob/41e
 
 > **client**: [`TogglClient`](TogglClient.md)
 
-Defined in: [clients.ts:9](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/clients.ts#L9)
+Defined in: [clients.ts:9](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/clients.ts#L9)
 
 ## Methods
 
@@ -42,7 +42,7 @@ Defined in: [clients.ts:9](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **create**(`client`): `Promise`\<[`Client`](../interfaces/Client.md) \| `undefined`\>
 
-Defined in: [clients.ts:25](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/clients.ts#L25)
+Defined in: [clients.ts:25](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/clients.ts#L25)
 
 Creates a new client
 
@@ -62,7 +62,7 @@ Creates a new client
 
 > **delete**(`id`): `Promise`\<`void`\>
 
-Defined in: [clients.ts:48](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/clients.ts#L48)
+Defined in: [clients.ts:48](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/clients.ts#L48)
 
 Deletes a client by id
 
@@ -82,7 +82,7 @@ Deletes a client by id
 
 > **get**(`id`): `Promise`\<[`Client`](../interfaces/Client.md) \| `undefined`\>
 
-Defined in: [clients.ts:33](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/clients.ts#L33)
+Defined in: [clients.ts:33](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/clients.ts#L33)
 
 Gets a client by id
 
@@ -102,7 +102,7 @@ Gets a client by id
 
 > **list**(): `Promise`\<[`Client`](../interfaces/Client.md)[]\>
 
-Defined in: [clients.ts:18](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/clients.ts#L18)
+Defined in: [clients.ts:18](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/clients.ts#L18)
 
 Gets a list of clients
 
@@ -116,7 +116,7 @@ Gets a list of clients
 
 > **projects**(`id`, `active?`): `Promise`\<[`Project`](../interfaces/Project.md)[]\>
 
-Defined in: [clients.ts:55](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/clients.ts#L55)
+Defined in: [clients.ts:55](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/clients.ts#L55)
 
 Lists projects associated with the given client
 
@@ -140,7 +140,7 @@ Lists projects associated with the given client
 
 > **update**(`id`, `client`): `Promise`\<[`Client`](../interfaces/Client.md) \| `undefined`\>
 
-Defined in: [clients.ts:40](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/clients.ts#L40)
+Defined in: [clients.ts:40](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/clients.ts#L40)
 
 Updates a client
 
