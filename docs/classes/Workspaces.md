@@ -6,7 +6,7 @@
 
 # Class: Workspaces
 
-Defined in: [workspaces.ts:8](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L8)
+Defined in: [workspaces.ts:8](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L8)
 
 Access workspaces. See https://github.com/toggl/toggl_api_docs/blob/master/chapters/workspaces.md
 
@@ -16,7 +16,7 @@ Access workspaces. See https://github.com/toggl/toggl_api_docs/blob/master/chapt
 
 > **new Workspaces**(`client`): `Workspaces`
 
-Defined in: [workspaces.ts:11](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L11)
+Defined in: [workspaces.ts:11](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L11)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [workspaces.ts:11](https://github.com/saintedlama/toggl-client/blob/
 
 > **client**: [`TogglClient`](TogglClient.md)
 
-Defined in: [workspaces.ts:9](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L9)
+Defined in: [workspaces.ts:9](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L9)
 
 ## Methods
 
@@ -42,7 +42,7 @@ Defined in: [workspaces.ts:9](https://github.com/saintedlama/toggl-client/blob/4
 
 > **clients**(`id`): `Promise`\<[`Client`](../interfaces/Client.md)[]\>
 
-Defined in: [workspaces.ts:47](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L47)
+Defined in: [workspaces.ts:47](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L47)
 
 Gets a list of clients associated with the workspace
 
@@ -62,7 +62,7 @@ Gets a list of clients associated with the workspace
 
 > **get**(`id`): `Promise`\<[`Workspace`](../interfaces/Workspace.md) \| `undefined`\>
 
-Defined in: [workspaces.ts:25](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L25)
+Defined in: [workspaces.ts:25](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L25)
 
 Gets a workspace by id
 
@@ -82,7 +82,7 @@ Gets a workspace by id
 
 > **groups**(`id`): `Promise`\<[`Group`](../interfaces/Group.md)[]\>
 
-Defined in: [workspaces.ts:54](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L54)
+Defined in: [workspaces.ts:54](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L54)
 
 Gets a list of groups associated with the workspace
 
@@ -102,7 +102,7 @@ Gets a list of groups associated with the workspace
 
 > **list**(): `Promise`\<[`Workspace`](../interfaces/Workspace.md)[]\>
 
-Defined in: [workspaces.ts:18](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L18)
+Defined in: [workspaces.ts:18](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L18)
 
 Lists all workspaces
 
@@ -116,7 +116,7 @@ Lists all workspaces
 
 > **projects**(`id`): `Promise`\<[`Project`](../interfaces/Project.md)[]\>
 
-Defined in: [workspaces.ts:61](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L61)
+Defined in: [workspaces.ts:61](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L61)
 
 Gets a list of projects associated with the workspace
 
@@ -136,7 +136,7 @@ Gets a list of projects associated with the workspace
 
 > **tags**(`id`): `Promise`\<[`Tag`](../interfaces/Tag.md)[]\>
 
-Defined in: [workspaces.ts:75](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L75)
+Defined in: [workspaces.ts:75](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L75)
 
 Gets a list of tags associated with the workspace
 
@@ -156,7 +156,7 @@ Gets a list of tags associated with the workspace
 
 > **tasks**(`id`): `Promise`\<[`Task`](../interfaces/Task.md)[]\>
 
-Defined in: [workspaces.ts:68](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L68)
+Defined in: [workspaces.ts:68](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L68)
 
 Gets a list of tasks associated with the workspace
 
@@ -176,7 +176,7 @@ Gets a list of tasks associated with the workspace
 
 > **update**(`id`, `workspace`): `Promise`\<[`Workspace`](../interfaces/Workspace.md)\>
 
-Defined in: [workspaces.ts:33](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L33)
+Defined in: [workspaces.ts:33](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L33)
 
 Updates an existing workspace
 
@@ -200,7 +200,7 @@ Updates an existing workspace
 
 > **users**(`id`): `Promise`\<[`UserProfile`](../interfaces/UserProfile.md)[]\>
 
-Defined in: [workspaces.ts:40](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/workspaces.ts#L40)
+Defined in: [workspaces.ts:40](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/workspaces.ts#L40)
 
 Gets a list of users associated with the workspace
 

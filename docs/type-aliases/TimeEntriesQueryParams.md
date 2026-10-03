@@ -8,4 +8,4 @@
 
 > **TimeEntriesQueryParams** = [`TimeEntryParams`](../interfaces/TimeEntryParams.md)
 
-Defined in: [types.ts:186](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L186)
+Defined in: [types.ts:186](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L186)

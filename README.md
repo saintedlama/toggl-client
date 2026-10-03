@@ -10,7 +10,7 @@ API Client for the Toggl Track API (v9) and Reports API (v3) built for Node.js w
 - Full support for **Toggl Track API v9** and **Reports API v3**
 - Written in **TypeScript** with complete type definitions and JSDoc documentation
 - Native ES Modules and CommonJS support
-- Automated testing with Prism OpenAPI mock servers and live E2E test suites
+- Automated testing with MSW mock stubs based on Toggl OpenAPI specs
 - Promise-based API with `async`/`await`
 
 ## Installation
@@ -173,11 +173,8 @@ npm install
 # Build TypeScript
 npm run build
 
-# Run unit tests against Prism OpenAPI mock servers
+# Run unit tests
 npm test
-
-# Run live E2E lifecycle tests (requires TOGGL_API_TOKEN)
-npm run test:e2e
 
 # Auto-generate documentation from TypeScript code
 npm run docs

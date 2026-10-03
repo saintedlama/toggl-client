@@ -6,7 +6,7 @@
 
 # Class: TogglClient
 
-Defined in: [client.ts:20](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L20)
+Defined in: [client.ts:40](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L40)
 
 Access Toggl Track API
 
@@ -16,7 +16,7 @@ Access Toggl Track API
 
 > **new TogglClient**(`options?`): `TogglClient`
 
-Defined in: [client.ts:42](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L42)
+Defined in: [client.ts:61](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L61)
 
 Create TogglClient
 
@@ -38,7 +38,7 @@ Options for client
 
 > **clients**: [`Clients`](Clients.md)
 
-Defined in: [client.ts:22](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L22)
+Defined in: [client.ts:42](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L42)
 
 ***
 
@@ -46,15 +46,7 @@ Defined in: [client.ts:22](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **groups**: [`Groups`](Groups.md)
 
-Defined in: [client.ts:23](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L23)
-
-***
-
-### httpClient
-
-> **httpClient**: `Got`
-
-Defined in: [client.ts:32](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L32)
+Defined in: [client.ts:43](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L43)
 
 ***
 
@@ -62,7 +54,7 @@ Defined in: [client.ts:32](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **options**: [`ClientOptions`](../interfaces/ClientOptions.md)
 
-Defined in: [client.ts:21](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L21)
+Defined in: [client.ts:41](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L41)
 
 ***
 
@@ -70,7 +62,7 @@ Defined in: [client.ts:21](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **preferences**: [`Preferences`](Preferences.md)
 
-Defined in: [client.ts:31](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L31)
+Defined in: [client.ts:51](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L51)
 
 ***
 
@@ -78,7 +70,7 @@ Defined in: [client.ts:31](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **projects**: [`Projects`](Projects.md)
 
-Defined in: [client.ts:26](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L26)
+Defined in: [client.ts:46](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L46)
 
 ***
 
@@ -86,7 +78,7 @@ Defined in: [client.ts:26](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **projectUsers**: [`ProjectUsers`](ProjectUsers.md)
 
-Defined in: [client.ts:25](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L25)
+Defined in: [client.ts:45](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L45)
 
 ***
 
@@ -94,7 +86,7 @@ Defined in: [client.ts:25](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **reports**: [`Reports`](Reports.md)
 
-Defined in: [client.ts:29](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L29)
+Defined in: [client.ts:49](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L49)
 
 ***
 
@@ -102,7 +94,7 @@ Defined in: [client.ts:29](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **tags**: [`Tags`](Tags.md)
 
-Defined in: [client.ts:24](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L24)
+Defined in: [client.ts:44](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L44)
 
 ***
 
@@ -110,7 +102,7 @@ Defined in: [client.ts:24](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **timeEntries**: [`TimeEntries`](TimeEntries.md)
 
-Defined in: [client.ts:27](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L27)
+Defined in: [client.ts:47](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L47)
 
 ***
 
@@ -118,7 +110,7 @@ Defined in: [client.ts:27](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **user**: [`User`](User.md)
 
-Defined in: [client.ts:30](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L30)
+Defined in: [client.ts:50](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L50)
 
 ***
 
@@ -126,7 +118,7 @@ Defined in: [client.ts:30](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **workspaces**: [`Workspaces`](Workspaces.md)
 
-Defined in: [client.ts:28](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L28)
+Defined in: [client.ts:48](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L48)
 
 ## Methods
 
@@ -134,7 +126,7 @@ Defined in: [client.ts:28](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **delete**\<`T`\>(`path`): `Promise`\<`T`\>
 
-Defined in: [client.ts:91](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L91)
+Defined in: [client.ts:100](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L100)
 
 #### Type Parameters
 
@@ -158,7 +150,7 @@ Defined in: [client.ts:91](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **get**\<`T`\>(`path`, `searchParams?`): `Promise`\<`T`\>
 
-Defined in: [client.ts:75](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L75)
+Defined in: [client.ts:84](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L84)
 
 #### Type Parameters
 
@@ -174,7 +166,7 @@ Defined in: [client.ts:75](https://github.com/saintedlama/toggl-client/blob/41e1
 
 ##### searchParams?
 
-`string` \| `SearchParameters` \| `URLSearchParams`
+`Record`\<`string`, `unknown`\> \| `URLSearchParams`
 
 #### Returns
 
@@ -186,7 +178,7 @@ Defined in: [client.ts:75](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **patch**\<`T`\>(`path`, `json?`): `Promise`\<`T`\>
 
-Defined in: [client.ts:87](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L87)
+Defined in: [client.ts:96](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L96)
 
 #### Type Parameters
 
@@ -214,7 +206,7 @@ Defined in: [client.ts:87](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **post**\<`T`\>(`path`, `json?`): `Promise`\<`T`\>
 
-Defined in: [client.ts:83](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L83)
+Defined in: [client.ts:92](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L92)
 
 #### Type Parameters
 
@@ -242,7 +234,7 @@ Defined in: [client.ts:83](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **put**\<`T`\>(`path`, `json?`): `Promise`\<`T`\>
 
-Defined in: [client.ts:79](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L79)
+Defined in: [client.ts:88](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L88)
 
 #### Type Parameters
 
@@ -268,9 +260,9 @@ Defined in: [client.ts:79](https://github.com/saintedlama/toggl-client/blob/41e1
 
 ### request()
 
-> **request**\<`T`\>(`path`, `options`): `Promise`\<`T`\>
+> **request**\<`T`\>(`path`, `options?`): `Promise`\<`T`\>
 
-Defined in: [client.ts:107](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L107)
+Defined in: [client.ts:167](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L167)
 
 #### Type Parameters
 
@@ -284,9 +276,9 @@ Defined in: [client.ts:107](https://github.com/saintedlama/toggl-client/blob/41e
 
 `string`
 
-##### options
+##### options?
 
-`OptionsInit`
+[`RequestOptions`](../interfaces/RequestOptions.md) = `{}`
 
 #### Returns
 
@@ -296,9 +288,9 @@ Defined in: [client.ts:107](https://github.com/saintedlama/toggl-client/blob/41e
 
 ### requestRaw()
 
-> **requestRaw**(`path`, `options`): `Promise`\<`Response`\<`string`\>\>
+> **requestRaw**(`path`, `options?`): `Promise`\<[`ClientResponse`](../interfaces/ClientResponse.md)\>
 
-Defined in: [client.ts:95](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/client.ts#L95)
+Defined in: [client.ts:104](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/client.ts#L104)
 
 #### Parameters
 
@@ -306,10 +298,10 @@ Defined in: [client.ts:95](https://github.com/saintedlama/toggl-client/blob/41e1
 
 `string`
 
-##### options
+##### options?
 
-`OptionsInit`
+[`RequestOptions`](../interfaces/RequestOptions.md) = `{}`
 
 #### Returns
 
-`Promise`\<`Response`\<`string`\>\>
+`Promise`\<[`ClientResponse`](../interfaces/ClientResponse.md)\>

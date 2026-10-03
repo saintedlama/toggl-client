@@ -1,33 +1,22 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
-import dayjs from 'dayjs';
-import debugClient from 'debug';
-import togglClient, { type TogglClient } from '../src/index.js';
+import { describe, it, expect, beforeAll } from 'vitest';
+import { debuglog } from 'node:util';
+import togglClient, { type TogglClient, offsetDate } from '../src/index.js';
 
-const debug = debugClient('toggl-client-tests');
+const debug = debuglog('toggl-client-tests');
 
 describe('smoke test', () => {
   let client: TogglClient;
   let workspace_id: number;
   beforeAll(async () => {
-    if (!process.env.TOGGL_API_TOKEN) {
-      console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
-      process.exit(1);
-    }
-
     client = togglClient();
     const workspaces = await client.workspaces.list();
     workspace_id = workspaces[0].id;
   });
 
-  // Add a delay of 1 second between each test case
-  beforeEach(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-  });
-
   it('should list workspaces', async () => {
     const workspaces = await client.workspaces.list();
 
-    debug(workspaces);
+    debug('%o', workspaces);
     expect(workspaces).to.be.an('array').that.is.not.empty;
   });
 
@@ -36,7 +25,7 @@ describe('smoke test', () => {
 
     for (const workspace of workspaces) {
       const projects = await client.workspaces.projects(workspace.id);
-      debug(projects);
+      debug('%o', projects);
 
       expect(projects).to.be.an('array');
     }
@@ -44,10 +33,10 @@ describe('smoke test', () => {
 
   it('should get a details report', async () => {
     const detailsReport = await client.reports.details(workspace_id, {
-      start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
+      start_date: offsetDate(new Date(), { days: -7 }),
     });
 
-    debug(detailsReport);
+    debug('%o', detailsReport);
     expect(detailsReport).to.be.an('array');
     expect(detailsReport).to.have.property('page');
     expect(detailsReport).to.have.property('hasNextPage');
@@ -64,7 +53,7 @@ describe('smoke test', () => {
 
   it('should get a weekly report', async () => {
     const weeklyReport = await client.reports.weekly(workspace_id);
-    debug(weeklyReport);
+    debug('%o', weeklyReport);
     expect(weeklyReport).to.exist.to.be.an('array');
     expect(weeklyReport).to.have.property('page');
     expect(weeklyReport).to.have.property('hasNextPage');
@@ -72,9 +61,9 @@ describe('smoke test', () => {
 
   it('should get a summary report', async () => {
     const summaryReport = await client.reports.summary(workspace_id, {
-      start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
+      start_date: offsetDate(new Date(), { days: -7 }),
     });
-    debug(summaryReport);
+    debug('%o', summaryReport);
     expect(summaryReport).to.exist.to.be.an('object');
     expect(summaryReport).to.have.property('groups');
     expect((summaryReport as any).groups).to.be.an('array');
@@ -96,57 +85,36 @@ describe('smoke test', () => {
     await expect(client.user.update(user)).rejects.toThrow('To change the password you must include the current password');
   });
 
-  it.skip('should generate time entries', async () => {
-    for (let i = 0; i < 52; i++) {
-      const timeEntryCreated = await client.timeEntries.create({
-        workspace_id,
-        duration: 1200, // 20min
-        start: new Date().toISOString(),
-        description: 'Test Entry',
-      });
-
-      debug(timeEntryCreated);
-
-      await timeout();
-    }
-  });
-
   it('should list a users tags', async () => {
     const tags = await client.workspaces.tags(workspace_id);
-    debug(tags);
+    debug('%o', tags);
     expect(tags).to.exist.to.be.an('array');
     expect(tags[0].name).to.exist;
   });
 
   it('should get current user preferences', async () => {
     const preferences = await client.preferences.current();
-    debug(preferences);
+    debug('%o', preferences);
     expect(preferences).to.exist.to.be.an('object');
   });
 
   it('should get detailed report totals', async () => {
     const totals = await client.reports.totals(workspace_id, {
-      start_date: dayjs().subtract(1, 'week').format('YYYY-MM-DD'),
+      start_date: offsetDate(new Date(), { days: -7 }),
     });
-    debug(totals);
+    debug('%o', totals);
     expect(totals).to.exist;
   });
 
   it('should get projects summary report', async () => {
     const summary = await client.reports.projectsSummary(workspace_id);
-    debug(summary);
+    debug('%o', summary);
     expect(summary).to.exist;
   });
 
   it('should list workspace groups', async () => {
     const groups = await client.groups.list(workspace_id);
-    debug(groups);
+    debug('%o', groups);
     expect(groups).to.exist.to.be.an('array');
   });
 });
-
-async function timeout() {
-  return new Promise((resolve) => {
-    setTimeout(() => resolve(undefined), 500);
-  });
-}

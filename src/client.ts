@@ -1,5 +1,4 @@
-import got, { type Got, type OptionsInit, type Response } from 'got';
-import debugClient from 'debug';
+import { debuglog } from 'node:util';
 import Workspaces from './workspaces.js';
 import Clients from './clients.js';
 import Groups from './groups.js';
@@ -12,7 +11,28 @@ import User from './user.js';
 import Preferences from './preferences.js';
 import type { ClientOptions } from './types.js';
 
-const debug = debugClient('toggl-client');
+const debug = debuglog('toggl-client');
+
+/**
+ * Options for HTTP requests made by TogglClient
+ */
+export interface RequestOptions {
+  method?: string;
+  prefixUrl?: string;
+  searchParams?: Record<string, unknown> | URLSearchParams;
+  json?: unknown;
+  headers?: Record<string, string>;
+}
+
+/**
+ * Raw response returned by TogglClient.requestRaw
+ */
+export interface ClientResponse {
+  statusCode: number;
+  statusMessage?: string;
+  headers: Record<string, string | string[] | undefined>;
+  body: string;
+}
 
 /**
  * Access Toggl Track API
@@ -29,7 +49,6 @@ class TogglClient {
   reports: Reports;
   user: User;
   preferences: Preferences;
-  httpClient: Got;
 
   /**
    * Create TogglClient
@@ -60,19 +79,9 @@ class TogglClient {
 
     this.options.baseUrl = this.options.baseUrl || process.env.TOGGL_BASE_URL || 'https://api.track.toggl.com/api/v9';
     this.options.reportsUrl = this.options.reportsUrl || process.env.TOGGL_REPORTS_URL || 'https://api.track.toggl.com/reports/api/v3';
-
-    this.httpClient = got.extend({
-      prefixUrl: this.options.baseUrl,
-      username: this.options.apiToken,
-      password: 'api_token',
-      throwHttpErrors: false,
-      headers: {
-        'content-type': 'application/json',
-      },
-    });
   }
 
-  async get<T = unknown>(path: string, searchParams?: OptionsInit['searchParams']): Promise<T> {
+  async get<T = unknown>(path: string, searchParams?: Record<string, unknown> | URLSearchParams): Promise<T> {
     return await this.request<T>(path, { method: 'GET', searchParams });
   }
 
@@ -92,19 +101,70 @@ class TogglClient {
     return await this.request<T>(path, { method: 'DELETE' });
   }
 
-  async requestRaw(path: string, options: OptionsInit): Promise<Response<string>> {
-    debug(options.method, path, options.searchParams, options.json);
-    const response = await this.httpClient(path, options);
+  async requestRaw(path: string, options: RequestOptions = {}): Promise<ClientResponse> {
+    const baseUrl = options.prefixUrl || this.options.baseUrl || 'https://api.track.toggl.com/api/v9';
+    // Ensure baseUrl has a trailing slash and path does not have leading slash so URL constructor resolves properly
+    const normalizedBase = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
+    const normalizedPath = path.startsWith('/') ? path.slice(1) : path;
+    const url = new URL(normalizedPath, normalizedBase);
 
-    if (response.statusCode >= 400) {
-      debug(response.statusCode, response.statusMessage, response.body);
-      throw new Error(response.body as string);
+    if (options.searchParams) {
+      if (options.searchParams instanceof URLSearchParams) {
+        for (const [key, value] of options.searchParams.entries()) {
+          url.searchParams.append(key, value);
+        }
+      } else {
+        for (const [key, value] of Object.entries(options.searchParams)) {
+          if (value !== undefined && value !== null) {
+            url.searchParams.append(key, String(value));
+          }
+        }
+      }
     }
 
-    return response;
+    const auth = Buffer.from(`${this.options.apiToken}:api_token`).toString('base64');
+    const headers: Record<string, string> = {
+      Authorization: `Basic ${auth}`,
+      'Content-Type': 'application/json',
+      ...options.headers,
+    };
+
+    const method = (options.method || 'GET').toUpperCase();
+    const fetchOptions: RequestInit = {
+      method,
+      headers,
+    };
+
+    if (options.json !== undefined) {
+      fetchOptions.body = JSON.stringify(options.json);
+    }
+
+    debug('%s %s %o %o', method, url.toString(), options.searchParams, options.json);
+
+    const response = await fetch(url.toString(), fetchOptions);
+    const body = await response.text();
+
+    const responseHeaders: Record<string, string> = {};
+    response.headers.forEach((val, key) => {
+      responseHeaders[key.toLowerCase()] = val;
+    });
+
+    const clientResponse: ClientResponse = {
+      statusCode: response.status,
+      statusMessage: response.statusText,
+      headers: responseHeaders,
+      body,
+    };
+
+    if (!response.ok) {
+      debug('%d %s %s', response.status, response.statusText, body);
+      throw new Error(body);
+    }
+
+    return clientResponse;
   }
 
-  async request<T = unknown>(path: string, options: OptionsInit): Promise<T> {
+  async request<T = unknown>(path: string, options: RequestOptions = {}): Promise<T> {
     const response = await this.requestRaw(path, options);
 
     if (!response.body) {
@@ -112,11 +172,11 @@ class TogglClient {
     }
 
     const contentType = response.headers['content-type'];
-    if (contentType && contentType.includes('application/json')) {
-      return JSON.parse(response.body as string) as T;
+    if (typeof contentType === 'string' && contentType.includes('application/json')) {
+      return JSON.parse(response.body) as T;
     }
 
-    return response.body as T;
+    return response.body as unknown as T;
   }
 }
 

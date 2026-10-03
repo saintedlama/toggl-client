@@ -1,24 +1,14 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
-import debugClient from 'debug';
+import { describe, it, expect, beforeAll } from 'vitest';
+import { debuglog } from 'node:util';
 import togglClient, { type TogglClient } from '../src/index.js';
 
-const debug = debugClient('toggl-client-tests-preferences');
+const debug = debuglog('toggl-client-tests-preferences');
 
 describe('preferences', () => {
   let client: TogglClient;
 
   beforeAll(async () => {
-    if (!process.env.TOGGL_API_TOKEN) {
-      console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the tests');
-      process.exit(1);
-    }
-
     client = togglClient();
-  });
-
-  // Add a delay of 1 second between each test case to avoid rate limiting
-  beforeEach(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should get current user preferences', async () => {
@@ -45,12 +35,6 @@ describe('preferences', () => {
     });
     debug('update result:', result);
     expect(result).to.exist;
-
-    if (process.env.TOGGL_E2E) {
-      const updated = await client.preferences.current();
-      debug('verified updated preferences:', updated);
-      expect(updated.timeofday_format).to.equal(newFormat);
-    }
 
     // Restore original preferences
     const restoreResult = await client.preferences.update({
@@ -82,12 +66,6 @@ describe('preferences', () => {
     });
     debug('update client result:', result);
     expect(result).to.exist;
-
-    if (process.env.TOGGL_E2E) {
-      const updated = await client.preferences.currentForClient('web');
-      debug('verified updated web preferences:', updated);
-      expect(updated.timeofday_format).to.equal(newFormat);
-    }
 
     // Restore original preferences
     const restoreResult = await client.preferences.updateForClient('web', {

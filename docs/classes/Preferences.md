@@ -6,7 +6,7 @@
 
 # Class: Preferences
 
-Defined in: [preferences.ts:7](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/preferences.ts#L7)
+Defined in: [preferences.ts:7](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/preferences.ts#L7)
 
 Access user preferences. See https://developers.track.toggl.com/docs/api/preferences
 
@@ -16,7 +16,7 @@ Access user preferences. See https://developers.track.toggl.com/docs/api/prefere
 
 > **new Preferences**(`client`): `Preferences`
 
-Defined in: [preferences.ts:11](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/preferences.ts#L11)
+Defined in: [preferences.ts:11](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/preferences.ts#L11)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [preferences.ts:11](https://github.com/saintedlama/toggl-client/blob
 
 > **client**: [`TogglClient`](TogglClient.md)
 
-Defined in: [preferences.ts:8](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/preferences.ts#L8)
+Defined in: [preferences.ts:8](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/preferences.ts#L8)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: [preferences.ts:8](https://github.com/saintedlama/toggl-client/blob/
 
 > **endpoint**: `string`
 
-Defined in: [preferences.ts:9](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/preferences.ts#L9)
+Defined in: [preferences.ts:9](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/preferences.ts#L9)
 
 ## Methods
 
@@ -50,7 +50,7 @@ Defined in: [preferences.ts:9](https://github.com/saintedlama/toggl-client/blob/
 
 > **current**(): `Promise`\<[`UserPreferences`](../interfaces/UserPreferences.md)\>
 
-Defined in: [preferences.ts:20](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/preferences.ts#L20)
+Defined in: [preferences.ts:20](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/preferences.ts#L20)
 
 Gets preferences for the current user.
 See https://developers.track.toggl.com/docs/api/preferences#get-preferences-for-the-current-user
@@ -65,7 +65,7 @@ See https://developers.track.toggl.com/docs/api/preferences#get-preferences-for-
 
 > **currentForClient**(`clientType`, `since?`): `Promise`\<[`UserPreferences`](../interfaces/UserPreferences.md)\>
 
-Defined in: [preferences.ts:36](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/preferences.ts#L36)
+Defined in: [preferences.ts:36](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/preferences.ts#L36)
 
 Gets preferences for a specific client of the current user.
 See https://developers.track.toggl.com/docs/api/preferences#get-preferences-for-an-specific-client-of-the-current-user
@@ -90,7 +90,7 @@ See https://developers.track.toggl.com/docs/api/preferences#get-preferences-for-
 
 > **update**(`preferences`): `Promise`\<`string`\>
 
-Defined in: [preferences.ts:28](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/preferences.ts#L28)
+Defined in: [preferences.ts:28](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/preferences.ts#L28)
 
 Updates preferences for the current user.
 See https://developers.track.toggl.com/docs/api/preferences#update-the-preferences-for-the-current-user
@@ -111,7 +111,7 @@ See https://developers.track.toggl.com/docs/api/preferences#update-the-preferenc
 
 > **updateForClient**(`clientType`, `preferences`): `Promise`\<`string`\>
 
-Defined in: [preferences.ts:45](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/preferences.ts#L45)
+Defined in: [preferences.ts:45](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/preferences.ts#L45)
 
 Updates preferences for a specific client of the current user.
 See https://developers.track.toggl.com/docs/api/preferences#update-the-preferences-for-an-specific-client-of-the-current-user

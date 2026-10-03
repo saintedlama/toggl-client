@@ -10,7 +10,7 @@
 
 > **defaultToEmpty**\<`T`\>(`data`): `T`[]
 
-Defined in: [utils.ts:4](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/utils.ts#L4)
+Defined in: [utils.ts:4](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/utils.ts#L4)
 
 Returns the input data or an empty array
 
@@ -34,7 +34,7 @@ Returns the input data or an empty array
 
 > **defaultToEmpty**\<`T`\>(`data`): `T`
 
-Defined in: [utils.ts:5](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/utils.ts#L5)
+Defined in: [utils.ts:5](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/utils.ts#L5)
 
 Returns the input data or an empty array
 
@@ -58,7 +58,7 @@ Returns the input data or an empty array
 
 > **defaultToEmpty**(): `unknown`[]
 
-Defined in: [utils.ts:6](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/utils.ts#L6)
+Defined in: [utils.ts:6](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/utils.ts#L6)
 
 Returns the input data or an empty array
 

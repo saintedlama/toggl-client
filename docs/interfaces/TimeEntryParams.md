@@ -6,7 +6,7 @@
 
 # Interface: TimeEntryParams
 
-Defined in: [types.ts:179](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L179)
+Defined in: [types.ts:179](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L179)
 
 ## Indexable
 
@@ -18,7 +18,7 @@ Defined in: [types.ts:179](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **end\_date?**: `string`
 
-Defined in: [types.ts:181](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L181)
+Defined in: [types.ts:181](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L181)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [types.ts:181](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **meta?**: `boolean`
 
-Defined in: [types.ts:182](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L182)
+Defined in: [types.ts:182](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L182)
 
 ***
 
@@ -34,4 +34,4 @@ Defined in: [types.ts:182](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > `optional` **start\_date?**: `string`
 
-Defined in: [types.ts:180](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L180)
+Defined in: [types.ts:180](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L180)

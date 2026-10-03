@@ -6,7 +6,7 @@
 
 # Interface: ClientOptions
 
-Defined in: [types.ts:30](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L30)
+Defined in: [types.ts:30](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L30)
 
 ## Properties
 
@@ -14,7 +14,7 @@ Defined in: [types.ts:30](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **apiToken?**: `string`
 
-Defined in: [types.ts:31](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L31)
+Defined in: [types.ts:31](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L31)
 
 ***
 
@@ -22,7 +22,7 @@ Defined in: [types.ts:31](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **baseUrl?**: `string`
 
-Defined in: [types.ts:32](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L32)
+Defined in: [types.ts:32](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L32)
 
 ***
 
@@ -30,4 +30,4 @@ Defined in: [types.ts:32](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **reportsUrl?**: `string`
 
-Defined in: [types.ts:33](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L33)
+Defined in: [types.ts:33](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L33)

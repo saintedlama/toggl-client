@@ -6,7 +6,7 @@
 
 # Class: Groups
 
-Defined in: [groups.ts:7](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L7)
+Defined in: [groups.ts:7](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L7)
 
 Access groups. See https://developers.track.toggl.com/docs/api/groups
 
@@ -16,7 +16,7 @@ Access groups. See https://developers.track.toggl.com/docs/api/groups
 
 > **new Groups**(`client`): `Groups`
 
-Defined in: [groups.ts:10](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L10)
+Defined in: [groups.ts:10](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L10)
 
 #### Parameters
 
@@ -34,7 +34,7 @@ Defined in: [groups.ts:10](https://github.com/saintedlama/toggl-client/blob/41e1
 
 > **client**: [`TogglClient`](TogglClient.md)
 
-Defined in: [groups.ts:8](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L8)
+Defined in: [groups.ts:8](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L8)
 
 ## Methods
 
@@ -42,7 +42,7 @@ Defined in: [groups.ts:8](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > **create**(`workspaceIdOrGroup`, `group?`): `Promise`\<[`Group`](../interfaces/Group.md)\>
 
-Defined in: [groups.ts:48](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L48)
+Defined in: [groups.ts:48](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L48)
 
 Creates a new group in a workspace.
 
@@ -75,7 +75,7 @@ The created group
 
 > **createInOrganization**(`organizationId`, `group`): `Promise`\<[`OrganizationGroup`](../interfaces/OrganizationGroup.md)\>
 
-Defined in: [groups.ts:117](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L117)
+Defined in: [groups.ts:117](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L117)
 
 Creates a group in an organization.
 
@@ -107,7 +107,7 @@ The created organization group
 
 > **delete**(`workspaceId`, `groupId`): `Promise`\<`void`\>
 
-Defined in: [groups.ts:91](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L91)
+Defined in: [groups.ts:91](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L91)
 
 Deletes a group from a workspace.
 
@@ -137,7 +137,7 @@ ID of the group to delete
 
 > **deleteInOrganization**(`organizationId`, `groupId`): `Promise`\<`void`\>
 
-Defined in: [groups.ts:149](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L149)
+Defined in: [groups.ts:149](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L149)
 
 Deletes a group from an organization.
 
@@ -167,7 +167,7 @@ ID of the group to delete
 
 > **list**(`workspaceId`): `Promise`\<[`Group`](../interfaces/Group.md)[]\>
 
-Defined in: [groups.ts:34](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L34)
+Defined in: [groups.ts:34](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L34)
 
 Lists groups in a workspace.
 
@@ -193,7 +193,7 @@ Array of groups in the workspace
 
 > **listInOrganization**(`organizationId`, `params?`): `Promise`\<[`OrganizationGroup`](../interfaces/OrganizationGroup.md)[]\>
 
-Defined in: [groups.ts:104](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L104)
+Defined in: [groups.ts:104](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L104)
 
 Lists groups in an organization with user and workspace assignments.
 
@@ -225,7 +225,7 @@ Array of organization groups
 
 > **update**(`workspaceId`, `groupId`, `group`): `Promise`\<[`Group`](../interfaces/Group.md)\>
 
-Defined in: [groups.ts:78](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L78)
+Defined in: [groups.ts:78](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L78)
 
 Updates an existing group in a workspace.
 
@@ -263,7 +263,7 @@ The updated group
 
 > **updateInOrganization**(`organizationId`, `groupId`, `group`): `Promise`\<[`OrganizationGroup`](../interfaces/OrganizationGroup.md)\>
 
-Defined in: [groups.ts:132](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L132)
+Defined in: [groups.ts:132](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L132)
 
 Updates a group in an organization.
 
@@ -301,7 +301,7 @@ The updated organization group
 
 > **validateGroup**(`group`): `void`
 
-Defined in: [groups.ts:20](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/groups.ts#L20)
+Defined in: [groups.ts:20](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/groups.ts#L20)
 
 Validates that a group contains a name property.
 

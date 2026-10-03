@@ -18,15 +18,12 @@
   "scripts": {
     "build": "tsc",
     "docs": "typedoc",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "npm run build && concurrently -k -s first -n track,reports,vitest \"npm:mock:track\" \"npm:mock:reports\" \"wait-on tcp:4010 tcp:4011 && npm run test:unit\"",
-    "mock:track": "prism mock spec/track-api.json -p 4010",
-    "mock:reports": "prism mock spec/reports-api.json -p 4011",
-    "mock": "concurrently -k -s first -n track,reports \"npm:mock:track\" \"npm:mock:reports\"",
-    "test:unit": "vitest run",
-    "test:e2e": "npm run build && node -e \"process.env.TOGGL_E2E='true'; import('vitest/node').then(m => m.startVitest('test', ['run']))\"",
-    "test:smoke": "npm run build && node -e \"process.env.TOGGL_E2E='true'; import('vitest/node').then(m => m.startVitest('test', ['run', 'test/smoke-test.ts']))\""
+    "test": "npm run build && vitest run",
+    "test:unit": "vitest run"
   },
   "author": "Christoph Walcher <christoph.walcher@gmail.com>",
   "contributors": [
@@ -34,27 +31,18 @@
   ],
   "repository": "saintedlama/toggl-client",
   "license": "ISC",
-  "dependencies": {
-    "dayjs": "^1.11.23",
-    "debug": "^4.4.3",
-    "got": "^16.0.0"
-  },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@stoplight/prism-cli": "^5.16.0",
-    "@types/debug": "^4.1.13",
     "@types/node": "^26.6.4",
-    "concurrently": "^10.0.5",
     "eslint": "^10.12.0",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.6",
     "globals": "^17.13.0",
+    "msw": "^2.15.0",
     "prettier": "^3.9.9",
     "typedoc": "^0.28.20",
     "typedoc-plugin-markdown": "^4.13.1",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.71.0",
-    "vitest": "^5.0.3",
-    "wait-on": "^9.5.1"
+    "vitest": "^5.0.3"
   }
 }

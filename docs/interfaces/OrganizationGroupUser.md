@@ -6,7 +6,7 @@
 
 # Interface: OrganizationGroupUser
 
-Defined in: [types.ts:78](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L78)
+Defined in: [types.ts:78](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L78)
 
 ## Indexable
 
@@ -18,7 +18,7 @@ Defined in: [types.ts:78](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **avatar\_url?**: `string`
 
-Defined in: [types.ts:81](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L81)
+Defined in: [types.ts:81](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L81)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [types.ts:81](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **email?**: `string`
 
-Defined in: [types.ts:82](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L82)
+Defined in: [types.ts:82](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L82)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: [types.ts:82](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > **joined**: `boolean`
 
-Defined in: [types.ts:80](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L80)
+Defined in: [types.ts:80](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L80)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: [types.ts:80](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **name?**: `string`
 
-Defined in: [types.ts:83](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L83)
+Defined in: [types.ts:83](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L83)
 
 ***
 
@@ -50,4 +50,4 @@ Defined in: [types.ts:83](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > **user\_id**: `number`
 
-Defined in: [types.ts:79](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L79)
+Defined in: [types.ts:79](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L79)

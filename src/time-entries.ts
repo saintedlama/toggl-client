@@ -1,6 +1,6 @@
-import dayjs from 'dayjs';
 import type TogglClient from './client.js';
 import type { TimeEntry, TimeEntryInput, TimeEntriesQueryParams } from './types.js';
+import { offsetDate } from './utils.js';
 
 /**
  * Access time entries. See https://github.com/toggl/toggl_api_docs/blob/master/chapters/time_entries.md
@@ -74,8 +74,8 @@ class TimeEntries {
    */
   async get(id: number | string): Promise<TimeEntry | undefined> {
     const timeEntries = await this.client.get<TimeEntry[]>('me/time_entries', {
-      start_date: dayjs().subtract(3, 'month').format('YYYY-MM-DD'),
-      end_date: dayjs().add(1, 'day').format('YYYY-MM-DD'),
+      start_date: offsetDate(new Date(), { months: -3 }),
+      end_date: offsetDate(new Date(), { days: 1 }),
     });
     const timeEntry = timeEntries.filter((x) => String(x.id) === String(id))[0];
     return timeEntry;

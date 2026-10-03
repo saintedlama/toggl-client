@@ -1835,36 +1835,7 @@
           "200": {
             "description": "Returns grouped time entries for detailed report",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user_id": {
-                    "type": "integer"
-                  },
-                  "username": {
-                    "type": "string"
-                  },
-                  "project_id": {
-                    "type": "integer"
-                  },
-                  "task_id": {
-                    "type": "integer"
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "time_entries": {
-                    "type": "array",
-                    "items": {
-                      "type": "object"
-                    }
-                  },
-                  "row_number": {
-                    "type": "integer"
-                  }
-                }
-              }
+              "type": "string"
             },
             "headers": {
               "X-Next-ID": {
@@ -2234,15 +2205,7 @@
           "200": {
             "description": "Returns the summary time entries",
             "schema": {
-              "type": "object",
-              "properties": {
-                "groups": {
-                  "type": "array",
-                  "items": {
-                    "type": "object"
-                  }
-                }
-              }
+              "type": "string"
             },
             "headers": {
               "X-Grouping": {
@@ -2472,24 +2435,7 @@
           "200": {
             "description": "Returns the weekly report time entries",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "user_id": {
-                    "type": "integer"
-                  },
-                  "project_id": {
-                    "type": "integer"
-                  },
-                  "seconds": {
-                    "type": "array",
-                    "items": {
-                      "type": "integer"
-                    }
-                  }
-                }
-              }
+              "type": "string"
             }
           },
           "400": {
@@ -3494,6 +3440,12 @@
         },
         "id": {
           "type": "integer"
+        },
+        "integration_ext_id": {
+          "type": "string"
+        },
+        "integration_provider": {
+          "type": "string"
         },
         "seconds": {
           "type": "integer"
@@ -5608,8 +5560,5 @@
         }
       }
     }
-  },
-  "consumes": [
-    "application/json"
-  ]
+  }
 }

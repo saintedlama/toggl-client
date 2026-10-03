@@ -6,7 +6,7 @@
 
 # Class: Reports
 
-Defined in: [reports.ts:14](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L14)
+Defined in: [reports.ts:14](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L14)
 
 Access Toggl Reports API v3.
 
@@ -20,7 +20,7 @@ https://developers.track.toggl.com/docs/reports
 
 > **new Reports**(`client`): `Reports`
 
-Defined in: [reports.ts:17](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L17)
+Defined in: [reports.ts:17](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L17)
 
 #### Parameters
 
@@ -38,7 +38,7 @@ Defined in: [reports.ts:17](https://github.com/saintedlama/toggl-client/blob/41e
 
 > **client**: [`TogglClient`](TogglClient.md)
 
-Defined in: [reports.ts:15](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L15)
+Defined in: [reports.ts:15](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L15)
 
 ## Methods
 
@@ -46,7 +46,7 @@ Defined in: [reports.ts:15](https://github.com/saintedlama/toggl-client/blob/41e
 
 > **details**\<`T`\>(`workspaceId`, `params`): `Promise`\<[`ReportResult`](../type-aliases/ReportResult.md)\<`T`\>\>
 
-Defined in: [reports.ts:61](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L61)
+Defined in: [reports.ts:61](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L61)
 
 Fetch a detailed time entries report.
 
@@ -84,7 +84,7 @@ https://developers.track.toggl.com/docs/reports/detailed_reports#post-search-tim
 
 > **detailsAll**\<`T`\>(`workspaceId`, `params`, `maxPages?`): `Promise`\<`T`[]\>
 
-Defined in: [reports.ts:76](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L76)
+Defined in: [reports.ts:76](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L76)
 
 Fetch all pages of a detailed report with rate-limiting pauses between requests.
 
@@ -128,7 +128,7 @@ https://developers.track.toggl.com/docs/reports/detailed_reports#post-search-tim
 
 > **projectsSummary**\<`T`\>(`workspaceId`, `params?`): `Promise`\<`T`\>
 
-Defined in: [reports.ts:190](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L190)
+Defined in: [reports.ts:190](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L190)
 
 List project users summary.
 
@@ -166,7 +166,7 @@ https://developers.track.toggl.com/docs/reports/projects_reports
 
 > **projectSummary**\<`T`\>(`workspaceId`, `projectId`, `params?`): `Promise`\<`T`\>
 
-Defined in: [reports.ts:202](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L202)
+Defined in: [reports.ts:202](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L202)
 
 Load project summary for a specific project.
 
@@ -210,7 +210,7 @@ https://developers.track.toggl.com/docs/reports/projects_reports
 
 > **requestReport**\<`T`\>(`path`, `workspace_id`, `params?`): `Promise`\<[`ReportResult`](../type-aliases/ReportResult.md)\<`T`\>\>
 
-Defined in: [reports.ts:213](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L213)
+Defined in: [reports.ts:213](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L213)
 
 Helper to execute a POST report request against the Reports API v3.
 
@@ -250,7 +250,7 @@ Query/body parameters
 
 > **summary**\<`T`\>(`workspaceId`, `params`): `Promise`\<[`ReportResult`](../type-aliases/ReportResult.md)\<`T`\>\>
 
-Defined in: [reports.ts:138](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L138)
+Defined in: [reports.ts:138](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L138)
 
 Fetch a summary report.
 
@@ -288,7 +288,7 @@ https://developers.track.toggl.com/docs/reports/summary_reports#post-search-time
 
 > **summaryAll**\<`T`\>(`workspaceId`, `params`): `Promise`\<`T`[]\>
 
-Defined in: [reports.ts:152](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L152)
+Defined in: [reports.ts:152](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L152)
 
 Fetch all groups of a summary report.
 
@@ -326,7 +326,7 @@ https://developers.track.toggl.com/docs/reports/summary_reports#post-search-time
 
 > **totals**\<`T`\>(`workspaceId`, `params`): `Promise`\<`T`\>
 
-Defined in: [reports.ts:176](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L176)
+Defined in: [reports.ts:176](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L176)
 
 Load totals for a detailed report.
 
@@ -364,7 +364,7 @@ https://developers.track.toggl.com/docs/reports/detailed_reports#post-load-total
 
 > **weekly**\<`T`\>(`workspaceId`, `params?`): `Promise`\<[`ReportResult`](../type-aliases/ReportResult.md)\<`T`\>\>
 
-Defined in: [reports.ts:28](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L28)
+Defined in: [reports.ts:28](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L28)
 
 Fetch a weekly report for a workspace.
 
@@ -402,7 +402,7 @@ https://developers.track.toggl.com/docs/reports/weekly_reports#post-search-time-
 
 > **weeklyAll**\<`T`\>(`workspaceId`, `params?`): `Promise`\<`T`[]\>
 
-Defined in: [reports.ts:43](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/reports.ts#L43)
+Defined in: [reports.ts:43](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/reports.ts#L43)
 
 Fetch all entries of a weekly report.
 

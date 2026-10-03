@@ -6,7 +6,7 @@
 
 # Interface: OrganizationGroup
 
-Defined in: [types.ts:87](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L87)
+Defined in: [types.ts:87](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L87)
 
 ## Indexable
 
@@ -18,7 +18,7 @@ Defined in: [types.ts:87](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **at?**: `string`
 
-Defined in: [types.ts:90](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L90)
+Defined in: [types.ts:90](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L90)
 
 ***
 
@@ -26,7 +26,7 @@ Defined in: [types.ts:90](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > **group\_id**: `number`
 
-Defined in: [types.ts:88](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L88)
+Defined in: [types.ts:88](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L88)
 
 ***
 
@@ -34,7 +34,7 @@ Defined in: [types.ts:88](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > **name**: `string`
 
-Defined in: [types.ts:89](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L89)
+Defined in: [types.ts:89](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L89)
 
 ***
 
@@ -42,7 +42,7 @@ Defined in: [types.ts:89](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **permissions?**: `string`[]
 
-Defined in: [types.ts:91](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L91)
+Defined in: [types.ts:91](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L91)
 
 ***
 
@@ -50,7 +50,7 @@ Defined in: [types.ts:91](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **users?**: [`OrganizationGroupUser`](OrganizationGroupUser.md)[]
 
-Defined in: [types.ts:92](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L92)
+Defined in: [types.ts:92](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L92)
 
 ***
 
@@ -58,4 +58,4 @@ Defined in: [types.ts:92](https://github.com/saintedlama/toggl-client/blob/41e15
 
 > `optional` **workspaces?**: `number`[]
 
-Defined in: [types.ts:93](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L93)
+Defined in: [types.ts:93](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L93)

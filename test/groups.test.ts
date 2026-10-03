@@ -1,8 +1,8 @@
-import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
-import debugClient from 'debug';
+import { describe, it, expect, beforeAll } from 'vitest';
+import { debuglog } from 'node:util';
 import togglClient, { type TogglClient } from '../src/index.js';
 
-const debug = debugClient('toggl-client-tests-groups');
+const debug = debuglog('toggl-client-tests-groups');
 
 describe('groups', () => {
   let client: TogglClient;
@@ -10,18 +10,9 @@ describe('groups', () => {
   const organization_id = 1;
 
   beforeAll(async () => {
-    if (!process.env.TOGGL_API_TOKEN) {
-      console.error('Please make sure to set the environment variable "TOGGL_API_TOKEN" before running the smoke tests');
-      process.exit(1);
-    }
-
     client = togglClient();
     const workspaces = await client.workspaces.list();
     workspace_id = workspaces[0].id;
-  });
-
-  beforeEach(async () => {
-    await new Promise((resolve) => setTimeout(resolve, 1000));
   });
 
   it('should list groups in a workspace', async () => {

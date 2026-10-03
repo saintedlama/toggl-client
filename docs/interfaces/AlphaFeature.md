@@ -6,7 +6,7 @@
 
 # Interface: AlphaFeature
 
-Defined in: [types.ts:1](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L1)
+Defined in: [types.ts:1](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L1)
 
 ## Indexable
 
@@ -18,7 +18,7 @@ Defined in: [types.ts:1](https://github.com/saintedlama/toggl-client/blob/41e159
 
 > `optional` **code?**: `string`
 
-Defined in: [types.ts:2](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L2)
+Defined in: [types.ts:2](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L2)
 
 ***
 
@@ -26,4 +26,4 @@ Defined in: [types.ts:2](https://github.com/saintedlama/toggl-client/blob/41e159
 
 > `optional` **enabled?**: `boolean`
 
-Defined in: [types.ts:3](https://github.com/saintedlama/toggl-client/blob/41e1594f42c1af54134d3d9f8c39ff393a7eada4/src/types.ts#L3)
+Defined in: [types.ts:3](https://github.com/saintedlama/toggl-client/blob/083663313bdf9055a8a6fcf17bb694827f56aed5/src/types.ts#L3)
