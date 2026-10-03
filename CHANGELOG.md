@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.7.1](https://github.com/saintedlama/toggl-client/compare/v3.7.0...v3.7.1) (2026-09-30)
+
+
+### Bug Fixes
+
+* **security:** patch 10 npm vulnerabilities ([#84](https://github.com/saintedlama/toggl-client/issues/84)) ([9455a3f](https://github.com/saintedlama/toggl-client/commit/9455a3f49de83484e7fc871d8155c636a3cd6498))
+
+## [3.7.0](https://github.com/saintedlama/toggl-client/compare/v3.6.0...v3.7.0) (2026-09-26)
+
+
+### Features
+
+* update groups module to v9 ([#79](https://github.com/saintedlama/toggl-client/issues/79)) ([41e1594](https://github.com/saintedlama/toggl-client/commit/41e1594f42c1af54134d3d9f8c39ff393a7eada4))
+* update reports module for remaining v9 API changes ([#41](https://github.com/saintedlama/toggl-client/issues/41)) ([#78](https://github.com/saintedlama/toggl-client/issues/78)) ([d162be5](https://github.com/saintedlama/toggl-client/commit/d162be5fa81f2c36414d9c261a1a9258aa2457ea))
+
 ## [3.6.0](https://github.com/saintedlama/toggl-client/compare/v3.5.0...v3.6.0) (2026-09-26)
 
 
