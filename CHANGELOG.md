@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.7.2](https://github.com/saintedlama/toggl-client/compare/v3.7.1...v3.7.2) (2026-10-03)
+
+
+### Bug Fixes
+
+* reduce dependency footprint ([#91](https://github.com/saintedlama/toggl-client/issues/91)) ([aa70b07](https://github.com/saintedlama/toggl-client/commit/aa70b07939cfa2efc0f1daea1a3098e57155e943))
+
 ## [3.7.1](https://github.com/saintedlama/toggl-client/compare/v3.7.0...v3.7.1) (2026-09-30)
 
 
