@@ -1,4 +1,4 @@
-import TogglClient from './client.js';
+import TogglClient, { type RequestOptions, type ClientResponse } from './client.js';
 import type { ClientOptions } from './types.js';
 
 export default function connect(options?: ClientOptions): TogglClient {
@@ -6,6 +6,7 @@ export default function connect(options?: ClientOptions): TogglClient {
 }
 
 export { connect, TogglClient };
+export type { RequestOptions, ClientResponse };
 export * from './types.js';
 export { default as Clients } from './clients.js';
 export { default as Groups } from './groups.js';

@@ -1,6 +1,6 @@
-import dayjs from 'dayjs';
 import type TogglClient from './client.js';
 import type { ReportParams, WeeklyReportParams, DetailedReportParams, SummaryReportParams, ReportResult } from './types.js';
+import { startOfWeekDate } from './utils.js';
 
 function timeout(timeoutMs: number): Promise<void> {
   return new Promise((resolve) => setTimeout(() => resolve(), timeoutMs));
@@ -27,7 +27,7 @@ class Reports {
    */
   async weekly<T = unknown>(workspaceId: number, params?: WeeklyReportParams): Promise<ReportResult<T>> {
     const searchParams = {
-      start_date: dayjs().startOf('week').format('YYYY-MM-DD'),
+      start_date: startOfWeekDate(),
       ...params,
     };
     return await this.requestReport<T>(`workspace/${workspaceId}/weekly/time_entries`, workspaceId, searchParams);

@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import debugClient from 'debug';
+import { debuglog } from 'node:util';
 import togglClient from '../src/index.js';
 
-const debug = debugClient('toggl-client-tests-tags');
+const debug = debuglog('toggl-client-tests-tags');
 
 describe.skip('tags', async () => {
   it('should create, update and delete a tag', async () => {

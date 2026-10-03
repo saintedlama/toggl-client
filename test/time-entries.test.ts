@@ -1,9 +1,8 @@
 import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
-import dayjs from 'dayjs';
-import debugClient from 'debug';
-import togglClient, { type TogglClient } from '../src/index.js';
+import { debuglog } from 'node:util';
+import togglClient, { type TogglClient, offsetDate, formatDate } from '../src/index.js';
 
-const debug = debugClient('toggl-client-tests-time-entries');
+const debug = debuglog('toggl-client-tests-time-entries');
 
 describe('time-entries', () => {
   let workspace_id: number;
@@ -13,13 +12,13 @@ describe('time-entries', () => {
   beforeAll(async () => {
     client = togglClient();
     const query = {
-      start_date: dayjs().subtract(3, 'month').format('YYYY-MM-DD'),
-      end_date: dayjs().add(1, 'day').format('YYYY-MM-DD'),
+      start_date: offsetDate(new Date(), { months: -3 }),
+      end_date: offsetDate(new Date(), { days: 1 }),
     };
     const timeEntries = await client.timeEntries.list(query);
     const index = Math.floor(timeEntries.length / 2); // get the middle entry
     timeEntryId = timeEntries[index].id;
-    debug(timeEntryId);
+    debug('%d', timeEntryId);
     const workspaces = await client.workspaces.list();
     workspace_id = workspaces[0].id;
   });
@@ -32,7 +31,7 @@ describe('time-entries', () => {
   it('should get a time entry by id', async () => {
     const client = togglClient();
     const timeEntry = await client.timeEntries.get(timeEntryId);
-    debug(timeEntry);
+    debug('%o', timeEntry);
     expect(timeEntry).to.be.an('object');
     expect(timeEntry).to.have.property('workspace_id');
     expect(timeEntry).to.have.property('project_id');
@@ -41,7 +40,7 @@ describe('time-entries', () => {
 
   it('should get the current running time entry', async () => {
     const timeEntry = await client.timeEntries.current();
-    debug(timeEntry);
+    debug('%o', timeEntry);
     expect(typeof timeEntry).to.be.oneOf(['undefined', 'object']);
     if (timeEntry) {
       expect(timeEntry).to.have.property('workspace_id');
@@ -51,16 +50,16 @@ describe('time-entries', () => {
 
   it('should list time entries', async () => {
     const query = {
-      start_date: dayjs().subtract(3, 'month').format('YYYY-MM-DD'),
-      end_date: dayjs().add(1, 'day').format('YYYY-MM-DD'),
+      start_date: offsetDate(new Date(), { months: -3 }),
+      end_date: offsetDate(new Date(), { days: 1 }),
     };
     const timeEntries = await client.timeEntries.list(query);
-    debug(timeEntries);
+    debug('%o', timeEntries);
     expect(timeEntries).to.be.an('array');
     const index = Math.floor(timeEntries.length / 2); // get the middle entry
-    debug(index);
+    debug('%d', index);
     const timeEntry = timeEntries[index];
-    debug(timeEntry);
+    debug('%o', timeEntry);
 
     expect(timeEntry).to.be.an('object');
     expect(timeEntry).to.have.property('workspace_id');
@@ -102,11 +101,10 @@ describe('time-entries', () => {
       workspace_id,
       start: new Date().toISOString(),
     };
-    debug(timeEntry);
+    debug('%o', timeEntry);
 
     const createdTimeEntry = await client.timeEntries.start(timeEntry);
-    debug('createdTimeEntry');
-    debug(createdTimeEntry);
+    debug('createdTimeEntry %o', createdTimeEntry);
     expect(createdTimeEntry).to.be.an('object');
     if (process.env.TOGGL_E2E) {
       expect(createdTimeEntry).to.have.property('description').equal(timeEntry.description);
@@ -122,8 +120,7 @@ describe('time-entries', () => {
       description: updatedTimeEntryDescription,
       workspace_id,
     });
-    debug('updatedTimeEntry');
-    debug(updatedTimeEntry);
+    debug('updatedTimeEntry %o', updatedTimeEntry);
     expect(updatedTimeEntry).to.be.an('object');
     if (process.env.TOGGL_E2E) {
       expect(updatedTimeEntry).to.have.property('description').equal(updatedTimeEntryDescription);
@@ -136,12 +133,12 @@ describe('time-entries', () => {
 
     await client.timeEntries.delete(workspace_id, createdTimeEntry.id);
 
+    const today = formatDate(new Date());
     const timeEntriesList = await client.timeEntries.list({
-      start_date: dayjs().startOf('day').format('YYYY-MM-DD'),
-      end_date: dayjs().endOf('day').format('YYYY-MM-DD'),
+      start_date: today,
+      end_date: today,
     });
-    debug('timeEntriesList');
-    debug(timeEntriesList);
+    debug('timeEntriesList %o', timeEntriesList);
     expect(timeEntriesList).to.be.an('array');
     if (process.env.TOGGL_E2E) {
       expect(timeEntriesList).to.be.empty;

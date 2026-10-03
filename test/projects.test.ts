@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeAll, beforeEach } from 'vitest';
-import debugClient from 'debug';
+import { debuglog } from 'node:util';
 import togglClient, { type TogglClient } from '../src/index.js';
 
-const debug = debugClient('toggl-client-tests-projects');
+const debug = debuglog('toggl-client-tests-projects');
 
 describe('projects', () => {
   let client: TogglClient;
